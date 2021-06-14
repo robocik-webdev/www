@@ -1,41 +1,39 @@
 <script>
-  import Menu from './Menu.svelte';
   import { scrollY } from '../utils.js';
+  import { hidden } from '../header.js';
+  import { opened as showMenu } from '../menu.js';
+  import Menu from './Menu.svelte';
 
-  let opened = false;
-  let visible = false;
+  $: showLogo =
+    !$hidden && ($showMenu || $scrollY > (window.innerHeight / 10) * 2);
+  $: showButton = !$hidden;
 
-  function open() {
-    opened = true;
-    visible = true;
-  }
-  function close() {
-    opened = false;
-    visible = false;
-  }
-  function toggle() {
-    opened ? close() : open();
-  }
-
-  $: {
-    visible = opened || $scrollY > (window.innerHeight / 10) * 2 ? true : false;
+  function toggleMenu() {
+    $showMenu = !$showMenu;
   }
 </script>
 
 <header>
-  <div class="logo" class:visible>
+  <div class="part logo" class:visible={showLogo}>
     <img src="/img/logo.svg" alt="robocik logo" />
     <h1><span>PW</span>R <span>D</span>IVING <span>C</span>REW</h1>
   </div>
 
-  <Menu {opened} />
+  <Menu />
 
-  <div class="hamburger" on:click={toggle}>
-    {#if opened}
-      <img class="close" src="/icon/close_light.svg" alt="close menu" />
-    {:else}
-      <img class="open" src="/icon/menu_light.svg" alt="open menu" />
-    {/if}
+  <div class="part hamburger" class:visible={showButton} on:click={toggleMenu}>
+    <img
+      class="icon"
+      class:visible={$showMenu}
+      src="/icon/close_light.svg"
+      alt="close menu"
+    />
+    <img
+      class="icon"
+      class:visible={!$showMenu}
+      src="/icon/menu_light.svg"
+      alt="open menu"
+    />
   </div>
 </header>
 
@@ -50,15 +48,21 @@
     height: 50px;
   }
 
+  .part {
+    transform: translateY(-100%);
+    background-color: var(--color-main);
+    transition: transform var(--t-normal);
+  }
+  .part.visible {
+    transform: translateY(0);
+  }
+
   .logo {
     display: flex;
     align-items: center;
     padding: 0 20px;
     height: 100%;
     width: calc(100% - 50px);
-    transform: translateY(-100%);
-    background-color: var(--color-main);
-    transition: transform var(--t-normal);
   }
   .logo img {
     margin-right: 10px;
@@ -71,14 +75,16 @@
     font-weight: 400;
     font-size: 1.1rem;
   }
-  .visible {
-    transform: translateY(0);
-  }
 
   .hamburger {
     padding: 12px;
     height: 100%;
     width: 50px;
-    background-color: var(--color-main);
+  }
+  .icon {
+    display: none;
+  }
+  .icon.visible {
+    display: block;
   }
 </style>

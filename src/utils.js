@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import * as animateScroll from 'svelte-scrollto';
+import { scrollTo } from 'svelte-scrollto';
 
 export function range(min, max, attach) {
   // get a range of numbers from (and including) min to (and including) max
@@ -15,8 +15,8 @@ export function range(min, max, attach) {
   return output;
 }
 
-export function goto(id) {
-  animateScroll.scrollTo({ element: id, duration: 500 });
+export function scrollto(id) {
+  scrollTo({ element: id, duration: 400 });
 }
 
-export let scrollY = writable(0);
+export const scrollY = writable(0);

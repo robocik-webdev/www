@@ -1,6 +1,7 @@
 <script>
+  import { scrollto } from '../utils.js';
   import { lang } from '../lang.js';
-  import { goto } from '../utils.js';
+  import { hidden } from '../header.js';
   import Waves from '../Components/Waves.svelte';
 </script>
 
@@ -21,11 +22,16 @@
     <p>{@html $lang.cta_text_1}</p>
     <p>{@html $lang.cta_text_2}</p>
     <div class="buttons">
-      <button on:click={() => goto('#vision')}>
+      <button on:click={() => scrollto('#vision')}>
         <img src="/icon/arrow_down_light.svg" alt="arrow down" />
         <span>{@html $lang.cta_button}</span>
       </button>
-      <button class="clear"><span>{@html $lang.menu_partners}</span></button>
+      <button
+        class="clear"
+        on:click={() => {
+          $hidden = !$hidden;
+        }}><span>{@html $lang.menu_partners}</span></button
+      >
     </div>
   </div>
 </section>

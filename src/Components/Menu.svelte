@@ -1,8 +1,10 @@
 <script>
   import { langChoice } from '../lang.js';
-  import { goto } from '../utils.js';
+  import { scrollto } from '../utils.js';
+  import { hidden } from '../header.js';
+  import { opened } from '../menu.js';
 
-  export let opened;
+  $: if ($hidden) $opened = false;
 
   let menu = [
     ['Osiągnięcia', '#achievements'],
@@ -10,10 +12,17 @@
   ];
 </script>
 
-<nav class:opened>
+<nav class:opened={$opened}>
   <ul>
     {#each menu as menuItem}
-      <li on:click={() => goto(menuItem[1])}>{menuItem[0]}</li>
+      <li
+        on:click={() => {
+          scrollto(menuItem[1]);
+          $opened = false;
+        }}
+      >
+        {menuItem[0]}
+      </li>
     {/each}
   </ul>
   <div class="lang">
