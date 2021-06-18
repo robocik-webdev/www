@@ -1,10 +1,8 @@
 <script>
   import { langChoice } from '../lang.js';
-  // import { scrollto } from '../utils.js';
+  import { scrollto } from '../utils.js';
   import { hidden } from '../header.js';
   import { opened } from '../menu.js';
-
-  import { scrollto } from 'svelte-scrollto';
 
   $: if ($hidden) $opened = false;
 
@@ -18,8 +16,8 @@
   <ul>
     {#each menu as menuItem}
       <li
-        use:scrollto={menuItem[1]}
         on:click={() => {
+          scrollto(menuItem[1]);
           console.log('test');
         }}
       >
