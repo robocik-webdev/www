@@ -3,9 +3,9 @@
   import { scrollY } from '../utils.js';
 
   let offset = spring(0);
-  // $: {
-  //   $offset = $scrollY;
-  // }
+  $: {
+    $offset = $scrollY;
+  }
 </script>
 
 <div>
