@@ -2,23 +2,23 @@
   import { range } from '../utils.js';
   let wavesRange = range(0, 12);
   let waves = [];
-  $: {
-    // animating the waves
-    waves.forEach((wave, i) => {
-      let offset = 5 + i * 5;
-      if (offset > 50) offset = 50; // stay above the header
-      wave.animate(
-        { transform: ['translateY(0)', `translateY(-${offset}px)`] },
-        {
-          direction: 'alternate',
-          duration: i * 500,
-          // delay: i * 400,
-          iterations: Infinity,
-          easing: 'cubic-bezier(0.45, 0, 0.55, 1)',
-        }
-      );
-    });
-  }
+  // $: {
+  //   // animating the waves
+  //   waves.forEach((wave, i) => {
+  //     let offset = 5 + i * 5;
+  //     if (offset > 50) offset = 50; // stay above the header
+  //     wave.animate(
+  //       { transform: ['translateY(0)', `translateY(-${offset}px)`] },
+  //       {
+  //         direction: 'alternate',
+  //         duration: i * 500,
+  //         // delay: i * 400,
+  //         iterations: Infinity,
+  //         easing: 'cubic-bezier(0.45, 0, 0.55, 1)',
+  //       }
+  //     );
+  //   });
+  // }
 </script>
 
 <div>
