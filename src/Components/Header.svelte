@@ -1,17 +1,19 @@
 <script>
-  import { scrollY } from '../utils.js';
   import { hidden } from '../header.js';
   import { opened as showMenu } from '../menu.js';
   import Menu from './Menu.svelte';
 
-  $: showLogo =
-    !$hidden && ($showMenu || $scrollY > (window.innerHeight / 10) * 2);
+  let y;
+
+  $: showLogo = !$hidden && ($showMenu || y > (window.innerHeight / 10) * 2);
   $: showButton = !$hidden;
 
   function toggleMenu() {
     $showMenu = !$showMenu;
   }
 </script>
+
+<svelte:window bind:scrollY={y} />
 
 <header>
   <div class="part logo" class:visible={showLogo}>

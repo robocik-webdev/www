@@ -1,4 +1,3 @@
-import { writable } from 'svelte/store';
 import { scrollTo } from 'svelte-scrollto';
 
 export async function fetchJSON(path) {
@@ -24,5 +23,3 @@ export function range(min, max, attach) {
 export function scrollto(id) {
   scrollTo({ element: id, duration: 400, offset: -50 });
 }
-
-export const scrollY = writable(0);

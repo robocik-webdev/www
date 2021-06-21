@@ -1,5 +1,4 @@
 <script>
-  import { scrollY } from './utils.js';
   import Header from './Components/Header.svelte';
   import Vehicle from './Components/Vehicle.svelte';
   import CTA from './Sections/CTA.svelte';
@@ -11,8 +10,6 @@
   import Contact from './Sections/Contact.svelte';
 </script>
 
-<svelte:window bind:scrollY={$scrollY} />
-
 <Header />
 <main>
   <div>
@@ -23,7 +20,7 @@
   <Timeline />
   <Project />
   <Team />
-  <People />
+  <!-- <People /> -->
   <Contact />
 </main>
 

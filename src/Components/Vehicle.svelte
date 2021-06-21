@@ -1,12 +1,12 @@
 <script>
   import { spring } from 'svelte/motion';
-  import { scrollY } from '../utils.js';
 
+  let y;
   let offset = spring(0);
-  $: {
-    $offset = $scrollY;
-  }
+  $: $offset = y;
 </script>
+
+<svelte:window bind:scrollY={y} />
 
 <div>
   <img
