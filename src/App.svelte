@@ -20,7 +20,7 @@
   <Timeline />
   <Project />
   <Team />
-  <!-- <People /> -->
+  <People />
   <Contact />
 </main>
 
