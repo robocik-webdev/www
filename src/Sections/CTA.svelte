@@ -24,13 +24,13 @@
     <div class="buttons">
       <button on:click={() => scrollto('#vision')}>
         <img src="/icon/arrow_down_light.svg" alt="arrow down" />
-        <span>{@html $lang.cta_button}</span>
+        <span>{@html $lang.cta_button_1}</span>
       </button>
       <button
         class="clear"
         on:click={() => {
           $hidden = !$hidden;
-        }}><span>{@html $lang.menu_partners}</span></button
+        }}><span>{@html $lang.cta_button_2}</span></button
       >
     </div>
   </div>
@@ -80,13 +80,6 @@
   }
   .text * {
     color: var(--color-light);
-  }
-  .text h1 {
-    margin-top: 10px;
-    margin-bottom: 25px;
-  }
-  .text p {
-    margin-top: 15px;
   }
 
   .buttons {

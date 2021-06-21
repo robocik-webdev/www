@@ -39,9 +39,6 @@
     width: 100%;
     margin: 40px 0;
   }
-  .text h2 {
-    margin-bottom: 10px;
-  }
   img {
     display: inline-block;
     width: 20%;

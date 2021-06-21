@@ -71,9 +71,10 @@
   }
   .logo h1 {
     display: inline-block;
-    color: var(--color-light);
+    margin: 0;
     font-weight: 400;
     font-size: 1.1rem;
+    color: var(--color-light);
   }
 
   .hamburger {

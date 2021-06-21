@@ -1,6 +1,12 @@
 import { writable } from 'svelte/store';
 import { scrollTo } from 'svelte-scrollto';
 
+export async function fetchJSON(path) {
+  const req = await fetch(path);
+  const json = await req.json();
+  return json;
+}
+
 export function range(min, max, attach) {
   // get a range of numbers from (and including) min to (and including) max
   // if the :attach: parameter is specified:
@@ -16,7 +22,7 @@ export function range(min, max, attach) {
 }
 
 export function scrollto(id) {
-  scrollTo({ element: id, duration: 400 });
+  scrollTo({ element: id, duration: 400, offset: -50 });
 }
 
 export const scrollY = writable(0);

@@ -1,16 +1,11 @@
 import { writable, derived } from 'svelte/store';
-
-async function fetchLang() {
-  const req = await fetch('lang.json');
-  const json = await req.json();
-  return json;
-}
+import { fetchJSON } from './utils.js';
 
 export const langChoice = writable('pl');
 export const lang = derived(
   langChoice,
   async ($langChoice, set) => {
-    const json = await fetchLang();
+    const json = await fetchJSON('lang.json');
     set(json[$langChoice]);
   },
   {}

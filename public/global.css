@@ -22,6 +22,13 @@ body {
 section {
   padding: 20px;
 }
+section.dark {
+  padding: 40px 20px;
+  background-color: var(--color-main);
+}
+section.dark * {
+  color: var(--color-light);
+}
 
 img {
   display: block;
@@ -41,6 +48,7 @@ p {
 }
 
 h1 {
+  margin: 10px 0 25px 0;
   font-size: 1.5rem;
   font-weight: 900;
 }
@@ -48,9 +56,11 @@ h1 span {
   font-size: 1.3em;
 }
 h2 {
+  margin: 10px 0;
   font-size: 1.3rem;
 }
 p {
+  margin: 10px 0;
   font-size: 0.9rem;
   line-height: 1.5;
 }
