@@ -1,4 +1,5 @@
 <script>
+  import anime from 'animejs';
   import { range } from '../utils.js';
   let wavesRange = range(0, 12);
   let waves = [];
@@ -19,11 +20,27 @@
   //     );
   //   });
   // }
+  $: {
+    waves.forEach((wave, i) => {
+      let offset = 5 + i * 5;
+      if (offset > 50) offset = 50;
+      anime({
+        targets: wave,
+        translateY: -offset,
+        direction: 'alternate',
+        loop: true,
+        // delay: i * 400,
+        duration: i * 500,
+        easing: 'cubicBezier(.45, 0, .55, 1)',
+      });
+    });
+  }
 </script>
 
 <div>
   {#each wavesRange as i}
     <img
+      class="wave"
       src="/img/wavesbg/{i}.svg"
       alt="decorative background wave"
       bind:this={waves[i]}

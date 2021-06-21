@@ -21,6 +21,7 @@
     "svelte-scrollto": "^0.2.0"
   },
   "dependencies": {
+    "animejs": "^3.2.1",
     "sirv-cli": "^1.0.0"
   }
 }
