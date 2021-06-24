@@ -10,10 +10,15 @@
 
   let section;
   let slider;
+  let sliderWidth;
   let slides = [];
   let slideIndex = 0;
+  let slideWith;
 
   let visible = false;
+  let prevVisible = false;
+  let nextVisible = false;
+  let end = false;
 
   function navigation() {
     const rect = section.getBoundingClientRect();
@@ -22,31 +27,44 @@
     visible = y < w && bottom > w;
   }
 
+  function checkVisibleAtOnceAmount() {
+    sliderWidth = slider.offsetWidth;
+    slideWith = slides[0].offsetWidth;
+    return Math.round(sliderWidth / slideWith);
+  }
+
   function set(i) {
-    const width = slides[0].offsetWidth;
-    slider.style.transform = `translateX(${-i * width}px)`;
+    let translation = -i * slideWith;
+    slider.style.transform = `translateX(${translation}px)`;
   }
   function prev() {
-    const i = slideIndex - 1;
-    if (i != -1) slideIndex = i;
+    const n = checkVisibleAtOnceAmount();
+    let i = slideIndex - n;
+    if (i < 0) i = 0;
+    slideIndex = i;
+    end = false;
   }
   function next() {
-    const i = slideIndex + 1;
-    if (i != slides.length) slideIndex = i;
+    const n = checkVisibleAtOnceAmount();
+    let i = slideIndex + n;
+    let offset = n - (slides.length - i);
+    if (offset >= 0) {
+      end = true;
+      i -= offset;
+    } else end = false;
+    slideIndex = i;
   }
   $: {
     if (slider) set(slideIndex);
+    prevVisible = visible && slideIndex != 0;
+    nextVisible = visible && !end;
   }
 </script>
 
 <svelte:window on:scroll={navigation} on:resize={() => set(slideIndex)} />
 
 <section id="timeline" bind:this={section}>
-  <div
-    class="control prev"
-    class:visible={visible && slideIndex != 0}
-    on:click={prev}
-  >
+  <div class="control prev" class:visible={prevVisible} on:click={prev}>
     <img src="/icon/prev_light.svg" alt="scroll arrow facing left" />
   </div>
   <div class="slider" bind:this={slider}>
@@ -54,20 +72,16 @@
       <div class="slide" bind:this={slides[i]}>
         <img src="/img/timeline/{img}" alt="timeline image {img}" />
         <h2>{@html $lang[`timeline_${i + 1}_title`]}</h2>
-        <h3>{@html $lang[`timeline_${i + 1}_subtitle_1`]}</h3>
-        <h3>
+        <h4>{@html $lang[`timeline_${i + 1}_subtitle_1`]}</h4>
+        <h4>
           {@html $lang[`timeline_${i + 1}_year`]} /
           {@html $lang[`timeline_${i + 1}_subtitle_2`]}
-        </h3>
+        </h4>
         <p>{@html $lang[`timeline_${i + 1}_text`]}</p>
       </div>
     {/each}
   </div>
-  <div
-    class="control next"
-    class:visible={visible && slideIndex != slides.length - 1}
-    on:click={next}
-  >
+  <div class="control next" class:visible={nextVisible} on:click={next}>
     <img src="/icon/next_light.svg" alt="scroll arrow facing right" />
   </div>
 </section>
@@ -76,6 +90,10 @@
   section {
     overflow: hidden;
     min-height: 100vh;
+  }
+
+  h2 {
+    margin: 20px 0 10px 0;
   }
 
   .slider {
@@ -91,6 +109,7 @@
   }
 
   .control {
+    cursor: pointer;
     z-index: 1;
     position: fixed;
     top: 50%;
@@ -112,5 +131,17 @@
   }
   .control img {
     padding: 5px;
+  }
+
+  @media (min-width: 600px) {
+    .slide {
+      padding: 0 20px;
+      width: calc(100% / 3);
+    }
+
+    .control {
+      width: 80px;
+      height: 80px;
+    }
   }
 </style>

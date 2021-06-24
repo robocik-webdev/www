@@ -22,52 +22,61 @@
 </script>
 
 <section id="contact" class="dark">
-  <h1>{@html $lang.contact_title}</h1>
-  <div class="column">
-    <div class="item">
-      <h4 class="title">{@html $lang.contact_location_title}</h4>
-      <div class="content">
-        <img
-          class="icon"
-          src="/icon/contact/location.png"
-          alt="location icon"
-        />
-        <div class="text">
-          <p>{@html $lang.contact_location_1}</p>
-          <p>{@html $lang.contact_location_2}</p>
+  <div class="wrapper">
+    <h1>{@html $lang.contact_title}</h1>
+    <div class="info">
+      <div class="column">
+        <div class="item">
+          <h4 class="title">{@html $lang.contact_location_title}</h4>
+          <div class="content">
+            <img
+              class="icon"
+              src="/icon/contact/location.png"
+              alt="location icon"
+            />
+            <div class="text">
+              <p>{@html $lang.contact_location_1}</p>
+              <p>{@html $lang.contact_location_2}</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <h4 class="title">{@html $lang.contact_email_title}</h4>
+          <div class="content">
+            <img class="icon" src="/icon/contact/email.png" alt="email icon" />
+            <div class="text">
+              <p>{@html $lang.contact_email_1}</p>
+              <p>{@html $lang.contact_email_2}</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="item">
-      <h4 class="title">{@html $lang.contact_email_title}</h4>
-      <div class="content">
-        <img class="icon" src="/icon/contact/email.png" alt="email icon" />
-        <div class="text">
-          <p>{@html $lang.contact_email_1}</p>
-          <p>{@html $lang.contact_email_2}</p>
+
+      <div class="column">
+        <div class="item">
+          <h4 class="title">{@html $lang.contact_phone_title}</h4>
+          <div class="content">
+            <img class="icon" src="/icon/contact/phone.png" alt="phone icon" />
+            <div class="text">
+              <p>{@html $lang.contact_phone_1}</p>
+              <p>{@html $lang.contact_phone_2}</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="item">
-      <h4 class="title">{@html $lang.contact_phone_title}</h4>
-      <div class="content">
-        <img class="icon" src="/icon/contact/phone.png" alt="phone icon" />
-        <div class="text">
-          <p>{@html $lang.contact_phone_1}</p>
-          <p>{@html $lang.contact_phone_2}</p>
+        <div class="item">
+          <h4 class="title">{@html $lang.contact_sm_title}</h4>
+          <div class="content icons">
+            {#each socialMedia as sm}
+              <a href={sm[1]} target="_blank">
+                <img
+                  class="icon"
+                  src="/icon/contact/{sm[0]}"
+                  alt="{sm[0]} icon"
+                />
+              </a>
+            {/each}
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="item">
-      <h4 class="title">{@html $lang.contact_sm_title}</h4>
-      <div class="content icons">
-        {#each socialMedia as sm}
-          <a href={sm[1]} target="_blank">
-            <img class="icon" src="/icon/contact/{sm[0]}" alt="{sm[0]} icon" />
-          </a>
-        {/each}
       </div>
     </div>
   </div>
@@ -118,5 +127,18 @@
   }
   .footnote .names {
     font-size: 0.8rem;
+  }
+
+  @media (min-width: 600px) {
+    section {
+    }
+    .wrapper {
+      margin: auto;
+      width: 50%;
+    }
+    .info {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 </style>

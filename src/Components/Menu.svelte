@@ -57,6 +57,7 @@
     padding: 0;
   }
   li {
+    cursor: pointer;
     margin-bottom: 20px;
     list-style: none;
     font-size: 2.2rem;
@@ -71,7 +72,39 @@
     margin-top: 40px;
   }
   .lang img {
+    cursor: pointer;
     margin-right: 20px;
     width: 40px;
+  }
+
+  @media (min-width: 600px) {
+    nav {
+      position: static;
+      display: flex;
+      justify-content: flex-end;
+      padding: 0;
+      padding-right: var(--margin-pc);
+      height: 50px;
+      transform: translateX(0);
+    }
+    ul {
+      display: flex;
+      align-items: center;
+    }
+    li {
+      margin: 0;
+      margin-right: 20px;
+      font-size: 1.1rem;
+    }
+    .lang {
+      display: flex;
+      align-items: center;
+      margin-top: 0;
+      margin-right: 5px;
+    }
+    .lang img {
+      margin-right: 15px;
+      width: 30px;
+    }
   }
 </style>

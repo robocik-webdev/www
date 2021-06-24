@@ -4,7 +4,7 @@
 
   let fetchTeam = fetchJSON('team.json');
 
-  const time = 5; // s
+  const time = 6; // s
   const fps = 60; // ms
   const time_delta = 1000 / fps;
   const progress_delta = 1 / ((time * 1000) / time_delta);
@@ -34,10 +34,14 @@
 
   let section;
   let slider;
+  let sliderWidth;
   let slides = [];
   let slideIndex = 0;
+  let slideWith;
 
   let visible = false;
+  let start = true;
+  let end = false;
 
   function navigation() {
     const rect = section.getBoundingClientRect();
@@ -46,22 +50,57 @@
     visible = y < w && bottom > w;
   }
 
+  function checkVisibleAtOnceAmount() {
+    sliderWidth = slider.offsetWidth;
+    slideWith = slides[0].offsetWidth;
+    return Math.round(sliderWidth / slideWith);
+  }
+
   function set(i) {
-    const width = slides[0].offsetWidth;
-    slider.style.transform = `translateX(${-i * width}px)`;
+    let translation = -i * slideWith;
+    slider.style.transform = `translateX(${translation}px)`;
   }
   function prev() {
-    const i = slideIndex - 1;
-    if (i == -1) slideIndex = slides.length - 1;
-    else slideIndex = i;
+    const n = checkVisibleAtOnceAmount();
+    let i = slideIndex - n;
+    if (i < 0) {
+      if (start) {
+        start = false;
+        end = true;
+        const n = checkVisibleAtOnceAmount();
+        i = slides.length - 1;
+        let offset = n - (slides.length - i);
+        i -= offset;
+      } else {
+        start = true;
+        i = 0;
+      }
+    }
+    slideIndex = i;
+    end = false;
   }
   function next() {
-    const i = slideIndex + 1;
-    if (i == slides.length) slideIndex = 0;
-    else slideIndex = i;
+    const n = checkVisibleAtOnceAmount();
+    let i = slideIndex + n;
+    let offset = n - (slides.length - i);
+    if (offset >= 0) {
+      if (end) {
+        start = true;
+        end = false;
+        i = 0;
+      } else {
+        start = false;
+        end = true;
+        i -= offset;
+      }
+    } else {
+      start = false;
+      end = false;
+    }
+    slideIndex = i;
   }
   $: {
-    if (slides.length > 0) set(slideIndex);
+    if (slider) set(slideIndex);
   }
 </script>
 
@@ -90,7 +129,7 @@
           <img src={photo} alt="crew member" />
           <h1>{@html name}</h1>
           <h4>{@html role}</h4>
-          <h5>{@html contact}</h5>
+          <h6>{@html contact}</h6>
           <p>{@html text}</p>
         </div>
       {/each}
@@ -113,6 +152,9 @@
     overflow: hidden;
     min-height: 100vh;
   }
+  h2 {
+    margin: 20px 0 10px 0;
+  }
 
   .slider {
     display: flex;
@@ -127,6 +169,7 @@
   }
 
   .control {
+    cursor: pointer;
     z-index: 1;
     position: fixed;
     top: 50%;
@@ -170,5 +213,21 @@
     width: 0;
     height: 100%;
     background-color: var(--color-complement);
+  }
+
+  @media (min-width: 600px) {
+    .slide {
+      padding: 0 20px;
+      width: calc(100% / 4);
+    }
+
+    .control {
+      width: 80px;
+      height: 80px;
+    }
+
+    .loader {
+      margin: 20px 0 35px 20px;
+    }
   }
 </style>

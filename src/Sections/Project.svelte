@@ -50,7 +50,7 @@
 </script>
 
 <section id="project">
-  <div>
+  <div class="main">
     <div class="text">
       <h2>{@html $lang.project_subtitle}</h2>
       <h1>{@html $lang.project_title}</h1>
@@ -102,6 +102,10 @@
 </section>
 
 <style>
+  section {
+    margin-bottom: 40px;
+  }
+
   .render {
     position: relative;
     margin-top: 20px;
@@ -162,5 +166,35 @@
   }
   .icon:hover {
     background-color: rgb(194, 194, 194);
+  }
+
+  @media (min-width: 600px) {
+    section {
+      margin-bottom: 80px;
+    }
+
+    .main {
+      display: flex;
+      justify-content: center;
+    }
+    .text {
+      width: 40%;
+      margin-right: 10%;
+    }
+    .render {
+      width: 40%;
+    }
+
+    .icons {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      width: 90%;
+      margin: auto;
+      margin-top: 40px;
+    }
+    .icon {
+      width: 5vw;
+      border-radius: 0.5vw;
+    }
   }
 </style>

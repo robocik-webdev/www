@@ -11,7 +11,7 @@
 </script>
 
 <Header />
-<main>
+<main id="top">
   <div>
     <Vehicle />
     <CTA />

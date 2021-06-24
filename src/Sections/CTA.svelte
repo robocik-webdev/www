@@ -41,6 +41,7 @@
     position: relative;
     height: 100vh;
     width: 100%;
+    background-color: var(--color-main);
   }
 
   .wrapper {
@@ -63,6 +64,14 @@
     right: -50%;
     opacity: 0.1;
   }
+  @media (min-width: 600px) {
+    .logo img {
+      top: 10%;
+      right: -25%;
+      height: 150%;
+      opacity: 0.2;
+    }
+  }
 
   .bottom-wave {
     z-index: 1;
@@ -76,7 +85,7 @@
   .text {
     position: relative;
     z-index: 2;
-    margin-top: 10vh;
+    margin-top: 15vh;
   }
   .text * {
     color: var(--color-light);

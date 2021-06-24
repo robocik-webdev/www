@@ -44,4 +44,15 @@
     width: 20%;
     margin-right: 20px;
   }
+
+  @media (min-width: 600px) {
+    .element {
+      width: 50%;
+      margin: 40px 0;
+    }
+    img {
+      width: 100px;
+      margin-right: 60px;
+    }
+  }
 </style>

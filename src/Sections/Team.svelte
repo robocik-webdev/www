@@ -53,4 +53,25 @@
     margin: auto;
     width: 50%;
   }
+
+  @media (min-width: 600px) {
+    section {
+      padding: 60px var(--margin-pc);
+    }
+
+    .crew {
+      flex-flow: row;
+      margin: 0 10%;
+    }
+    .crew .text {
+      margin-left: 80px;
+    }
+
+    .divisions {
+      flex-flow: row;
+      justify-content: space-between;
+      margin: 0 10%;
+      margin-top: 80px;
+    }
+  }
 </style>

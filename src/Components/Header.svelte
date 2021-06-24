@@ -1,11 +1,15 @@
 <script>
   import { hidden } from '../header.js';
   import { opened as showMenu } from '../menu.js';
+  import { scrollto } from '../utils.js';
   import Menu from './Menu.svelte';
 
   let y;
-
-  $: showLogo = !$hidden && ($showMenu || y > (window.innerHeight / 10) * 2);
+  let w;
+  let h;
+  $: pc = w > 800;
+  $: scrolled = y > (h / 10) * 2;
+  $: showLogo = !$hidden && ($showMenu || pc || scrolled);
   $: showButton = !$hidden;
 
   function toggleMenu() {
@@ -13,10 +17,14 @@
   }
 </script>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window bind:scrollY={y} bind:innerWidth={w} bind:innerHeight={h} />
 
 <header>
-  <div class="part logo" class:visible={showLogo}>
+  <div
+    class="part logo"
+    class:visible={showLogo}
+    on:click={() => scrollto('#top')}
+  >
     <img src="/img/logo.svg" alt="robocik logo" />
     <h1><span>PW</span>R <span>D</span>IVING <span>C</span>REW</h1>
   </div>
@@ -60,9 +68,10 @@
   }
 
   .logo {
+    cursor: pointer;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 var(--margin-mobile);
     height: 100%;
     width: calc(100% - 50px);
   }
@@ -74,6 +83,7 @@
   .logo h1 {
     display: inline-block;
     margin: 0;
+    white-space: nowrap;
     font-weight: 400;
     font-size: 1.1rem;
     color: var(--color-light);
@@ -89,5 +99,15 @@
   }
   .icon.visible {
     display: block;
+  }
+
+  @media (min-width: 600px) {
+    .logo {
+      padding-left: var(--margin-pc);
+      width: auto;
+    }
+    .hamburger {
+      display: none;
+    }
   }
 </style>

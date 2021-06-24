@@ -2,15 +2,18 @@
   import { spring } from 'svelte/motion';
 
   let y;
-  let offset = spring(0);
-  $: $offset = y;
+  let w;
+  let change = spring(0);
+  $: $change = y;
+  $: translation = w > 600 ? $change / 2 : $change / 4;
+  $: rotation = w > 600 ? -$change / 15 : -$change / 20;
 </script>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window bind:scrollY={y} bind:innerWidth={w} />
 
 <div>
   <img
-    style="transform: translateY({$offset / 4}px) rotate({-$offset / 20}deg)"
+    style="transform: translateY({translation}px) rotate({rotation}deg)"
     src="/img/rov5/rov_underwater_compressed.png"
     alt="robocik vehicle"
   />
@@ -31,5 +34,13 @@
     bottom: -10%;
     right: -25%;
     width: 125%;
+  }
+
+  @media (min-width: 600px) {
+    img {
+      bottom: -35%;
+      right: -5%;
+      width: 75%;
+    }
   }
 </style>

@@ -3,6 +3,7 @@
   import { range } from '../utils.js';
   let wavesRange = range(0, 12);
   let waves = [];
+
   $: {
     waves.forEach((wave, i) => {
       let offset = 5 + i * 5;
@@ -32,7 +33,7 @@
 
 <style>
   div {
-    z-index: -1;
+    z-index: 0;
     overflow: hidden;
     position: absolute;
     top: 0;
