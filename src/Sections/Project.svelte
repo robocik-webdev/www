@@ -15,16 +15,14 @@
 
   const icons = [
     '1_depth.svg',
-    '2_axes.svg',
-    '3_load.svg',
-    '4_weight.svg',
-    '5_cameras.svg',
-    '6_sound.svg',
-    '7_engine.svg',
-    '8_radar.svg',
-    '9_nvidia.svg',
-    '10_torpedes.svg',
-    '11_xsens.svg',
+    '2_weight.svg',
+    '3_cameras.svg',
+    '4_sound.svg',
+    '5_engine.svg',
+    '6_radar.svg',
+    '7_nvidia.svg',
+    '8_torpedes.svg',
+    '9_xsens.svg',
   ];
 
   let cardTitle;
@@ -50,28 +48,28 @@
 </script>
 
 <section id="project">
-  <div class="main">
-    <div class="text">
-      <h2>{@html $lang.project_subtitle}</h2>
-      <h1>{@html $lang.project_title}</h1>
-      <div class="content">
-        <p>{@html $lang.project_text_1}</p>
-        <p>{@html $lang.project_text_2}</p>
-        <h6>{@html $lang.project_info}</h6>
-        {#if cardVisible}
-          <div
-            transition:fly={{ y: 10, duration: 300 }}
-            class="card"
-            class:card--icon={iconCard}
-          >
-            <h3>{cardTitle}</h3>
-            <p>{cardText}</p>
-          </div>
-        {/if}
-      </div>
+  <div class="text">
+    <h2>{@html $lang.project_subtitle}</h2>
+    <h1>{@html $lang.project_title}</h1>
+    <div class="content">
+      <p>{@html $lang.project_text_1}</p>
+      <p>{@html $lang.project_text_2}</p>
+      <h6>{@html $lang.project_info}</h6>
+      {#if cardVisible}
+        <div
+          transition:fly={{ y: 10, duration: 300 }}
+          class="card"
+          class:card--icon={iconCard}
+        >
+          <h3>{cardTitle}</h3>
+          <p>{cardText}</p>
+        </div>
+      {/if}
     </div>
+  </div>
 
-    <div class="render">
+  <div class="render">
+    <div class="render-wrapper">
       <img src="/img/rov4/auv.webp" alt="AUV render" />
       {#each points as point, i}
         <div
@@ -106,27 +104,9 @@
     margin-bottom: 40px;
   }
 
-  .render {
-    position: relative;
-    margin-top: 20px;
+  .text {
+    grid-column: 3 / span 3;
   }
-  .point {
-    cursor: pointer;
-    position: absolute;
-    border-radius: 50%;
-    height: 25px;
-    width: 25px;
-    border: solid 1px var(--color-light);
-    opacity: 0.5;
-    background-color: var(--color-complement);
-    transform: translate(-50%, -50%);
-    transition: transform var(--t-fast), background-color var(--t-fast);
-  }
-  .point:hover {
-    background-color: var(--color-main);
-    transform: translate(-50%, -50%) scale(1.2);
-  }
-
   .content {
     position: relative;
   }
@@ -151,7 +131,35 @@
   .card--icon * {
     color: var(--color-dark);
   }
+
+  .render {
+    grid-column: 7 / 11;
+    margin-top: 20px;
+  }
+  .render-wrapper {
+    position: relative;
+    height: auto;
+  }
+  .point {
+    cursor: pointer;
+    position: absolute;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    border: solid 1px var(--color-light);
+    opacity: 0.5;
+    background-color: var(--color-complement);
+    transform: translate(-50%, -50%);
+    transition: transform var(--t-fast), background-color var(--t-fast);
+  }
+  .point:hover {
+    background-color: var(--color-main);
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
   .icons {
+    grid-column: 3 / 11;
+    grid-row: 2;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -170,26 +178,13 @@
 
   @media (min-width: 600px) {
     section {
+      grid-template-rows: repeat(2, auto);
       margin-bottom: 80px;
-    }
-
-    .main {
-      display: flex;
-      justify-content: center;
-    }
-    .text {
-      width: 40%;
-      margin-right: 10%;
-    }
-    .render {
-      width: 40%;
     }
 
     .icons {
       flex-wrap: nowrap;
       justify-content: space-between;
-      width: 90%;
-      margin: auto;
       margin-top: 40px;
     }
     .icon {

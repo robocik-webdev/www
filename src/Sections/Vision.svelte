@@ -3,27 +3,29 @@
 </script>
 
 <section id="vision">
-  <div class="element">
-    <img src="/icon/vision/vision_dark.png" alt="vision icon" />
-    <div class="text">
-      <h2>{@html $lang.vision_vision_title}</h2>
-      <p>{@html $lang.vision_vision_text}</p>
+  <div class="wrapper">
+    <div class="element">
+      <img src="/icon/vision/vision_dark.png" alt="vision icon" />
+      <div class="text">
+        <h2>{@html $lang.vision_vision_title}</h2>
+        <p>{@html $lang.vision_vision_text}</p>
+      </div>
     </div>
-  </div>
 
-  <div class="element">
-    <img src="/icon/vision/mission_dark.png" alt="mission icon" />
-    <div class="text">
-      <h2>{@html $lang.vision_mission_title}</h2>
-      <p>{@html $lang.vision_mission_text}</p>
+    <div class="element">
+      <img src="/icon/vision/mission_dark.png" alt="mission icon" />
+      <div class="text">
+        <h2>{@html $lang.vision_mission_title}</h2>
+        <p>{@html $lang.vision_mission_text}</p>
+      </div>
     </div>
-  </div>
 
-  <div class="element">
-    <img src="/icon/vision/values_dark.png" alt="values icon" />
-    <div class="text">
-      <h2>{@html $lang.vision_values_title}</h2>
-      <p>{@html $lang.vision_values_text}</p>
+    <div class="element">
+      <img src="/icon/vision/values_dark.png" alt="values icon" />
+      <div class="text">
+        <h2>{@html $lang.vision_values_title}</h2>
+        <p>{@html $lang.vision_values_text}</p>
+      </div>
     </div>
   </div>
 </section>
@@ -33,6 +35,11 @@
     position: relative;
     margin-top: 80px;
   }
+
+  .wrapper {
+    grid-column: 2 / 6;
+  }
+
   .element {
     display: flex;
     align-items: flex-start;
@@ -46,8 +53,11 @@
   }
 
   @media (min-width: 600px) {
+    section {
+      grid-template-rows: repeat(2, auto);
+    }
+
     .element {
-      width: 50%;
       margin: 40px 0;
     }
     img {

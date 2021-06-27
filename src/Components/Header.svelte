@@ -7,9 +7,9 @@
   let y;
   let w;
   let h;
-  $: pc = w > 800;
+  // $: pc = w > 800;
   $: scrolled = y > (h / 10) * 2;
-  $: showLogo = !$hidden && ($showMenu || pc || scrolled);
+  $: showLogo = !$hidden && ($showMenu || scrolled);
   $: showButton = !$hidden;
 
   function toggleMenu() {
@@ -102,6 +102,9 @@
   }
 
   @media (min-width: 600px) {
+    header {
+      background-color: var(--color-main);
+    }
     .logo {
       padding-left: var(--margin-pc);
       width: auto;

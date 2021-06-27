@@ -5,6 +5,7 @@
   import Vision from './Sections/Vision.svelte';
   import Timeline from './Sections/Timeline.svelte';
   import Project from './Sections/Project.svelte';
+  import Tech from './Sections/Tech.svelte';
   import Team from './Sections/Team.svelte';
   import People from './Sections/People.svelte';
   import Contact from './Sections/Contact.svelte';
@@ -19,6 +20,7 @@
   </div>
   <Timeline />
   <Project />
+  <Tech />
   <Team />
   <People />
   <Contact />

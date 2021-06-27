@@ -3,6 +3,8 @@
   import { scrollto } from '../utils.js';
   import { hidden } from '../header.js';
   import { opened } from '../menu.js';
+  import { visible as showPartners } from '../partners.js';
+  import Partners from './Partners.svelte';
 
   $: if ($hidden) $opened = false;
 
@@ -21,6 +23,15 @@
         {@html $lang[`menu_${item}`]}
       </li>
     {/each}
+    <li
+      on:click={() => {
+        $opened = false;
+        $hidden = true;
+        $showPartners = true;
+      }}
+    >
+      {@html $lang.menu_partners}
+    </li>
   </ul>
   <div class="lang">
     <img
@@ -39,6 +50,10 @@
     />
   </div>
 </nav>
+
+{#if $showPartners}
+  <Partners />
+{/if}
 
 <style>
   nav {

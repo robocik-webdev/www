@@ -13,7 +13,7 @@
   let sliderWidth;
   let slides = [];
   let slideIndex = 0;
-  let slideWith;
+  let slideWidth;
 
   let visible = false;
   let prevVisible = false;
@@ -28,13 +28,13 @@
   }
 
   function checkVisibleAtOnceAmount() {
-    sliderWidth = slider.offsetWidth;
-    slideWith = slides[0].offsetWidth;
-    return Math.round(sliderWidth / slideWith);
+    sliderWidth = slider.getBoundingClientRect().width;
+    slideWidth = slides[0].getBoundingClientRect().width;
+    return Math.round(sliderWidth / slideWidth);
   }
 
   function set(i) {
-    let translation = -i * slideWith;
+    let translation = -i * slideWidth;
     slider.style.transform = `translateX(${translation}px)`;
   }
   function prev() {
@@ -92,22 +92,6 @@
     min-height: 100vh;
   }
 
-  h2 {
-    margin: 20px 0 10px 0;
-  }
-
-  .slider {
-    display: flex;
-    align-items: flex-start;
-    transition: transform var(--t-normal);
-  }
-
-  .slide {
-    padding: 0 5px;
-    width: 100%;
-    flex-shrink: 0;
-  }
-
   .control {
     cursor: pointer;
     z-index: 1;
@@ -133,15 +117,32 @@
     padding: 5px;
   }
 
-  @media (min-width: 600px) {
-    .slide {
-      padding: 0 20px;
-      width: calc(100% / 3);
-    }
+  .slider {
+    grid-column: 2 / 12;
+    display: flex;
+    align-items: flex-start;
+    transition: transform var(--t-normal);
+  }
+  .slide {
+    padding: 0 5px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  h2 {
+    margin: 20px 0 10px 0;
+  }
 
+  @media (min-width: 600px) {
+    section {
+      grid-template-rows: repeat(2, auto);
+    }
     .control {
       width: 80px;
       height: 80px;
+    }
+    .slide {
+      padding: 0 20px;
+      width: calc(100% / 3);
     }
   }
 </style>

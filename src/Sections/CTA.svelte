@@ -2,6 +2,7 @@
   import { scrollto } from '../utils.js';
   import { lang } from '../lang.js';
   import { hidden } from '../header.js';
+  import { visible as showPartners } from '../partners.js';
   import Waves from '../Components/Waves.svelte';
 </script>
 
@@ -27,9 +28,10 @@
         <span>{@html $lang.cta_button_1}</span>
       </button>
       <button
-        class="clear"
+        class="clear partners"
         on:click={() => {
-          $hidden = !$hidden;
+          $hidden = true;
+          $showPartners = true;
         }}><span>{@html $lang.cta_button_2}</span></button
       >
     </div>
@@ -83,6 +85,7 @@
   }
 
   .text {
+    grid-column: 2 / 12;
     position: relative;
     z-index: 2;
     margin-top: 15vh;
@@ -94,6 +97,9 @@
   .buttons {
     display: flex;
     margin-top: 40px;
+  }
+  .partners {
+    margin-left: 10px;
   }
 
   button {

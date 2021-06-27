@@ -34,7 +34,12 @@ section.dark * {
 
 @media (min-width: 600px) {
   section {
-    padding: 20px var(--margin-pc);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 40px 0;
+  }
+  section.dark {
+    padding: 40px 0;
   }
 }
 

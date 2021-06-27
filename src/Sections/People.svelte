@@ -1,4 +1,5 @@
 <script>
+  import { langChoice } from '../lang.js';
   import { fetchJSON } from '../utils.js';
   import { onMount, onDestroy } from 'svelte';
 
@@ -51,8 +52,8 @@
   }
 
   function checkVisibleAtOnceAmount() {
-    sliderWidth = slider.offsetWidth;
-    slideWith = slides[0].offsetWidth;
+    sliderWidth = slider.getBoundingClientRect().width;
+    slideWith = slides[0].getBoundingClientRect().width;
     return Math.round(sliderWidth / slideWith);
   }
 
@@ -117,20 +118,50 @@
     <img src="/icon/prev_light.svg" alt="scroll arrow facing left" />
   </div>
 
-  <div class="loader">
-    <div class="loaded" bind:this={loaded} />
-    <span>#RobocikPeople</span>
+  <div class="loader-wrapper">
+    <div class="loader">
+      <div class="loaded" bind:this={loaded} />
+      <span>#RobocikPeople</span>
+    </div>
   </div>
 
   <div class="slider" bind:this={slider}>
     {#await fetchTeam then team}
-      {#each team as { name, role, contact, text, photo }, i}
+      {#each team as t, i}
         <div class="slide" bind:this={slides[i]}>
-          <img src={photo} alt="crew member" />
-          <h1>{@html name}</h1>
-          <h4>{@html role}</h4>
-          <h6>{@html contact}</h6>
-          <p>{@html text}</p>
+          <img src={t.photo} alt="crew member" />
+          <h1>{t.name} {t.surname}</h1>
+          {#each t.division as d}<h2>{d}</h2>{/each}
+
+          {#if $langChoice == 'eng' && t.speciality_eng}
+            <h4>{t.speciality_eng}</h4>
+          {:else if $langChoice == 'pl' && t.speciality_pl}
+            <h4>{t.speciality_pl}</h4>
+          {/if}
+
+          {#if t.email}
+            <h6 class="email">{t.email}</h6>
+          {/if}
+
+          {#if t.linkedin}
+            <a href={t.linkedin} target="_blank">
+              <img
+                class="linkedin"
+                src="/icon/contact/linkedin.png"
+                alt="linkedin icon"
+              />
+            </a>
+          {/if}
+
+          {#if $langChoice == 'eng' && t.quote_eng}
+            <p>{t.quote_eng}</p>
+          {:else if $langChoice == 'pl' && t.quote_pl}
+            <p>{t.quote_pl}</p>
+          {:else if t.quote_eng}
+            <p>{t.quote_eng}</p>
+          {:else if t.quote_pl}
+            <p>{t.quote_pl}</p>
+          {/if}
         </div>
       {/each}
     {/await}
@@ -152,20 +183,14 @@
     overflow: hidden;
     min-height: 100vh;
   }
-  h2 {
-    margin: 20px 0 10px 0;
-  }
 
-  .slider {
-    display: flex;
-    align-items: flex-start;
-    transition: transform var(--t-normal);
+  .email {
+    margin-top: 10px;
   }
-
-  .slide {
-    padding: 0 5px;
-    width: 100%;
-    flex-shrink: 0;
+  .linkedin {
+    margin-top: 10px;
+    filter: invert(1);
+    width: 40px;
   }
 
   .control {
@@ -193,6 +218,11 @@
     padding: 5px;
   }
 
+  .loader-wrapper {
+    grid-column: 2 / 10;
+    grid-row: 1;
+    height: auto;
+  }
   .loader {
     position: relative;
     display: inline-block;
@@ -215,19 +245,33 @@
     background-color: var(--color-complement);
   }
 
-  @media (min-width: 600px) {
-    .slide {
-      padding: 0 20px;
-      width: calc(100% / 4);
-    }
+  .slider {
+    grid-column: 2 / 12;
+    grid-row: 2;
+    display: flex;
+    align-items: flex-start;
+    transition: transform var(--t-normal);
+  }
+  .slide {
+    padding: 0 5px;
+    width: 100%;
+    flex-shrink: 0;
+  }
 
+  @media (min-width: 600px) {
+    section {
+      grid-template-rows: repeat(2, auto);
+    }
     .control {
       width: 80px;
       height: 80px;
     }
-
     .loader {
       margin: 20px 0 35px 20px;
+    }
+    .slide {
+      padding: 0 20px;
+      width: calc(100% / 4);
     }
   }
 </style>

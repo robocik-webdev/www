@@ -5,7 +5,8 @@
   let w;
   let change = spring(0);
   $: $change = y;
-  $: translation = w > 600 ? $change / 2 : $change / 4;
+  $: translateX = w > 600 ? -$change / 5 : -$change / 5;
+  $: translateY = w > 600 ? $change / 1.5 : $change / 5;
   $: rotation = w > 600 ? -$change / 15 : -$change / 20;
 </script>
 
@@ -13,7 +14,7 @@
 
 <div>
   <img
-    style="transform: translateY({translation}px) rotate({rotation}deg)"
+    style="transform: translate({translateX}px, {translateY}px) rotate({rotation}deg)"
     src="/img/rov5/rov_underwater_compressed.png"
     alt="robocik vehicle"
   />

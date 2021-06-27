@@ -22,61 +22,54 @@
 </script>
 
 <section id="contact" class="dark">
-  <div class="wrapper">
-    <h1>{@html $lang.contact_title}</h1>
-    <div class="info">
-      <div class="column">
-        <div class="item">
-          <h4 class="title">{@html $lang.contact_location_title}</h4>
-          <div class="content">
-            <img
-              class="icon"
-              src="/icon/contact/location.png"
-              alt="location icon"
-            />
-            <div class="text">
-              <p>{@html $lang.contact_location_1}</p>
-              <p>{@html $lang.contact_location_2}</p>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <h4 class="title">{@html $lang.contact_email_title}</h4>
-          <div class="content">
-            <img class="icon" src="/icon/contact/email.png" alt="email icon" />
-            <div class="text">
-              <p>{@html $lang.contact_email_1}</p>
-              <p>{@html $lang.contact_email_2}</p>
-            </div>
-          </div>
+  <h1>{@html $lang.contact_title}</h1>
+
+  <div class="column column-1">
+    <div class="item">
+      <h4 class="title">{@html $lang.contact_location_title}</h4>
+      <div class="content">
+        <img
+          class="icon"
+          src="/icon/contact/location.png"
+          alt="location icon"
+        />
+        <div class="text">
+          <p>{@html $lang.contact_location_1}</p>
+          <p>{@html $lang.contact_location_2}</p>
         </div>
       </div>
+    </div>
+    <div class="item">
+      <h4 class="title">{@html $lang.contact_email_title}</h4>
+      <div class="content">
+        <img class="icon" src="/icon/contact/email.png" alt="email icon" />
+        <div class="text">
+          <p>{@html $lang.contact_email_1}</p>
+          <p>{@html $lang.contact_email_2}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <div class="column">
-        <div class="item">
-          <h4 class="title">{@html $lang.contact_phone_title}</h4>
-          <div class="content">
-            <img class="icon" src="/icon/contact/phone.png" alt="phone icon" />
-            <div class="text">
-              <p>{@html $lang.contact_phone_1}</p>
-              <p>{@html $lang.contact_phone_2}</p>
-            </div>
-          </div>
+  <div class="column column-2">
+    <div class="item">
+      <h4 class="title">{@html $lang.contact_phone_title}</h4>
+      <div class="content">
+        <img class="icon" src="/icon/contact/phone.png" alt="phone icon" />
+        <div class="text">
+          <p>{@html $lang.contact_phone_1}</p>
+          <p>{@html $lang.contact_phone_2}</p>
         </div>
-        <div class="item">
-          <h4 class="title">{@html $lang.contact_sm_title}</h4>
-          <div class="content icons">
-            {#each socialMedia as sm}
-              <a href={sm[1]} target="_blank">
-                <img
-                  class="icon"
-                  src="/icon/contact/{sm[0]}"
-                  alt="{sm[0]} icon"
-                />
-              </a>
-            {/each}
-          </div>
-        </div>
+      </div>
+    </div>
+    <div class="item">
+      <h4 class="title">{@html $lang.contact_sm_title}</h4>
+      <div class="content icons">
+        {#each socialMedia as sm}
+          <a href={sm[1]} target="_blank">
+            <img class="icon" src="/icon/contact/{sm[0]}" alt="{sm[0]} icon" />
+          </a>
+        {/each}
       </div>
     </div>
   </div>
@@ -90,15 +83,27 @@
 </div>
 
 <style>
-  .icon {
-    width: 35px;
+  h1 {
+    grid-column: 4 / 10;
+  }
+  .column-1 {
+    grid-column: 4 / 7;
+    grid-row: 2;
+  }
+  .column-2 {
+    grid-column: 7 / 10;
+    grid-row: 2;
+  }
+
+  .title {
+    margin: 30px 0 15px 0;
   }
   .content {
     display: flex;
     align-items: flex-start;
   }
-  .title {
-    margin: 30px 0 15px 0;
+  .icon {
+    width: 35px;
   }
   .text {
     margin-left: 15px;
@@ -131,14 +136,7 @@
 
   @media (min-width: 600px) {
     section {
-    }
-    .wrapper {
-      margin: auto;
-      width: 50%;
-    }
-    .info {
-      display: flex;
-      justify-content: space-between;
+      grid-template-rows: repeat(2, auto);
     }
   }
 </style>
