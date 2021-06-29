@@ -15,7 +15,7 @@
 <div>
   <img
     style="transform: translate({translateX}px, {translateY}px) rotate({rotation}deg)"
-    src="/img/rov5/rov_underwater_compressed.png"
+    src="/img/rov5/rov.webp"
     alt="robocik vehicle"
   />
 </div>
@@ -32,16 +32,16 @@
   }
   img {
     position: absolute;
-    bottom: -10%;
-    right: -25%;
-    width: 125%;
+    bottom: -15%;
+    right: -10%;
+    width: 110%;
   }
 
   @media (min-width: 600px) {
     img {
-      bottom: -35%;
-      right: -5%;
-      width: 75%;
+      bottom: -15%;
+      right: 10%;
+      width: 45%;
     }
   }
 </style>
