@@ -5,8 +5,8 @@
   let w;
   let change = spring(0);
   $: $change = y;
-  $: translateX = w > 600 ? -$change / 5 : -$change / 5;
-  $: translateY = w > 600 ? $change / 1.5 : $change / 5;
+  $: translateX = w > 600 ? -$change / 5 : 0;
+  $: translateY = w > 600 ? $change / 1.5 : 0;
   $: rotation = w > 600 ? -$change / 15 : -$change / 20;
 </script>
 
