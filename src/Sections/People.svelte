@@ -131,7 +131,17 @@
         <div class="slide" bind:this={slides[i]}>
           <img src={t.photo} alt="crew member" />
           <h1>{t.name} {t.surname}</h1>
-          {#each t.division as d}<h2>{d}</h2>{/each}
+
+          {#each t.division as d}
+            <h2>
+              {#if $langChoice == 'eng'}
+                {#if d == 'Elektronika'}Electronics
+                {:else if d == 'Konstrukcja'}Construction
+                {:else if d == 'Zarząd'}Management
+                {:else}{d}{/if}
+              {:else}{d}{/if}
+            </h2>
+          {/each}
 
           {#if $langChoice == 'eng' && t.speciality_eng}
             <h4>{t.speciality_eng}</h4>
