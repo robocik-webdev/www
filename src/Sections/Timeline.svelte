@@ -2,9 +2,9 @@
   import { lang } from '../lang.js';
 
   const imgs = [
-    '3mind.webp',
-    'robomaticon.webp',
     'robosub.webp',
+    'robomaticon.webp',
+    '3mind.webp',
     'strategic_science_club.webp',
   ];
 
