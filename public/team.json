@@ -228,6 +228,18 @@
     "photo": "/img/team/Pawel_Owczarek.jpg"
   },
   {
+    "name": "Agnieszka",
+    "surname": "Ilnicka",
+    "division": ["Konstrukcja"],
+    "speciality_eng": "3D Printing",
+    "speciality_pl": "Druk 3D",
+    "linkedin": "https://www.linkedin.com/in/agnieszka-ilnicka-0443161a7/",
+    "email": null,
+    "quote_eng": "\"Once we accept our limits, we go beyond them.\"",
+    "quote_pl": "\"Once we accept our limits, we go beyond them.\"",
+    "photo": "/img/team/Agnieszka_Ilnicka.jpg"
+  },
+  {
     "name": "Sebastian",
     "surname": "Leszczyk",
     "division": ["Konstrukcja"],
