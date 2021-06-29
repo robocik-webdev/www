@@ -51,6 +51,7 @@
   }
   .card {
     margin-top: 40px;
+    /* width: 100%; */
     text-align: center;
   }
   .card img {
@@ -76,6 +77,9 @@
       flex-flow: row;
       justify-content: space-between;
       margin-top: 80px;
+    }
+    .card {
+      width: 25%;
     }
   }
 </style>
