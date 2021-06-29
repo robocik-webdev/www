@@ -6,18 +6,9 @@
       'linkedin.png',
       'https://zw.linkedin.com/company/ko%C5%82o-naukowe-automatyki-i-robotyki-robocik',
     ],
-    [
-      'facebook.png',
-      'https://zw.linkedin.com/company/ko%C5%82o-naukowe-automatyki-i-robotyki-robocik',
-    ],
-    [
-      'instagram.png',
-      'https://zw.linkedin.com/company/ko%C5%82o-naukowe-automatyki-i-robotyki-robocik',
-    ],
-    [
-      'youtube.svg',
-      'https://zw.linkedin.com/company/ko%C5%82o-naukowe-automatyki-i-robotyki-robocik',
-    ],
+    ['facebook.png', 'https://www.facebook.com/knrobocik/'],
+    ['instagram.png', 'https://www.instagram.com/robocikpwr/?hl=en'],
+    ['youtube.svg', 'https://www.youtube.com/channel/UCWaBdSXJdCexMjQ0nd5RBdw'],
   ];
 </script>
 
@@ -44,8 +35,16 @@
       <div class="content">
         <img class="icon" src="/icon/contact/email.png" alt="email icon" />
         <div class="text">
-          <p>{@html $lang.contact_email_1}</p>
-          <p>{@html $lang.contact_email_2}</p>
+          <p>
+            <a href="mailto:{$lang.contact_email_1}"
+              >{@html $lang.contact_email_1}</a
+            >
+          </p>
+          <p>
+            <a href="mailto:{$lang.contact_email_2}"
+              >{@html $lang.contact_email_2}</a
+            >
+          </p>
         </div>
       </div>
     </div>
