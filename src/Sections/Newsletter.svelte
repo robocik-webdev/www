@@ -93,7 +93,7 @@
     margin-top: 15px;
     line-height: 1.5;
     font-size: 0.6rem;
-    max-width: 400px;
+    max-width: 380px;
   }
   small * {
     font-size: 0.6rem;
