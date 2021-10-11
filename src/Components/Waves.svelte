@@ -4,20 +4,20 @@
   let wavesRange = range(0, 12);
   let waves = [];
 
-  // $: {
-  //   waves.forEach((wave, i) => {
-  //     let offset = 5 + i * 5;
-  //     if (offset > 50) offset = 50;
-  //     anime({
-  //       targets: wave,
-  //       translateY: -offset,
-  //       direction: 'alternate',
-  //       loop: true,
-  //       duration: i * 500,
-  //       easing: 'cubicBezier(.45, 0, .55, 1)',
-  //     });
-  //   });
-  // }
+  $: {
+    waves.forEach((wave, i) => {
+      let offset = 5 + i * 5;
+      if (offset > 50) offset = 50;
+      anime({
+        targets: wave,
+        translateY: -offset,
+        direction: 'alternate',
+        loop: true,
+        duration: i * 500,
+        easing: 'cubicBezier(.45, 0, .55, 1)',
+      });
+    });
+  }
 </script>
 
 <div>

@@ -10,22 +10,25 @@
   }
 
   const partners = {
-    gold: [
+    platinum: [
       [
         ['1_1__tme.svg', 'https://www.tme.eu/en/'],
         ['1_2__pwr.png', 'https://pwr.edu.pl/'],
-        ['1_3__cnc_kramet.png', 'http://cnckramet.pl/index.php/en/'],
       ],
+      [
+        ['1_3__cnc_kramet.png', 'http://cnckramet.pl/index.php/en/'],
+        ['2_6__botland.png', 'https://botland.com.pl/pl/'],
+      ],
+    ],
+    gold: [
       [
         ['1_4__dps_software.svg', 'https://www.dps-software.pl/'],
         ['1_5__aquapark_wroclaw.svg', 'https://aquapark.wroc.pl/'],
         ['1_6__w4.png', 'http://weka.pwr.edu.pl/'],
-      ],
-      [
         ['1_7__gralmarine.png', 'https://www.gralmarine.com/'],
-        ['1_8__wolczanka.svg', 'https://www.wolczanka.pl/'],
       ],
       [
+        ['1_8__wolczanka.svg', 'https://www.wolczanka.pl/'],
         ['1_9__lapp.svg', 'https://www.lappgroup.com/'],
         ['1_10__inprogress.svg', 'https://inprogress.pl/'],
       ],
@@ -39,21 +42,20 @@
         ['2_5__manus.png', 'https://manus.pl/'],
       ],
       [
-        ['2_6__botland.png', 'https://botland.com.pl/pl/'],
         ['2_7__toya.png', 'https://toya24.pl/'],
         ['2_8__2b3d.png', 'https://2b3d.pl/'],
         ['2_9__cyfrus.png', 'https://cyfrus.pl/'],
         ['2_10__power_rubber.png', 'https://powerrubber.com/'],
+        ['2_11__amelectronics.png', 'https://amelectronics.pl/'],
       ],
       [
-        ['2_11__amelectronics.png', 'https://amelectronics.pl/'],
         ['2_12__fabryka_pcb.png', 'https://www.fabrykapcb.pl/'],
         ['2_13__elbit.png', 'http://www.elbit.info.pl/'],
         ['2_14__metel.gif', 'https://www.metel.eu/en/newdesign'],
         ['2_15__agent_tools.svg', 'http://agentools.pl/'],
+        ['2_16__boltman.svg', 'https://boltman.pl/'],
       ],
       [
-        ['2_16__boltman.svg', 'https://boltman.pl/'],
         ['2_17__blue_robotics.png', 'https://boltman.pl/'],
         [
           '2_19__mechatronika_dla_wszystkich.png',
@@ -74,6 +76,25 @@
       <h1>{@html $lang.partners_title}</h1>
       <p>{@html $lang.partners_text}</p>
 
+      <h2>Platynowi patroni</h2>
+      <hr />
+
+      <div class="icons platinum">
+        {#each partners.platinum as row}
+          <div class="row">
+            {#each row as partner}
+              <a href={partner[1]} class="icon">
+                <img
+                  src="/img/partners/{partner[0]}"
+                  alt="partner {partner[0]}"
+                />
+              </a>
+            {/each}
+          </div>
+        {/each}
+      </div>
+
+      <h2>Złoci patroni</h2>
       <hr />
 
       <div class="icons gold">
@@ -90,6 +111,9 @@
           </div>
         {/each}
       </div>
+
+      <h2>Srebrni patroni</h2>
+      <hr />
 
       <div class="icons silver">
         {#each partners.silver as row}
@@ -136,9 +160,14 @@
     margin-bottom: 40px;
     text-align: center;
   }
+
+  h2 {
+    text-align: center;
+  }
   hr {
     width: 25%;
   }
+
   .row {
     display: flex;
     flex-wrap: wrap;
@@ -174,10 +203,6 @@
   }
 
   @media (min-width: 600px) {
-    .wrapper {
-      /* grid-template-rows: calc(100vw / 12) 1fr calc(100vw / 12); */
-      grid-template-rows: 80px 1fr 30px;
-    }
     .close {
       width: 60px;
       height: 60px;
@@ -190,11 +215,14 @@
     .icon {
       padding: 20px;
     }
+    .platinum .icon {
+      width: 20%;
+    }
     .gold .icon {
       width: 15%;
     }
     .silver .icon {
-      width: 10vw;
+      width: 10%;
     }
     .icon img {
       width: 100%;

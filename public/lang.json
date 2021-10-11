@@ -107,14 +107,14 @@
     "recruitment_text_3": "<a target='_blank' href='https://form.jotform.com/202923802835051'>Formularz</a>",
 
     "newsletter_title": "Newsletter",
-    "newsletter_text_1": "<b>Już niedługo</b> - my w skondensowanej paczce.",
+    "newsletter_text_1": "My w skondensowanej paczce.",
     "newsletter_text_2": "Jeden mail miesięczenie.",
     "newsletter_text_3": "Bo nikt nie lubi spamu.",
-    "newsletter_consent_before": "Zaznaczając przycisk po lewej wyrażasz zgodę na przesyłanie na Twój adres e-mail informacji o nowościach na temat organizacji pochodzących od PWr Diving Crew, ul.Łukasiewicza 7/9, bud.B-9 p.40, 50-371 Wrocław. Zgodę w każdej chwili możesz ",
-    "newsletter_consent_withdraw": "wycofać",
+    "newsletter_consent_before": "Zaznaczając przycisk po lewej wyrażasz zgodę na przesyłanie na Twój adres e-mail informacji o nowościach na temat organizacji pochodzących od PWr Diving Crew, ul.Łukasiewicza 7/9, bud.B-9 p.40, 50-371 Wrocław. Zgodę w każdej chwili możesz wycofać rezygnując z subskrypcji używając przycisku w mailu od nas bądź ",
+    "newsletter_consent_preferences": "zmieniając swoje preferencje tutaj",
     "newsletter_consent_after": ".",
     "newsletter_email": "Wpisz tu swój e-mail",
-    "newsletter_submit": "Wyślij",
+    "newsletter_submit": "Zapisz się",
 
     "contact_title": "Kontakt",
     "contact_location_title": "Siedziba :",
@@ -129,11 +129,7 @@
     "contact_sm_title": "Znajdź nas na :",
 
     "partners_title": "Nasi partnerzy",
-    "partners_text": "Fundament naszego sukcesu.<br>Pomagają nam dostarczając części i nieocenioną wiedzę specjalistyczną.<br>Tylko dzięki nim mamy szansę konkurować z uczelniami światowej klasy.",
-
-    "witdraw_consent_title": "Wycofanie zgody",
-    "witdraw_consent_text": "Aby wycofać zgodę kliknij na<br>przycisk rezygnacji z subskrypcji<br>po otrzymaniu naszego maila lub<br>",
-    "witdraw_consent_link": "zmień swoje preferencje tutaj"
+    "partners_text": "Fundament naszego sukcesu.<br>Pomagają nam dostarczając części i nieocenioną wiedzę specjalistyczną.<br>Tylko dzięki nim mamy szansę konkurować z uczelniami światowej klasy."
   },
   "eng": {
     "menu_timeline": "Achievements",
@@ -243,14 +239,14 @@
     "recruitment_text_4": "<a target='_blank' href='https://form.jotform.com/202923802835051'>Recruitment Form</a>",
 
     "newsletter_title": "Newsletter",
-    "newsletter_text_1": "<b>Coming soon</b> - us, in a nutshell.",
+    "newsletter_text_1": "It's us - in a nutshell.",
     "newsletter_text_2": "One e-mail monthly.",
     "newsletter_text_3": "Because no one likes spam.",
-    "newsletter_consent_before": "By checking the box on your left you are giving us permission to send monthly newsletter to your e-mail from PWr Diving Crew, ul.Łukasiewicza 7/9, B-9 r.40, 50-371 Wrocław. You can ",
-    "newsletter_consent_withdraw": "withdraw your consent",
-    "newsletter_consent_after": " at any time.",
+    "newsletter_consent_before": "By checking the box on your left you are giving us permission to send monthly newsletter to your e-mail from PWr Diving Crew, ul.Łukasiewicza 7/9, B-9 r.40, 50-371 Wrocław. You can withdraw your consent at any time by pressing the unsubscribe button in the email from us or",
+    "newsletter_consent_preferences": "changing your preferences here",
+    "newsletter_consent_after": ".",
     "newsletter_email": "Type your e-mail here",
-    "newsletter_submit": "Submit",
+    "newsletter_submit": "Subscribe",
 
     "contact_title": "Contact",
     "contact_location_title": "Registered Office :",
@@ -265,10 +261,6 @@
     "contact_sm_title": "Find us on :",
 
     "partners_title": "Our partners",
-    "partners_text": "Our partnes are the foundation of our success.<br>They gratuitously help us by providing both parts and invaluable know-how.<br>Only thanks to them we are able to compete with world's top universities.",
-
-    "witdraw_consent_title": "Withdrawing your consent",
-    "witdraw_consent_text": "To withdraw your consent press the unsubscribe button that will appear in the mail from us or ",
-    "witdraw_consent_link": "change your preferences here"
+    "partners_text": "Our partnes are the foundation of our success.<br>They gratuitously help us by providing both parts and invaluable know-how.<br>Only thanks to them we are able to compete with world's top universities."
   }
 }

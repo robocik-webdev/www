@@ -8,6 +8,7 @@
   import Tech from './Sections/Tech.svelte';
   import Team from './Sections/Team.svelte';
   import People from './Sections/People.svelte';
+  import Newsletter from './Sections/Newsletter.svelte';
   import Contact from './Sections/Contact.svelte';
 </script>
 
@@ -23,6 +24,7 @@
   <Tech />
   <Team />
   <People />
+  <Newsletter />
   <Contact />
 </main>
 
