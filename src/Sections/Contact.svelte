@@ -56,8 +56,11 @@
       <div class="content">
         <img class="icon" src="/icon/contact/phone.png" alt="phone icon" />
         <div class="text">
-          <p>{@html $lang.contact_phone_1}</p>
+          <p><b>{@html $lang.contact_phone_1}</b></p>
           <p>{@html $lang.contact_phone_2}</p>
+          <br />
+          <p><b>{@html $lang.contact_phone_3}</b></p>
+          <p>{@html $lang.contact_phone_4}</p>
         </div>
       </div>
     </div>
