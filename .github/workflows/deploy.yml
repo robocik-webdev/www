@@ -1,0 +1,25 @@
+name: Deploy to SFTP server
+on:
+  push:
+    branches: [ main ]
+  # run manually from Actions tab
+  workflow_dispatch:
+  
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Get latest code
+        uses: actions/checkout@v2
+        
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.2.0
+        with:
+          server: ${{ secrets.SFTP_HOSTNAME }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          local-dir: ./public/
+          server-dir: ./
+          dry-run: true
