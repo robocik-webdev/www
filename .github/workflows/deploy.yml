@@ -38,5 +38,5 @@ jobs:
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           localDir: public
-          remoteDir: /home/${{ secrets.SFTP_USERNAME }}/public_html
+          remoteDir: /export/sun1000-2/${{ secrets.SFTP_USERNAME }}/public_html
           dryRun: true
