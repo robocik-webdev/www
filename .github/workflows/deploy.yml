@@ -37,6 +37,6 @@ jobs:
           host: ${{ secrets.SFTP_HOSTNAME }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          localDir: ./public/
-          remoteDir: ./
+          localDir: /public
+          remoteDir: /
           dryRun: true
