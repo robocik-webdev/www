@@ -7,15 +7,13 @@
 </script>
 
 <section id="cta">
-  <Waves />
-
   <div class="wrapper logo">
     <img src="/img/logo.svg" alt="robocik logo" />
   </div>
 
-  <div class="wrapper bottom-wave">
+  <!-- <div class="wrapper bottom-wave">
     <img src="/img/wave.svg" alt="decorative wave" />
-  </div>
+  </div> -->
 
   <div class="text">
     <h3>{@html $lang.cta_subtitle}</h3>
@@ -43,11 +41,11 @@
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color: var(--color-main);
+    /* background-color: var(--color-main); */
   }
 
   .wrapper {
-    overflow: hidden;
+    /* overflow: hidden; */
     position: absolute;
     left: 0;
     top: 0;

@@ -1,5 +1,6 @@
 <script>
   import Header from './Components/Header.svelte';
+  import Waves from './Components/Waves.svelte';
   import Vehicle from './Components/Vehicle.svelte';
   import CTA from './Sections/CTA.svelte';
   import Vision from './Sections/Vision.svelte';
@@ -15,6 +16,7 @@
 <Header />
 <main id="top">
   <div>
+    <Waves />
     <Vehicle />
     <CTA />
     <Vision />

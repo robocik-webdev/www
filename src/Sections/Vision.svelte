@@ -5,7 +5,7 @@
 <section id="vision">
   <div class="wrapper">
     <div class="element">
-      <img src="/icon/vision/vision_dark.png" alt="vision icon" />
+      <img src="/icon/vision/vision_light.png" alt="vision icon" />
       <div class="text">
         <h2>{@html $lang.vision_vision_title}</h2>
         <p>{@html $lang.vision_vision_text}</p>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="element">
-      <img src="/icon/vision/mission_dark.png" alt="mission icon" />
+      <img src="/icon/vision/mission_light.png" alt="mission icon" />
       <div class="text">
         <h2>{@html $lang.vision_mission_title}</h2>
         <p>{@html $lang.vision_mission_text}</p>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="element">
-      <img src="/icon/vision/values_dark.png" alt="values icon" />
+      <img src="/icon/vision/values_light.png" alt="values icon" />
       <div class="text">
         <h2>{@html $lang.vision_values_title}</h2>
         <p>{@html $lang.vision_values_text}</p>
@@ -34,6 +34,10 @@
   section {
     position: relative;
     margin-top: 80px;
+  }
+
+  section * {
+    color: var(--color-light);
   }
 
   .wrapper {

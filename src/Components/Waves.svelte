@@ -1,9 +1,8 @@
 <script>
   import anime from 'animejs';
   import { range } from '../utils.js';
-  let wavesRange = range(0, 12);
+  const wavesRange = range(1, 10);
   let waves = [];
-
   $: {
     waves.forEach((wave, i) => {
       let offset = 5 + i * 5;
@@ -22,12 +21,7 @@
 
 <div>
   {#each wavesRange as i}
-    <img
-      class="wave"
-      src="/img/wavesbg/{i}.svg"
-      alt="decorative background wave"
-      bind:this={waves[i]}
-    />
+    <img class="wave" src="/img/wavesbg/{i}.svg" alt="" bind:this={waves[i]} />
   {/each}
 </div>
 
@@ -46,6 +40,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    opacity: 0.5;
   }
   @media (max-width: 600px) {
     img {

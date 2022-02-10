@@ -10,13 +10,13 @@
   let tilesAmount = 8;
   let tiles = [];
   $: {
-    tiles = range(0, tilesAmount - 1).map(() => []);
+    tiles = range(0, tilesAmount).map(() => []);
     let imagesCount = 0;
     let count = 0;
     while (imagesCount < imagesAmount) {
       // choose possible spots for prev and next buttons
       let imagesRemaining = imagesAmount - imagesCount;
-      let elems = range(0, tilesAmount - 1);
+      let elems = range(0, tilesAmount);
       console.log(imagesCount);
       // insert buttons
       if (imagesCount != 0) {
@@ -43,7 +43,7 @@
         tiles[i].push(tile);
       });
       // add separating placeholders
-      range(0, tilesAmount - 1).forEach(i => {
+      range(0, tilesAmount).forEach(i => {
         tiles[i].push({ type: 'placeholder' });
       });
       count++;

@@ -7,7 +7,7 @@
   $: $change = y;
   $: translateX = w > 600 ? -$change / 5 : 0;
   $: translateY = w > 600 ? $change / 1.5 : 0;
-  $: rotation = w > 600 ? -$change / 15 : -$change / 20;
+  $: rotation = w > 600 ? -$change / 15 + 55 : -$change / 20 + 55;
 </script>
 
 <svelte:window bind:scrollY={y} bind:innerWidth={w} />
@@ -15,7 +15,7 @@
 <div>
   <img
     style="transform: translate({translateX}px, {translateY}px) rotate({rotation}deg)"
-    src="/img/rov5/rov.webp"
+    src="/img/bluenemo/bluenemo.webp"
     alt="robocik vehicle"
   />
 </div>
@@ -39,9 +39,9 @@
 
   @media (min-width: 600px) {
     img {
-      bottom: -15%;
-      right: 10%;
-      width: 45%;
+      bottom: -12%;
+      right: 3%;
+      width: 50%;
     }
   }
 </style>

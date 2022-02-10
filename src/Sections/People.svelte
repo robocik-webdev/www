@@ -1,18 +1,40 @@
 <script>
   import { langChoice } from '../lang.js';
-  import { fetchJSON } from '../utils.js';
   import { onMount, onDestroy } from 'svelte';
+  import PaPa from 'papaparse';
 
-  let fetchTeam = fetchJSON('team.json');
+  async function fetchTeam(lang) {
+    const res = await fetch('team.csv');
+    const text = await res.text();
+    const csv = PaPa.parse(text).data;
+    const keys = csv.shift();
+    let people = [];
+    for (const p of csv) {
+      let person = {};
+      for (let [i, key] of keys.entries()) {
+        const locale = key.match(/eng|pl/);
+        if (locale) {
+          if (locale == lang) {
+            key = key.replace(`_${locale}`, '');
+          } else continue;
+        }
+        const value = p[i].split(';');
+        person[key] = value.length == 1 ? value[0] : value;
+      }
+      people.push(person);
+    }
+    team = people;
+  }
+
+  let team = [];
+  $: fetchTeam($langChoice);
 
   const time = 6; // s
-  const fps = 60; // ms
+  const fps = 25;
   const time_delta = 1000 / fps;
   const progress_delta = 1 / ((time * 1000) / time_delta);
-  let loaded;
   let interval;
   let progress = 0;
-  $: if (loaded) loaded.style.width = `${progress * 100}%`;
 
   function startProgressbar() {
     interval = setInterval(() => {
@@ -26,23 +48,29 @@
   function stopProgressbar() {
     clearInterval(interval);
   }
-  onMount(() => {
-    startProgressbar();
-  });
-  onDestroy(() => {
-    stopProgressbar();
-  });
+  onMount(startProgressbar);
+  onDestroy(stopProgressbar);
 
   let section;
-  let slider;
-  let sliderWidth;
-  let slides = [];
-  let slideIndex = 0;
-  let slideWith;
-
   let visible = false;
-  let start = true;
-  let end = false;
+
+  let slider;
+  let fullWidth;
+  let cards = [];
+  let cardWidth;
+  let swipeAmount;
+
+  let cardIndex = 0;
+  $: offset = -cardIndex * cardWidth;
+
+  function refresh() {
+    // sliderWidth = slider?.getBoundingClientRect().width;
+    cardWidth = cards[0]?.getBoundingClientRect().width;
+    swipeAmount = Math.round(fullWidth / cardWidth);
+    console.log(fullWidth);
+    console.log(cardWidth);
+    console.log(swipeAmount);
+  }
 
   function navigation() {
     const rect = section.getBoundingClientRect();
@@ -51,61 +79,21 @@
     visible = y < w && bottom > w;
   }
 
-  function checkVisibleAtOnceAmount() {
-    sliderWidth = slider.getBoundingClientRect().width;
-    slideWith = slides[0].getBoundingClientRect().width;
-    return Math.round(sliderWidth / slideWith);
-  }
-
-  function set(i) {
-    let translation = -i * slideWith;
-    slider.style.transform = `translateX(${translation}px)`;
-  }
   function prev() {
-    const n = checkVisibleAtOnceAmount();
-    let i = slideIndex - n;
-    if (i < 0) {
-      if (start) {
-        start = false;
-        end = true;
-        const n = checkVisibleAtOnceAmount();
-        i = slides.length - 1;
-        let offset = n - (slides.length - i);
-        i -= offset;
-      } else {
-        start = true;
-        i = 0;
-      }
-    }
-    slideIndex = i;
-    end = false;
+    refresh();
+    let i = cardIndex - swipeAmount;
+    if (i < 0) i = Math.floor(cards.length / swipeAmount) * swipeAmount;
+    cardIndex = i;
   }
   function next() {
-    const n = checkVisibleAtOnceAmount();
-    let i = slideIndex + n;
-    let offset = n - (slides.length - i);
-    if (offset >= 0) {
-      if (end) {
-        start = true;
-        end = false;
-        i = 0;
-      } else {
-        start = false;
-        end = true;
-        i -= offset;
-      }
-    } else {
-      start = false;
-      end = false;
-    }
-    slideIndex = i;
-  }
-  $: {
-    if (slider) set(slideIndex);
+    refresh();
+    let i = cardIndex + swipeAmount;
+    if (i > cards.length - 1) i = 0;
+    cardIndex = i;
   }
 </script>
 
-<svelte:window on:scroll={navigation} on:resize={() => set(slideIndex)} />
+<svelte:window on:scroll={navigation} on:resize={refresh} />
 
 <section id="people" bind:this={section}>
   <div
@@ -118,63 +106,55 @@
     <img src="/icon/prev_light.svg" alt="scroll arrow facing left" />
   </div>
 
-  <div class="loader-wrapper">
+  <div class="loader-wrapper" bind:offsetWidth={fullWidth}>
     <div class="loader">
-      <div class="loaded" bind:this={loaded} />
+      <div class="loaded" style="width: {progress * 100}%" />
       <span>#RobocikPeople</span>
     </div>
   </div>
 
-  <div class="slider" bind:this={slider}>
-    {#await fetchTeam then team}
-      {#each team as t, i}
-        <div class="slide" bind:this={slides[i]}>
-          <img src={t.photo} alt="crew member" />
-          <h1>{t.name} {t.surname}</h1>
+  <div
+    class="slider"
+    style="transform: translateX({offset}px)"
+    bind:this={slider}
+  >
+    {#each team as t, i}
+      <div class="card" bind:this={cards[i]}>
+        <img src={t.photo} alt="crew member" />
+        <h2 class="name">{t.name} {t.surname}</h2>
 
-          {#each t.division as d}
-            <h2>
-              {#if $langChoice == 'eng'}
-                {#if d == 'Elektronika'}Electronics
-                {:else if d == 'Konstrukcja'}Construction
-                {:else if d == 'Zarząd'}Management
-                {:else}{d}{/if}
-              {:else}{d}{/if}
-            </h2>
-          {/each}
+        {#if Array.isArray(t.division)}
+          <div class="division">
+            {#each t.division as d}
+              <h3>{d}</h3>
+            {/each}
+          </div>
+        {:else}
+          <h3 class="division">{t.division}</h3>
+        {/if}
 
-          {#if $langChoice == 'eng' && t.speciality_eng}
-            <h4>{t.speciality_eng}</h4>
-          {:else if $langChoice == 'pl' && t.speciality_pl}
-            <h4>{t.speciality_pl}</h4>
-          {/if}
+        {#if t.specialty}
+          <p class="specialty">{t.specialty}</p>
+        {/if}
 
-          {#if t.email}
-            <h6 class="email">{t.email}</h6>
-          {/if}
-
+        <div class="contact">
           {#if t.linkedin}
-            <a href={t.linkedin} target="_blank">
-              <img
-                class="linkedin"
-                src="/icon/contact/linkedin.png"
-                alt="linkedin icon"
-              />
+            <a href={t.linkedin} target="_blank" class="linkedin">
+              <img src="/icon/contact/linkedin.png" alt="linkedin icon" />
             </a>
           {/if}
-
-          {#if $langChoice == 'eng' && t.quote_eng}
-            <p>{t.quote_eng}</p>
-          {:else if $langChoice == 'pl' && t.quote_pl}
-            <p>{t.quote_pl}</p>
-          {:else if t.quote_eng}
-            <p>{t.quote_eng}</p>
-          {:else if t.quote_pl}
-            <p>{t.quote_pl}</p>
+          {#if t.email}
+            <a href="mailto:{t.linkedin}" class="email">
+              <h6>{t.email}</h6>
+            </a>
           {/if}
         </div>
-      {/each}
-    {/await}
+
+        {#if t.quote}
+          <p class="quote">{t.quote}</p>
+        {/if}
+      </div>
+    {/each}
   </div>
 
   <div
@@ -191,16 +171,6 @@
 <style>
   section {
     overflow: hidden;
-    min-height: 100vh;
-  }
-
-  .email {
-    margin-top: 10px;
-  }
-  .linkedin {
-    margin-top: 10px;
-    filter: invert(1);
-    width: 40px;
   }
 
   .control {
@@ -229,7 +199,7 @@
   }
 
   .loader-wrapper {
-    grid-column: 2 / 10;
+    grid-column: 2 / 12;
     grid-row: 1;
     height: auto;
   }
@@ -262,16 +232,45 @@
     align-items: flex-start;
     transition: transform var(--t-normal);
   }
-  .slide {
+  .card {
     padding: 0 5px;
     width: 100%;
     flex-shrink: 0;
   }
+  .name {
+    margin: 15px 0 5px 0;
+    font-weight: 900;
+  }
+  .division {
+    margin-top: 5px;
+  }
+  .specialty {
+    margin-top: 5px;
+    line-height: 1.2;
+  }
+  .contact {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .linkedin img {
+    filter: invert(1);
+    margin-right: 10px;
+    width: 25px;
+  }
+  .email {
+    text-decoration: none;
+  }
+  .quote {
+    margin-top: 20px;
+    line-height: 1.2;
+  }
 
   @media (min-width: 600px) {
-    section {
+    /* section {
       grid-template-rows: repeat(2, auto);
-    }
+    } */
     .control {
       width: 80px;
       height: 80px;
@@ -279,9 +278,9 @@
     .loader {
       margin: 20px 0 35px 20px;
     }
-    .slide {
+    .card {
       padding: 0 20px;
-      width: calc(100% / 4);
+      width: calc(100vw / 5);
     }
   }
 </style>

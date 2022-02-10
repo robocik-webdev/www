@@ -36,14 +36,9 @@
         <img class="icon" src="/icon/contact/email.png" alt="email icon" />
         <div class="text">
           <p>
-            <a href="mailto:{$lang.contact_email_1}"
-              >{@html $lang.contact_email_1}</a
-            >
-          </p>
-          <p>
-            <a href="mailto:{$lang.contact_email_2}"
-              >{@html $lang.contact_email_2}</a
-            >
+            <a href="mailto:{$lang.contact_email}">
+              {@html $lang.contact_email}
+            </a>
           </p>
         </div>
       </div>

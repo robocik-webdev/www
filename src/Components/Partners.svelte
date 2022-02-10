@@ -76,59 +76,24 @@
       <h1>{@html $lang.partners_title}</h1>
       <p>{@html $lang.partners_text}</p>
 
-      <h2>Platynowi patroni</h2>
-      <hr />
-
-      <div class="icons platinum">
-        {#each partners.platinum as row}
-          <div class="row">
-            {#each row as partner}
-              <a href={partner[1]} class="icon">
-                <img
-                  src="/img/partners/{partner[0]}"
-                  alt="partner {partner[0]}"
-                />
-              </a>
-            {/each}
-          </div>
-        {/each}
-      </div>
-
-      <h2>Złoci patroni</h2>
-      <hr />
-
-      <div class="icons gold">
-        {#each partners.gold as row}
-          <div class="row">
-            {#each row as partner}
-              <a href={partner[1]} class="icon">
-                <img
-                  src="/img/partners/{partner[0]}"
-                  alt="partner {partner[0]}"
-                />
-              </a>
-            {/each}
-          </div>
-        {/each}
-      </div>
-
-      <h2>Srebrni patroni</h2>
-      <hr />
-
-      <div class="icons silver">
-        {#each partners.silver as row}
-          <div class="row">
-            {#each row as partner}
-              <a href={partner[1]} class="icon">
-                <img
-                  src="/img/partners/{partner[0]}"
-                  alt="partner {partner[0]}"
-                />
-              </a>
-            {/each}
-          </div>
-        {/each}
-      </div>
+      {#each Object.keys(partners) as tier}
+        <h2>{@html $lang[`partners_${tier}`]}</h2>
+        <hr />
+        <div class="icons {tier}">
+          {#each partners[tier] as row}
+            <div class="row">
+              {#each row as partner}
+                <a href={partner[1]} class="icon">
+                  <img
+                    src="/img/partners/{partner[0]}"
+                    alt="partner {partner[0]}"
+                  />
+                </a>
+              {/each}
+            </div>
+          {/each}
+        </div>
+      {/each}
     </div>
   </div>
 </div>

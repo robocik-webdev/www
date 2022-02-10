@@ -11,7 +11,7 @@ export function range(min, max, attach) {
   // if the :attach: parameter is specified:
   // - it's added to the end of every element
   // - if it's a string then the output becomes an array of strings
-  let output = Array.from({ length: max + 1 }, (_, i) => i + min);
+  let output = Array.from({ length: max }, (_, i) => i + min);
   if (attach) {
     output.forEach((elem, i) => {
       output[i] = elem + attach;
