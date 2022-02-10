@@ -67,9 +67,6 @@
     // sliderWidth = slider?.getBoundingClientRect().width;
     cardWidth = cards[0]?.getBoundingClientRect().width;
     swipeAmount = Math.round(fullWidth / cardWidth);
-    console.log(fullWidth);
-    console.log(cardWidth);
-    console.log(swipeAmount);
   }
 
   function navigation() {
@@ -82,7 +79,7 @@
   function prev() {
     refresh();
     let i = cardIndex - swipeAmount;
-    if (i < 0) i = Math.floor(cards.length / swipeAmount) * swipeAmount;
+    if (i < 0) i = Math.floor(cards.length / swipeAmount) * swipeAmount - 1;
     cardIndex = i;
   }
   function next() {

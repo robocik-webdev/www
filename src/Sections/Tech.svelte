@@ -17,7 +17,6 @@
       // choose possible spots for prev and next buttons
       let imagesRemaining = imagesAmount - imagesCount;
       let elems = range(0, tilesAmount);
-      console.log(imagesCount);
       // insert buttons
       if (imagesCount != 0) {
         let prev = randomElem(elems);
@@ -48,7 +47,6 @@
       });
       count++;
     }
-    console.log(tiles);
   }
 
   function getSingleSlideWidth() {
