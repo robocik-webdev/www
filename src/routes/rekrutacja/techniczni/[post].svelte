@@ -1,3 +1,3 @@
 <script>
-    export let item;
-  </script>
+  export let item;
+</script>
