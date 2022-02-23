@@ -1,7 +1,8 @@
-import api from '$lib/API';
+import { api } from '$lib/API.js';
 
 export async function get({ params }) {
-  const item = await api.get(params.post);
+  console.log(api);
+  const item = await api.posts.read({});
 
   if (item) {
     return {
