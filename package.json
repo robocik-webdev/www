@@ -19,9 +19,5 @@
     "svelte-meta-tags": "^2.3.0",
     "svelte-scrollto": "^0.2.0"
   },
-  "type": "module",
-  "imports": {
-    "$lib/Components/*": "./src/lib/Components/*.js",
-    "$lib/Sections/*": "./src/lib/Sections/*.js"
-  }
+  "type": "module"
 }
