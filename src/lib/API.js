@@ -4,7 +4,7 @@ export const baseUrl = 'http://localhost:2368';
 
 export const api = new GhostContentAPI({
   url: baseUrl,
-  key: '1fbe2ae6d6234fe5f35fdeb610',
+  key: 'a9b3e44b93525eddf358db920e',
   version: 'v3'
 });
 
