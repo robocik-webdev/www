@@ -1,37 +1,26 @@
 <script>
   import { api } from '$lib/API.js';
-  import { onMount } from 'svelte';
 
   const pagePromise = api.pages.read({
-    slug: 'strona-glowna',
-    filter: 'tag:hackathon-2'
+    slug: 'hackathon-index',
+    include: 'title,html'
   });
   const postsPromise = api.posts.browse({
-    filter: 'tag:hackathon-2'
+    filter: 'tag:hackathon',
+    include: 'slug,title,html,custom_excerpt,excerpt,tags'
   });
 </script>
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-{#await pagePromise then page}
-  <h3>{@html page.title}</h3>
-  {@html page.html}
+{#await pagePromise then { title, html }}
+  <h3>{title}</h3>
+  {@html html}
 {/await}
 
-<br />
-<br />
-<br />
-<br />
-<div>
-  {#await postsPromise then posts}
-    {#each posts as { title, html }}
-      <h5>{@html title}</h5>
+{#await postsPromise then posts}
+  {#each posts as { title, html }}
+    <div>
+      <h5>{title}</h5>
       {@html html}
-    {/each}
-  {/await}
-</div>
+    </div>
+  {/each}
+{/await}

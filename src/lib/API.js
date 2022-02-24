@@ -1,9 +1,10 @@
 import GhostContentAPI from '@tryghost/content-api';
+
 export const baseUrl = 'http://localhost:2368';
 
 export const api = new GhostContentAPI({
   url: baseUrl,
-  key: 'a9b3e44b93525eddf358db920e',
+  key: '1fbe2ae6d6234fe5f35fdeb610',
   version: 'v3'
 });
 
