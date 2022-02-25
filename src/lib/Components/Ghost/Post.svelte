@@ -17,7 +17,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    margin: 20vh 20px 20px 20px;
+    padding: 20vh 20px 20px 20px;
     max-width: 600px;
   }
   .post :global(*) {
