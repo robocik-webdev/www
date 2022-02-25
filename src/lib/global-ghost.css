@@ -7,13 +7,29 @@
 :root {
   --color-main: #132142;
   --color-light: #f3f3f3;
+  --scroll-thumb: rgba(255, 255, 255, 0.5);
+  --scroll-track: rgba(0, 0, 0, 0);
   --t-rapid: 0.15s;
   --t-fast: 0.25s;
   --t-normal: 0.5s;
-  --w-content: 600px;
+  --content-w: 600px;
+  --header-h: 50px;
+  --header-margin: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--scroll-track);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--scroll-thumb);
 }
 
 body {
+  overflow: overlay;
   margin: 0;
 }
 
@@ -59,4 +75,24 @@ h6 {
 }
 * {
   font-size: 0.95rem;
+}
+
+.box {
+  --bg: rgba(255, 255, 255, 0.1);
+  --bg-hov: rgba(255, 255, 255, 0.2);
+  --bg-inv: rgba(0, 0, 0, 1);
+  --bg-inv-hov: rgba(0, 0, 0, 0.9);
+  border-radius: 10px;
+  background-color: var(--bg);
+  transition: background-color var(--t-normal), filter var(--t-normal);
+}
+.box:hover {
+  background-color: var(--bg-hov);
+}
+.box.inverted {
+  filter: invert();
+  background-color: var(--bg-inv) !important;
+}
+.box.inverted:hover {
+  background-color: var(--bg-inv-hov);
 }

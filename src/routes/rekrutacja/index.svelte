@@ -16,10 +16,12 @@
 </script>
 
 <script>
+  import { arrow } from '$lib/Components/Ghost/header.js';
   import Page from '$lib/Components/Ghost/Page.svelte';
   export let page;
   export let marketing;
   export let techniczni;
+  $arrow = null;
 </script>
 
 <Page
