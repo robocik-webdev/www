@@ -21,7 +21,7 @@
   href="{endpoint}/{slug}"
 >
   <li data-component class="smol-card-component">
-    <img src={img} alt="" />
+    <div class="wrapper"><img src={img} alt="" /></div>
     <h3>{title}</h3>
     <p>{@html truncate(excerpt, 100)}.</p>
   </li>
@@ -37,9 +37,16 @@
     box-sizing: border-box;
   }
 
+  .wrapper {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
   /***
  🟣 SmolCSS Snippet Styles
  */
+
   .smol-css-grid {
     --min: 20ch;
     --gap: 1rem;
@@ -47,15 +54,19 @@
     display: grid;
     grid-gap: var(--gap);
     grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+
+  .smol-css-grid:hover {
+    background-color: rgba(255, 255, 255, 0.2);
   }
 
   .smol-card-component {
     --img-ratio: 2/2;
-
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
-    border-radius: 0.5rem;
   }
 
   /* Soon we can replace this with: gap: 1rem; */
@@ -63,29 +74,11 @@
     margin-top: 1rem;
   }
 
-  .smol-card-component > img {
-    /* Fallback for `aspect-ratio` of defining
-  a height */
-    height: max(18vh, 12rem);
-    object-fit: cover;
-    width: 100%;
-  }
-
-  /* When supported, use `aspect-ratio` */
-  @supports (aspect-ratio: 1) {
-    .smol-card-component > img {
-      aspect-ratio: var(--img-ratio);
-      height: auto;
-    }
-  }
-
-  .smol-card-component > img:first-child {
-    border-radius: 0.5rem 0.5rem 0 0;
-  }
-
-  .smol-card-component > img:last-child {
-    border-radius: 0 0 0.5rem 0.5rem;
-    margin-top: auto;
+  .smol-card-component > .wrapper {
+    aspect-ratio: var(--img-ratio);
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.35);
   }
 
   .smol-card-component > :not(img) {
