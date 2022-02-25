@@ -46,6 +46,8 @@
     height: var(--img-size);
     width: var(--img-size);
     background-size: cover;
+    margin:auto;
+    filter: drop-shadow(0 0 0.2rem rgb(53, 52, 52));
   }
 
   .content {
