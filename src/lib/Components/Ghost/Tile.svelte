@@ -6,7 +6,9 @@
   export let endpoint;
 
   function truncate(string, limit) {
-    // TODO
+    if (string.length > limit) {
+      return string.substring(0, limit) + '...';
+    }
     return string;
   }
 </script>
@@ -20,9 +22,6 @@
 </a>
 
 <style>
-  .tile :global(*) {
-    font-size: 0.75rem;
-  }
   .tile {
     --img-size: 25vw;
     --bg: rgba(255, 255, 255, 0.1);

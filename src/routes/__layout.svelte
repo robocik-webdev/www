@@ -1,5 +1,4 @@
 <script>
-  import '$lib/global.css';
   import { hidden } from '$lib/header.js';
   import { opened as showMenu } from '$lib/menu.js';
   import { scrollto } from '$lib/utils.js';

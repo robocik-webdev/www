@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  color: var(--color-light);
+}
+
+:root {
+  --color-main: #132142;
+  --color-light: #f3f3f3;
+  --t-rapid: 0.15s;
+  --t-fast: 0.25s;
+  --t-normal: 0.5s;
+  --w-content: 20px;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+:has(h1, h2, h3, h4, h5, h6, p) {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* TODO: update default text styling */
+h1 {
+  margin: 10px 0 25px 0;
+  font-weight: 900;
+  font-size: 1.6rem;
+}
+h2 {
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+h4 {
+  font-size: 1.15rem;
+}
+h5 {
+  font-size: 1.1rem;
+}
+h6 {
+  font-size: 0.8rem;
+}
+* {
+  font-size: 0.95rem;
+}

@@ -13,7 +13,8 @@
 
 <nav class:opened={$opened}>
   <ul>
-    <li><a href="/hackathon">hackathon</a></li>
+    <li><a href="/hackathon">Hackathon</a></li>
+    <li><a href="/rekrutacja">Rekrutacja</a></li>
     {#each menu as item}
       <li
         on:click={() => {

@@ -7,7 +7,7 @@
 <div class="post">
   {#if img}<img src={img} alt="" />{/if}
   <h3 class="title">{title}</h3>
-  <div class="content content--post">
+  <div class="ghost">
     {@html content}
   </div>
 </div>
@@ -19,8 +19,5 @@
     transform: translateX(-50%);
     padding: 20vh 20px 20px 20px;
     max-width: 600px;
-  }
-  .post :global(*) {
-    color: var(--color-light);
   }
 </style>
