@@ -1,101 +1,71 @@
 <script>
-  import { api } from '$lib/API.js';
+  export let slug;
+  export let img;
+  export let title;
+  export let excerpt;
 
-  export const postsPromise = api.posts.browse({
-    filter: 'tag:hackathon',
-    include: 'slug,title,html,excerpt,tags,feature_image'
-  });
+  function truncate(string, limit) {
+    // TODO
+    return string;
+  }
 </script>
 
-{#await postsPromise then posts}
-  <div class="tileContainer" href="sad.css">
-    {#each posts as { title, excerpt, feature_image, slug }}
-      <a class="tile" href="hackathon/{slug}">
-        <div class="imgContainer">
-          <img src={feature_image} alt="nie dziala :(" />
-        </div>
-        <div class="contentContainer">
-          <div class="content">
-            <h5>{title}</h5>
-            <div>{@html excerpt}</div>
-          </div>
-        </div>
-      </a>
-    {/each}
+<a class="tile" href="/hackathon/{slug}">
+  <div class="img" style="background-image: url({img})" />
+  <div class="content">
+    <h3 class="title">{title}</h3>
+    <div class="excerpt">{@html truncate(excerpt, 120)}</div>
   </div>
-{/await}
+</a>
 
 <style>
-  h5 {
-    color: var(--color-light);
-  }
-
-  .tileContainer {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: var(--margin-mobile);
-  }
-
   .tile {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: row;
+    --img-size: 25vw;
+    --bg: rgba(255, 255, 255, 0.1);
+    --bg-hover: rgba(255, 255, 255, 0.2);
     overflow: hidden;
+    display: grid;
+    grid-template-columns: var(--img-size) 1fr;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: var(--bg);
+    transition: background-color 100ms;
     text-decoration: none;
     color: var(--color-light);
-    background-color: rgba(255, 255, 255, 0.1);
-    width: 100%;
-    height: 150px;
-    padding: 10px;
-    margin: 10px auto;
-    border-radius: 10px;
   }
-
   .tile:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--bg-hover);
   }
 
-  .imgContainer {
-    height: 100%;
-  }
-
-  img {
+  .img {
     border-radius: 10px;
-    width: 100%;
-    min-width: 130px;
-    height: 100%;
-  }
-
-  .contentContainer {
-    height: 100%;
-    width: 80%;
-    padding: 0 10px;
+    height: var(--img-size);
+    width: var(--img-size);
+    background-size: cover;
   }
 
   .content {
-    display: block;
-    width: 100%;
+    height: 100%;
+    padding: 5px 15px;
+  }
+  .title {
+    color: var(--color-light);
+    margin-bottom: 5px;
   }
 
   @media (min-width: 600px) {
-    .tileContainer {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: flex-start;
-    }
-
     .tile {
-      width: 210px;
-      height: 350px;
-      display: block;
-      margin: 20px;
+      --img-size: 153.333px;
+      grid-template-columns: 1fr;
+      grid-template-rows: var(--img-size) 1fr;
     }
-
-    .imgContainer {
-      height: 165px;
-      width: 165px;
+    .content {
+      height: 100%;
+      padding: 5px;
+    }
+    .title {
+      margin-top: 10px;
     }
   }
 </style>

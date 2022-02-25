@@ -1,53 +1,50 @@
 <script>
   import { api } from '$lib/API.js';
+  import Post from '$lib/Components/Post.svelte';
   import Tile from '$lib/Components/Tile.svelte';
 
   const pagePromise = api.pages.read({
     slug: 'hackathon-index',
-    include: 'title,html'
+    fields: ['title', 'html']
   });
-  export const postsPromise = api.posts.browse({
+  const postsPromise = api.posts.browse({
     filter: 'tag:hackathon',
-    include: 'slug,title,html,custom_excerpt,excerpt,tags'
+    include: ['tags']
   });
 </script>
 
-<br />
-<br />
+<div class="wrapper">
+  {#await pagePromise then { title, html }}
+    <Post {title} content={html} />
+  {/await}
 
-<div class="wall">
-    <section class="post">
-      {#await pagePromise then { title, html }}
-        <h3>{@html title}</h3>
-        {@html html}
-      {/await}
-    </section>
-
-  <Tile />
+  <div class="wall">
+    {#await postsPromise then posts}
+      {#each posts as { slug, feature_image, title, excerpt }}
+        <Tile {slug} img={feature_image} {title} {excerpt} />
+      {/each}
+    {/await}
+  </div>
 </div>
 
 <style>
-  h3 {
-    color: var(--color-light);
-  }
-  .wall {
-    overflow: hidden;
+  .wrapper {
+    max-width: 600px;
     position: relative;
-    color: var(--color-light);
+    left: 50%;
+    transform: translateX(-50%);
   }
 
-  .post {
-    color: var(--color-light);
-    margin: var(--margin-mobile);
-    display: block;
-    width: 800px;
+  .wall {
+    display: grid;
+    row-gap: 20px;
+    column-gap: 20px;
+    margin: 20px;
+    grid-template-columns: 1fr;
   }
-
   @media (min-width: 600px) {
     .wall {
-      display: flex;
-      align-content: center;
-      flex-direction: column;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 </style>
