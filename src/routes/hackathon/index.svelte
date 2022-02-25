@@ -4,7 +4,7 @@
     return {
       props: {
         page: await getPage('hackathon-index'),
-        posts: await getPosts('hackathon')
+        posts: await getPosts(['hackathon'])
       }
     };
   }
@@ -20,7 +20,7 @@
   {page}
   tileGroups={[
     {
-      title: 'Software',
+      title: 'Artykuły',
       posts
     }
   ]}

@@ -31,10 +31,20 @@ export const getPage = async slug => {
   return await getPost(slug, api.pages);
 };
 
-export const getPosts = async tag => {
+function createFilter(tags) {
+  let filter = 'tags:[';
+  tags.forEach(tag => {
+    filter += tag + ',';
+  });
+  filter = filter.slice(0, -1); // remove last comma
+  filter += ']';
+  return filter;
+}
+
+export const getPosts = async tags => {
   try {
     const posts = await api.posts.browse({
-      filter: `tag:${tag}`,
+      filter: createFilter(tags),
       include: ['tags']
     });
     return posts.map(post => ({
