@@ -6,6 +6,7 @@
 
 <div class="post">
   {#if img}<img src={img} alt="" />{/if}
+  <br>
   <h3 class="title">{title}</h3>
   <div class="ghost">
     {@html content}

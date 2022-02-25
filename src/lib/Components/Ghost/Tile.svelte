@@ -13,62 +13,90 @@
   }
 </script>
 
-<a sveltekit:prefetch href="{endpoint}/{slug}" class="tile">
-  <div class="img" style="background-image: url({img})" />
-  <div class="content">
-    <h3 class="title">{title}</h3>
-    <div class="excerpt">{@html truncate(excerpt, 120)}</div>
-  </div>
+<a
+  data-component
+  class="smol-css-grid"
+  style="--min: 22ch; --gap: 2rem;"
+  sveltekit:prefetch
+  href="{endpoint}/{slug}"
+>
+  <li data-component class="smol-card-component">
+    <div class="wrapper"><img src={img} alt="" /></div>
+    <h3>{title}</h3>
+    <p>{@html truncate(excerpt, 100)}.</p>
+  </li>
 </a>
 
 <style>
-  .tile {
-    --img-size: 25vw;
-    --bg: rgba(255, 255, 255, 0.1);
-    --bg-hover: rgba(255, 255, 255, 0.2);
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: var(--img-size) 1fr;
-    border-radius: 10px;
-    padding: 10px;
-    width: 100%;
-    background-color: var(--bg);
-    transition: background-color 100ms;
+  /* Box sizing rules */
+  * {
     text-decoration: none;
-    color: var(--color-light);
   }
-  .tile:hover {
-    background-color: var(--bg-hover);
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
-  .img {
+  .wrapper {
+    display: block;
     border-radius: 10px;
-    height: var(--img-size);
-    width: var(--img-size);
-    background-size: cover;
+    overflow: hidden;
   }
 
-  .content {
-    height: 100%;
-    padding: 5px 15px;
-  }
-  .title {
-    color: var(--color-light);
-    margin-bottom: 5px;
+  /***
+ 🟣 SmolCSS Snippet Styles
+ */
+
+  .smol-css-grid {
+    --min: 20ch;
+    --gap: 1rem;
+
+    display: grid;
+    grid-gap: var(--gap);
+    grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
   }
 
-  @media (min-width: 600px) {
-    .tile {
-      --img-size: 153.333px;
-      grid-template-columns: 1fr;
-      grid-template-rows: var(--img-size) 1fr;
-    }
-    .content {
-      height: 100%;
-      padding: 5px;
-    }
-    .title {
-      margin-top: 10px;
-    }
+  .smol-css-grid:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .smol-card-component {
+    --img-ratio: 2/2;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+  }
+
+  /* Soon we can replace this with: gap: 1rem; */
+  .smol-card-component > * + * {
+    margin-top: 1rem;
+  }
+
+  .smol-card-component > .wrapper {
+    aspect-ratio: var(--img-ratio);
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.35);
+  }
+
+  .smol-card-component > :not(img) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .smol-card-component > :not(img):first-child {
+    margin-top: 1rem;
+  }
+
+  /* Enhanced `:not()` accepts a selector list,
+but as a fallback you can chain `:not()` instead */
+  .smol-card-component > :last-of-type:not(img, h2, h3, h4) {
+    margin-bottom: 1rem;
+  }
+
+  .smol-card-component > :not(h2, h3, h4) {
+    font-size: 0.9rem;
   }
 </style>
