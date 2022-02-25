@@ -20,6 +20,9 @@
 </a>
 
 <style>
+  .tile :global(*) {
+    font-size: 0.75rem;
+  }
   .tile {
     --img-size: 25vw;
     --bg: rgba(255, 255, 255, 0.1);
