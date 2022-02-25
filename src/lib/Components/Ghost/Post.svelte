@@ -18,6 +18,6 @@
     left: 50%;
     transform: translateX(-50%);
     padding: 20vh 20px 20px 20px;
-    max-width: 600px;
+    max-width: var(--w-content);
   }
 </style>
