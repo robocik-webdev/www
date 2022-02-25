@@ -7,12 +7,7 @@
 </div>
 
 <style>
-  /* div {
-    z-index: -1;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  } */
+  div {
+    min-height: 100vh;
+  }
 </style>

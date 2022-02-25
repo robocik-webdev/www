@@ -15,10 +15,10 @@
 
 <style>
   .wrapper {
-    max-width: 600px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     padding: 0 0 10vh 0;
+    max-width: 600px;
   }
 </style>
