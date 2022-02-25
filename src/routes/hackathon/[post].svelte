@@ -1,29 +1,28 @@
 <script context="module">
+  import { api } from '$lib/API.js';
   export async function load({ params }) {
+    const post = await api.posts.read({
+      slug: params.post,
+      fields: ['title', 'html']
+    });
     return {
       props: {
-        slug: params.post
+        title: post.title,
+        content: post.html
       }
     };
   }
 </script>
 
 <script>
-  import { api } from '$lib/API.js';
   import Post from '$lib/Components/Post.svelte';
 
-  export let slug;
-
-  const postPromise = api.posts.read({
-    slug: slug,
-    fields: ['title', 'html']
-  });
+  export let title;
+  export let content;
 </script>
 
 <div class="wrapper">
-  {#await postPromise then { title, html }}
-    <Post {title} content={html} />
-  {/await}
+  <Post {title} {content} />
 </div>
 
 <style>
