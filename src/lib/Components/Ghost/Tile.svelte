@@ -17,7 +17,7 @@
   <div class="img" style="background-image: url({img})" />
   <div class="content">
     <h3 class="title">{title}</h3>
-    <div class="excerpt">{@html truncate(excerpt, 120)}</div>
+    <div class="excerpt">{@html truncate(excerpt, 100)}</div>
   </div>
 </a>
 
