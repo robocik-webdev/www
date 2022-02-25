@@ -3,7 +3,7 @@
   export async function load() {
     return {
       props: {
-        page: await getPage('hackathon-index'),
+        page: await getPage('rekrutacja-index'),
         marketing: await getPosts(['rekrutacja-marketing']),
         techniczni: await getPosts([
           'rekrutacja-techniczni-software',
@@ -27,11 +27,13 @@
   tileGroups={[
     {
       title: 'Marketing',
-      posts: marketing
+      posts: marketing,
+      endpoint: '/rekrutacja/marketing'
     },
     {
       title: 'Techniczni',
-      posts: techniczni
+      posts: techniczni,
+      endpoint: '/rekrutacja/techniczni'
     }
   ]}
 />

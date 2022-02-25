@@ -21,7 +21,8 @@
   tileGroups={[
     {
       title: 'Artykuły',
-      posts
+      posts,
+      endpoint: '/hackathon'
     }
   ]}
 />

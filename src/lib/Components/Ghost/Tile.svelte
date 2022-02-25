@@ -3,6 +3,7 @@
   export let img;
   export let title;
   export let excerpt;
+  export let endpoint;
 
   function truncate(string, limit) {
     // TODO
@@ -10,7 +11,7 @@
   }
 </script>
 
-<a sveltekit:prefetch href="/hackathon/{slug}" class="tile">
+<a sveltekit:prefetch href="{endpoint}/{slug}" class="tile">
   <div class="img" style="background-image: url({img})" />
   <div class="content">
     <h3 class="title">{title}</h3>
