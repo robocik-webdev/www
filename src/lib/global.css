@@ -120,7 +120,3 @@ h6 {
     font-size: 1.1rem;
   }
 }
-
-.content--post * {
-  color: var(--color-light);
-}

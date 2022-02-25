@@ -10,7 +10,7 @@
   }
 </script>
 
-<a class="tile" href="/hackathon/{slug}">
+<a sveltekit:prefetch href="/hackathon/{slug}" class="tile">
   <div class="img" style="background-image: url({img})" />
   <div class="content">
     <h3 class="title">{title}</h3>
