@@ -47,5 +47,6 @@
 
   .container-content {
     grid-column: 2;
+    margin-right: 15px;
   }
 </style>
