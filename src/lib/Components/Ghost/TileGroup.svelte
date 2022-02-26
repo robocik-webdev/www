@@ -16,15 +16,12 @@
 
 <style>
   .tiles {
-    display: grid;
-    row-gap: 20px;
-    column-gap: 20px;
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    display: flex;
   }
   @media (min-width: 600px) {
-    .tiles {
-      grid-template-columns: repeat(3, 1fr);
-    }
   }
   .title {
     color: var(--color-light);
