@@ -11,9 +11,21 @@
     }
     return string;
   }
+
+  let scroll;
+  function saveScroll() {
+    sessionStorage.setItem('scroll', scroll);
+  }
 </script>
 
-<a class="wrapper" sveltekit:prefetch href="{endpoint}/{slug}">
+<svelte:window bind:scrollY={scroll} />
+
+<a
+  sveltekit:prefetch
+  class="wrapper"
+  href="{endpoint}/{slug}"
+  on:click={saveScroll}
+>
   <img src={img} alt="" class="img-item" />
   <div class="container-content">
     <h3 class="title">{title}</h3>
