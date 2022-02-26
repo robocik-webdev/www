@@ -16,6 +16,6 @@
     }
   ]}
 />
-<Background color={'#206297'}>
-  <slot />
-</Background>
+
+<Background color={'#206297'} />
+<slot />

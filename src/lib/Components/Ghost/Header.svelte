@@ -39,17 +39,21 @@
       PWr Diving Crew
     </a>
     <div class="button menu" class:visible={nav} on:click={toggleMenu}>
-      <img
-        src="/icon{opened ? '/close_light.svg' : '/menu_light.svg'}"
-        alt="menu"
-      />
+      <img src="/icon/{opened ? 'close_light' : 'menu_light'}.svg" alt="menu" />
     </div>
   </header>
 
   {#if nav}
     <nav class:opened>
       {#each nav as { title, endpoint }}
-        <a class="box item" class:inverted href={endpoint}>{title}</a>
+        <a
+          class="box item"
+          class:inverted
+          href={endpoint}
+          on:click={toggleMenu}
+        >
+          {title}
+        </a>
       {/each}
     </nav>
   {/if}
@@ -89,7 +93,7 @@
     top: 0;
     display: grid;
     place-items: center;
-    width: 50px;
+    width: var(--header-h);
     height: 100%;
     transition: transform var(--t-fast);
   }
@@ -151,6 +155,5 @@
     margin-top: var(--header-margin);
     padding: 10px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.1);
   }
 </style>
