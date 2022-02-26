@@ -1,13 +1,10 @@
-* {
-  box-sizing: border-box;
-  font-family: 'Raleway', sans-serif;
-}
-
 :root {
   --color-main: #132142;
   --color-complement: #1f9baa;
   --color-light: #fff;
   --color-dark: #000;
+  --scroll-thumb: rgba(255, 255, 255, 0.75);
+  --scroll-track: rgba(0, 0, 0, 0.2);
   --t-rapid: 0.15s;
   --t-fast: 0.25s;
   --t-normal: 0.5s;
@@ -15,37 +12,31 @@
   --t-slug: 3s;
   --margin-mobile: 20px;
   --margin-pc: 10vw;
+  --content-w: 60ch;
+  --header-h: 50px;
+  --header-margin: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--scroll-track);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--scroll-thumb);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
 }
 
 body {
+  overflow: overlay;
   margin: 0;
-}
-
-section {
-  padding: 20px;
-}
-section.dark {
-  padding: 40px 20px;
-  background-color: var(--color-main);
-}
-section.dark * {
-  color: var(--color-light);
-}
-
-@media (min-width: 600px) {
-  section {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    padding: 40px 0;
-  }
-  section.dark {
-    padding: 40px 0;
-  }
-}
-
-img {
-  display: block;
-  width: 100%;
 }
 
 h1,
@@ -57,66 +48,86 @@ h6,
 p {
   margin: 0;
   padding: 0;
-  color: var(--color-main);
 }
-
-p {
-  margin: 10px 0;
-  line-height: 1.5;
-}
-
-button {
-  cursor: pointer;
-}
-
 h1 {
   margin: 10px 0 25px 0;
   font-weight: 900;
-  font-size: 1.6rem;
+  font-size: clamp(1.6rem, 2vw, 2.5rem);
 }
 h1 span {
   margin: 10px 0;
   font-size: 1.3em;
 }
 h2 {
-  font-size: 1.4rem;
+  font-size: clamp(1.4rem, 2vw, 1.7rem);
 }
 h3 {
-  font-size: 1.2rem;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
 }
 h4 {
-  font-size: 1.15rem;
+  font-size: clamp(1.15rem, 2vw, 1.3rem);
 }
 h5 {
-  font-size: 1.1rem;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
 }
 h6 {
-  font-size: 0.8rem;
+  font-size: clamp(0.8rem, 2vw, 1rem);
 }
-* {
-  font-size: 0.95rem;
+p {
+  margin: 10px 0;
+  line-height: 1.5;
 }
 
+img {
+  display: block;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+section {
+  padding: 1rem;
+  color: var(--color-main);
+}
+section.dark {
+  padding: 40px 20px;
+  background-color: var(--color-main);
+}
+section.dark * {
+  color: var(--color-light);
+}
 @media (min-width: 600px) {
-  h1 {
-    font-size: 2.5rem;
+  section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 40px 0;
   }
-  h2 {
-    font-size: 1.7rem;
+  section.dark {
+    padding: 40px 0;
   }
-  h3 {
-    font-size: 1.5rem;
-  }
-  h4 {
-    font-size: 1.3rem;
-  }
-  h5 {
-    font-size: 1.25rem;
-  }
-  h6 {
-    font-size: 1rem;
-  }
-  * {
-    font-size: 1.1rem;
-  }
+}
+
+.box {
+  --bg: rgba(255, 255, 255, 0.1);
+  --bg-hov: rgba(255, 255, 255, 0.2);
+  --bg-inv: rgba(0, 0, 0, 1);
+  border-radius: 10px;
+  background-color: var(--bg);
+  transition: background-color var(--t-normal), filter var(--t-normal);
+}
+.box * {
+  color: var(--color-light);
+}
+.box:hover {
+  background-color: var(--bg-hov);
+}
+.box.inverted {
+  filter: invert();
+  background-color: var(--bg-inv) !important;
+}
+
+.ghost * {
+  color: var(--color-light);
 }

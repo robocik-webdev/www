@@ -1,26 +1,53 @@
-<script>
-  import { api } from '$lib/API.js';
-
-  const pagePromise = api.pages.read({
-    slug: 'hackathon-index',
-    include: 'title,html'
-  });
-  const postsPromise = api.posts.browse({
-    filter: 'tag:hackathon',
-    include: 'slug,title,html,custom_excerpt,excerpt,tags'
-  });
+<script context="module">
+  import { getPage, getPosts } from '$lib/API.js';
+  export async function load() {
+    return {
+      props: {
+        page: await getPage('hackathon-index'),
+        posts: await getPosts(['hackathon'])
+      }
+    };
+  }
 </script>
 
-{#await pagePromise then { title, html }}
-  <h3>{title}</h3>
-  {@html html}
-{/await}
+<script>
+  import { MetaTags, JsonLd } from 'svelte-meta-tags';
+  import { arrow } from '$lib/Components/Ghost/header.js';
+  import Page from '$lib/Components/Ghost/Page.svelte';
+  export let page;
+  export let posts;
+  $arrow = null;
+</script>
 
-{#await postsPromise then posts}
-  {#each posts as { title, html }}
-    <div>
-      <h5>{title}</h5>
-      {@html html}
-    </div>
-  {/each}
-{/await}
+<MetaTags
+  title="KN Robocik Hackathon"
+  description="Hackathon organizowany przez Koło Naukowe Automatyki i Robotyki „Robocik”"
+  openGraph={{
+    url: 'http://www.robocik.pwr.edu.pl/hackathon',
+    title: 'KN Robocik Hackathon',
+    description:
+      'Hackathon organizowany przez Koło Naukowe Automatyki i Robotyki „Robocik”',
+    images: [
+      { url: 'http://robocik.pwr.edu.pl/static/img/timeline/robosub.webp' }
+    ]
+  }}
+/>
+
+<JsonLd
+  schema={{
+    '@type': 'Organization',
+    url: 'http://robocik.pwr.edu.pl/',
+    logo: 'http://robocik.pwr.edu.pl/static/favicon.png'
+  }}
+/>
+
+<Page
+  {page}
+  tileGroups={[
+    {
+      title: 'Artykuły',
+      posts,
+      endpoint: '/hackathon'
+    }
+  ]}
+/>
