@@ -25,7 +25,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    padding: 0 0 10vh 0;
+    padding: 0 1rem 3rem 1rem;
     max-width: var(--content-w);
   }
 </style>

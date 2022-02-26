@@ -26,39 +26,50 @@
   href="{endpoint}/{slug}"
   on:click={saveScroll}
 >
-  <img src={img} alt="" class="img-item" />
-  <div class="container-content">
-    <h3 class="title">{title}</h3>
+  {#if img}<img src={img} alt="" />{/if}
+  <div class="text">
+    <h4 class="title">{title}</h4>
     <p class="content">{@html truncate(excerpt, 100)}</p>
   </div>
 </a>
 
 <style>
   .wrapper {
-    --min: 15ch;
-    display: grid;
-    grid-template-columns: 1fr, 3fr;
-    column-gap: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
-    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
     border-radius: 10px;
-    margin-bottom: 15px;
+    padding: 1rem;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.1);
   }
-
   .wrapper:hover {
     background-color: rgba(255, 255, 255, 0.2);
   }
 
-  .img-item {
+  img {
+    --max: 10ch;
     aspect-ratio: 1/1;
     object-fit: fill;
-    padding: 20px;
-    grid-column: 1;
-    filter: drop-shadow(0 0 0.25rem rgb(23, 23, 23));
+    border-radius: 10px;
+    padding-right: 1rem;
+    max-width: var(--max);
+    box-shadow: 0 0 0.25rem rgb(23, 23, 23);
   }
 
-  .container-content {
-    grid-column: 2;
-    margin-right: 15px;
+  .text {
+    color: var(--color-light);
+  }
+
+  @media (min-width: 60ch) {
+    .wrapper {
+      flex-direction: column;
+    }
+    img {
+      --max: 100%;
+      padding-right: 0;
+    }
+    .text {
+      padding-top: 1rem;
+    }
   }
 </style>

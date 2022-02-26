@@ -13,8 +13,6 @@
 
 <nav class:opened={$opened}>
   <ul>
-    <li><a href="/hackathon">Hackathon</a></li>
-    <li><a href="/rekrutacja">Rekrutacja</a></li>
     {#each menu as item}
       <li
         on:click={() => {
@@ -34,6 +32,7 @@
     >
       {@html $lang.menu_partners}
     </li>
+    <li><a href="/rekrutacja">{@html $lang[`menu_recruitment`]}</a></li>
   </ul>
   <div class="lang">
     <img
@@ -69,7 +68,8 @@
     margin: 0;
     padding: 0;
   }
-  li {
+  li,
+  a {
     cursor: pointer;
     margin-bottom: 20px;
     list-style: none;
@@ -104,7 +104,8 @@
       display: flex;
       align-items: center;
     }
-    li {
+    li,
+    a {
       margin: 0;
       margin-right: 20px;
       font-size: 1.1rem;

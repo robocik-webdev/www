@@ -1,5 +1,4 @@
 <script>
-  import '$lib/global.css';
   import { MetaTags, JsonLd } from 'svelte-meta-tags';
   import Waves from '$lib/Components/Waves.svelte';
   import Vehicle from '$lib/Components/Vehicle.svelte';

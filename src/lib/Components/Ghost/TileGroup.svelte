@@ -15,15 +15,19 @@
 </div>
 
 <style>
-  .tiles {
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    display: flex;
-  }
-  @media (min-width: 600px) {
-  }
   .title {
+    margin: 2rem 0 1rem 0;
     color: var(--color-light);
+  }
+  .tiles {
+    --gap: 1rem;
+    display: grid;
+    grid-gap: var(--gap);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 60ch) {
+    .tiles {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 </style>

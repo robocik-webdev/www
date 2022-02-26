@@ -156,4 +156,7 @@
     padding: 10px;
     width: 100%;
   }
+  nav * {
+    color: var(--color-light);
+  }
 </style>
