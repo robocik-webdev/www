@@ -1,7 +1,9 @@
 <script>
-  import { arrow } from './header.js';
+  import { arrow } from '$lib/Components/Ghost/header.js';
 
   export let nav;
+
+  $: href = $arrow ? $arrow : '/';
 
   let opened = false;
 
@@ -26,12 +28,7 @@
 
 <div class="wrapper">
   <header class="box" class:inverted class:visible={up}>
-    <a
-      sveltekit:prefetch
-      class="button arrow"
-      class:visible={$arrow}
-      href={$arrow}
-    >
+    <a sveltekit:prefetch class="button arrow" class:visible={$arrow} {href}>
       <img src="/icon/prev_light.svg" alt="arrow back" />
     </a>
     <a sveltekit:prefetch class="logo" href="/">
