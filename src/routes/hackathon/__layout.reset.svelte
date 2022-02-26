@@ -5,6 +5,6 @@
 </script>
 
 <Header />
-<Background color={'#4b277a'}>
-  <slot />
-</Background>
+
+<Background color={'#4b277a'} />
+<slot />
