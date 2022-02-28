@@ -1,29 +1,18 @@
 <script>
-  import { arrow } from '$lib/Ghost/header.js';
   export let slug;
   export let img;
   export let title;
   export let excerpt;
-  export let endpoint;
+  export let path;
 
   function truncate(string, limit) {
-    return string.length > limit ? string.substring(0, limit) + '...' : string;
-  }
-
-  let scroll;
-  function saveScroll() {
-    sessionStorage.setItem('scroll', scroll);
+    return string && string.length > limit
+      ? string.substring(0, limit) + '...'
+      : string;
   }
 </script>
 
-<svelte:window bind:scrollY={scroll} />
-
-<a
-  sveltekit:prefetch
-  class="box wrapper"
-  href="{endpoint}/{slug}"
-  on:click={saveScroll}
->
+<a sveltekit:prefetch class="box wrapper" href="{path}/{slug}">
   {#if img}<img src={img} alt="" />{/if}
   <div class="text" class:img>
     <h4 class="title">{title}</h4>

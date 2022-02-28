@@ -2,14 +2,14 @@
   import Tile from '$lib/Ghost/Tile.svelte';
   export let title;
   export let posts;
-  export let endpoint;
+  export let path;
 </script>
 
 <div class="wrapper">
   <h2 class="title">{title}</h2>
   <div class="tiles">
     {#each posts as post}
-      <Tile {...post} {endpoint} />
+      <Tile {...post} {path} />
     {/each}
   </div>
 </div>

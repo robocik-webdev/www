@@ -11,13 +11,9 @@
 </script>
 
 <script>
-  import { arrow } from '$lib/Ghost/header.js';
   import Page from '$lib/Ghost/Page.svelte';
-
   export let page;
   export let marketing;
-
-  $arrow = '/rekrutacja';
 </script>
 
 <Page
@@ -26,7 +22,7 @@
     {
       title: 'Stanowiska',
       posts: marketing,
-      endpoint: '/rekrutacja/marketing'
+      path: '/rekrutacja/marketing'
     }
   ]}
 />

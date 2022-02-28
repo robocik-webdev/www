@@ -1,95 +1,59 @@
 <script>
-  import { slide, scale } from 'svelte/transition';
-  import { circInOut, backOut } from 'svelte/easing';
-  import { goto } from '$app/navigation';
-  import { arrow } from '$lib/Ghost/header.js';
+  import Nav from '$lib/Ghost/Nav.svelte';
+  import { page } from '$app/stores';
 
   export let nav;
-  let opened = false;
+  let navVisible;
+  let navOpen;
+  $: menuIcon = `/icon/${navOpen ? 'close_light' : 'menu_light'}.svg`;
+  function toggleNav() {
+    navOpen = !navOpen;
+  }
 
-  let scrolled = 0;
-  let scrolledPrev = 0;
-  let scrolledUp = true;
+  $: path = $page.url.pathname;
+  $: href = path.substring(0, path.lastIndexOf('/'));
+
+  let scroll = 0;
+  let scrollPrev = 0;
+  let visible = true;
   $: {
-    scrolledUp = scrolled > scrolledPrev;
-    scrolledPrev = scrolled;
+    visible = scroll > scrollPrev; // scrolled up
+    scrollPrev = scroll;
   }
 
   let threshold = 120;
-  $: inverted = scrolled >= threshold;
-
-  function toggleMenu() {
-    opened = !opened;
-  }
-  function closeMenu() {
-    opened = false;
-  }
+  $: inverted = scroll >= threshold;
 
   $: returnIcon = (() => {
     if (!nav) return 'prev_light.svg';
     const home = nav.find(item => item.home == true);
-    return $arrow == home.endpoint ? 'home_light.svg' : 'prev_light.svg';
+    return href == home.path ? 'home_light.svg' : 'prev_light.svg';
   })();
-
-  function handleReturn() {
-    const href = $arrow;
-    $arrow = null;
-    goto(href);
-  }
 </script>
 
-<svelte:window bind:scrollY={scrolled} on:scroll={closeMenu} />
+<svelte:window bind:scrollY={scroll} />
 
 <div class="wrapper">
-  <header class="box" class:visible={scrolledUp} class:inverted>
-    <button
+  <header class="box" class:visible class:inverted>
+    <a
       sveltekit:prefetch
-      class="arrow"
-      class:visible={$arrow}
-      disabled={!$arrow}
-      on:click={handleReturn}
+      class="button arrow"
+      class:visible={href}
+      disabled={href}
+      {href}
     >
       <img src="/icon/{returnIcon}" alt="arrow back" />
-    </button>
+    </a>
     <a sveltekit:prefetch class="logo" href="/">
       <img src="/img/logo.svg" alt="logo" />
       PWr Diving Crew
     </a>
-    <button class="menu" class:visible={nav} on:click={toggleMenu}>
-      <img src="/icon/{opened ? 'close_light' : 'menu_light'}.svg" alt="menu" />
+    <button class="button menu" class:visible={navVisible} on:click={toggleNav}>
+      <img src={menuIcon} alt="menu" />
     </button>
   </header>
 
-  {#if nav}
-    <nav>
-      {#each nav as { title, endpoint, hidden }, i}
-        {#if opened && !hidden}
-          <a
-            class="box item"
-            href={endpoint}
-            on:click={toggleMenu}
-            in:slide={{ delay: i * 100, duration: 200, easing: backOut }}
-            out:slide={{
-              delay: (nav.length - 1 - i) * 50,
-              duration: 200,
-              easing: circInOut
-            }}
-          >
-            <span
-              in:scale={{ delay: i * 100, duration: 500, easing: backOut }}
-              out:scale={{
-                delay: (nav.length - 1 - i) * 50,
-                duration: 200,
-                easing: circInOut
-              }}
-            >
-              {title}
-            </span>
-          </a>
-        {/if}
-      {/each}
-    </nav>
-  {/if}
+  <Nav {nav} bind:visible={navVisible} bind:open={navOpen} />
 </div>
 
 <style>
@@ -133,7 +97,7 @@
     display: none;
   }
 
-  button {
+  .button {
     position: absolute;
     top: 0;
     display: grid;
@@ -145,7 +109,7 @@
     transition: transform var(--t-fast);
     background-color: transparent;
   }
-  button img {
+  .button img {
     height: 45%;
   }
   .arrow {
@@ -156,7 +120,7 @@
     right: 0;
     transform: translateX(100%);
   }
-  button.visible {
+  .button.visible {
     transform: translateX(0);
   }
 
@@ -176,34 +140,5 @@
   .logo img {
     height: 50%;
     margin-right: 10px;
-  }
-
-  nav {
-    --width: 60%;
-    overflow: hidden;
-    position: absolute;
-    top: var(--header-h);
-    right: 0;
-    display: grid;
-    place-items: center;
-    grid-gap: var(--header-margin);
-    margin-top: var(--header-margin);
-    width: var(--width);
-    transform-origin: top right;
-  }
-  .item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    font-size: 20px;
-    border-radius: 10px;
-    height: var(--header-h);
-    width: 100%;
-    background-color: var(--color-light);
-    box-shadow: var(--shadow);
-  }
-  .item * {
-    color: var(--color-dark);
   }
 </style>

@@ -13,15 +13,11 @@
 </script>
 
 <script>
-  import { arrow } from '$lib/Ghost/header.js';
   import Page from '$lib/Ghost/Page.svelte';
-
   export let page;
   export let software;
   export let elektronika;
   export let konstrukcja;
-
-  $arrow = '/rekrutacja';
 </script>
 
 <Page
@@ -30,17 +26,17 @@
     {
       title: 'Software',
       posts: software,
-      endpoint: '/rekrutacja/techniczni'
+      path: '/rekrutacja/techniczni'
     },
     {
       title: 'Elektronika',
       posts: elektronika,
-      endpoint: '/rekrutacja/techniczni'
+      path: '/rekrutacja/techniczni'
     },
     {
       title: 'Konstrukcja',
       posts: konstrukcja,
-      endpoint: '/rekrutacja/techniczni'
+      path: '/rekrutacja/techniczni'
     }
   ]}
 />

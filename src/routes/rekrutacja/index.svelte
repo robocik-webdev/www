@@ -15,14 +15,12 @@
 
 <script>
   import { MetaTags, JsonLd } from 'svelte-meta-tags';
-  import { arrow } from '$lib/Ghost/header.js';
   import Page from '$lib/Ghost/Page.svelte';
   export let page;
   export let marketing;
   export let software;
   export let elektronika;
   export let konstrukcja;
-  $arrow = null;
 </script>
 
 <MetaTags
@@ -52,22 +50,22 @@
     {
       title: 'Marketing',
       posts: marketing,
-      endpoint: '/rekrutacja/marketing'
+      path: '/rekrutacja/marketing'
     },
     {
       title: 'Software',
       posts: software,
-      endpoint: '/rekrutacja/techniczni'
+      path: '/rekrutacja/techniczni'
     },
     {
       title: 'Elektronika',
       posts: elektronika,
-      endpoint: '/rekrutacja/techniczni'
+      path: '/rekrutacja/techniczni'
     },
     {
       title: 'Konstrukcja',
       posts: konstrukcja,
-      endpoint: '/rekrutacja/techniczni'
+      path: '/rekrutacja/techniczni'
     }
   ]}
 />

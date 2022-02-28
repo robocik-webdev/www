@@ -45,7 +45,7 @@
     {
       title: 'Posty',
       posts,
-      endpoint: '/hackathon'
+      path: '/hackathon'
     }
   ]}
 />

@@ -6,20 +6,19 @@
 <Header
   nav={[
     {
-      hidden: true,
       home: true,
       title: 'Rekrutacja',
-      endpoint: '/rekrutacja'
+      path: '/rekrutacja'
     },
     {
       title: 'Marketing',
-      icon: '/rekrutacja/marketing.svg',
-      endpoint: '/rekrutacja/marketing'
+      path: '/rekrutacja/marketing',
+      icon: '/rekrutacja/marketing.svg'
     },
     {
       title: 'Techniczni',
-      icon: '/rekrutacja/techniczni.svg',
-      endpoint: '/rekrutacja/techniczni'
+      path: '/rekrutacja/techniczni',
+      icon: '/rekrutacja/techniczni.svg'
     }
   ]}
 />
