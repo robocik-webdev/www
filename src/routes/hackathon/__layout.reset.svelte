@@ -1,6 +1,6 @@
 <script>
-  import Header from '$lib/Components/Ghost/Header.svelte';
-  import Background from '$lib/Components/Ghost/Background.svelte';
+  import Header from '$lib/Ghost/Header.svelte';
+  import Background from '$lib/Ghost/Background.svelte';
 </script>
 
 <Header />

@@ -12,11 +12,9 @@
 
 <script>
   import { MetaTags, JsonLd } from 'svelte-meta-tags';
-  import { arrow } from '$lib/Components/Ghost/header.js';
-  import Page from '$lib/Components/Ghost/Page.svelte';
+  import Page from '$lib/Ghost/Page.svelte';
   export let page;
   export let posts;
-  $arrow = null;
 </script>
 
 <MetaTags
@@ -45,7 +43,7 @@
   {page}
   tileGroups={[
     {
-      title: 'Artykuły',
+      title: 'Posty',
       posts,
       endpoint: '/hackathon'
     }

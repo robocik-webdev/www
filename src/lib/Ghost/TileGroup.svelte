@@ -1,5 +1,5 @@
 <script>
-  import Tile from '$lib/Components/Ghost/Tile.svelte';
+  import Tile from '$lib/Ghost/Tile.svelte';
   export let title;
   export let posts;
   export let endpoint;

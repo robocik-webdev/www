@@ -11,10 +11,12 @@
 </script>
 
 <script>
-  import { arrow } from '$lib/Components/Ghost/header.js';
-  import Page from '$lib/Components/Ghost/Page.svelte';
+  import { arrow } from '$lib/Ghost/header.js';
+  import Page from '$lib/Ghost/Page.svelte';
+
   export let page;
   export let marketing;
+
   $arrow = '/rekrutacja';
 </script>
 

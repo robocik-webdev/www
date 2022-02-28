@@ -111,23 +111,42 @@ section.dark * {
 
 .box {
   --bg: rgba(255, 255, 255, 0.1);
-  --bg-hov: rgba(255, 255, 255, 0.2);
-  --bg-inv: rgba(0, 0, 0, 1);
+  --bg-hover: rgba(255, 255, 255, 0.2);
+  position: relative;
   border-radius: 10px;
   background-color: var(--bg);
-  transition: background-color var(--t-normal), filter var(--t-normal);
 }
 .box * {
   color: var(--color-light);
 }
-.box:hover {
-  background-color: var(--bg-hov);
+
+/* background gradient transition */
+.box::after {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: linear-gradient(125deg, transparent 0%, var(--bg-hover) 100%);
+  transition: opacity var(--t-fast);
 }
-.box.inverted {
-  filter: invert();
-  background-color: var(--bg-inv) !important;
+.box:hover::after {
+  opacity: 1;
 }
 
 .ghost * {
   color: var(--color-light);
+}
+.ghost p {
+  margin: 1rem 0;
+}
+.ghost h2 {
+  margin-top: 2rem;
+}
+.ghost h3 {
+  margin-top: 1.5rem;
 }

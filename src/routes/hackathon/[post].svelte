@@ -10,8 +10,8 @@
 </script>
 
 <script>
-  import { arrow } from '$lib/Components/Ghost/header.js';
-  import Post from '$lib/Components/Ghost/Post.svelte';
+  import { arrow } from '$lib/Ghost/header.js';
+  import Post from '$lib/Ghost/Post.svelte';
   export let post;
   $arrow = '/hackathon';
 </script>

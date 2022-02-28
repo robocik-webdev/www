@@ -1,4 +1,5 @@
 <script>
+  import { arrow } from '$lib/Ghost/header.js';
   export let slug;
   export let img;
   export let title;
@@ -6,10 +7,7 @@
   export let endpoint;
 
   function truncate(string, limit) {
-    if (string.length > limit) {
-      return string.substring(0, limit) + '...';
-    }
-    return string;
+    return string.length > limit ? string.substring(0, limit) + '...' : string;
   }
 
   let scroll;
@@ -22,14 +20,16 @@
 
 <a
   sveltekit:prefetch
-  class="wrapper"
+  class="box wrapper"
   href="{endpoint}/{slug}"
   on:click={saveScroll}
 >
   {#if img}<img src={img} alt="" />{/if}
-  <div class="text">
+  <div class="text" class:img>
     <h4 class="title">{title}</h4>
-    <p class="content">{@html truncate(excerpt, 100)}</p>
+    {#if excerpt != '#'}
+      <p class="content">{@html truncate(excerpt, 100)}</p>
+    {/if}
   </div>
 </a>
 
@@ -40,24 +40,25 @@
     border-radius: 10px;
     padding: 1rem;
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  .wrapper:hover {
-    background-color: rgba(255, 255, 255, 0.2);
   }
 
   img {
     --max: 10ch;
+    --shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
     aspect-ratio: 1/1;
-    object-fit: fill;
+    object-fit: cover;
     border-radius: 10px;
-    padding-right: 1rem;
     max-width: var(--max);
-    box-shadow: 0 0 0.25rem rgb(23, 23, 23);
+    box-shadow: var(--shadow);
   }
 
   .text {
     color: var(--color-light);
+    margin: 0;
+    padding: 0;
+  }
+  .text.img {
+    padding-left: 1rem;
   }
 
   @media (min-width: 60ch) {
@@ -66,10 +67,10 @@
     }
     img {
       --max: 100%;
-      padding-right: 0;
     }
-    .text {
-      padding-top: 1rem;
+    .text.img {
+      padding-left: 0;
+      padding-top: 1.5rem;
     }
   }
 </style>
