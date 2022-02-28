@@ -24,11 +24,11 @@
 </script>
 
 <MetaTags
-  title="KN Robocik Rekrutacja"
+  title="KN Robocik - Rekrutacja"
   description="Rekrutacja do Koła Naukowego Automatyki i Robotyki „Robocik”"
   openGraph={{
     url: 'http://www.robocik.pwr.edu.pl/rekrutacja',
-    title: 'KN Robocik Rekrutacja',
+    title: 'KN Robocik - Rekrutacja',
     description: 'Rekrutacja do Koła Naukowego Automatyki i Robotyki „Robocik”',
     images: [
       { url: 'http://robocik.pwr.edu.pl/static/img/timeline/robosub.webp' }

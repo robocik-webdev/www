@@ -10,14 +10,12 @@ export const api = new GhostContentAPI({
 
 export const getPost = async (slug, endpoint = api.posts) => {
   try {
-    const post = await endpoint.read({
-      slug,
-      fields: ['feature_image', 'title', 'html']
-    });
+    const post = await endpoint.read({ slug });
     return {
       img: post.feature_image,
       title: post.title,
-      content: post.html
+      content: post.html,
+      excerpt: post.excerpt
     };
   } catch (err) {
     return {

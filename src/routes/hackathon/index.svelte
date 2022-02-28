@@ -18,11 +18,11 @@
 </script>
 
 <MetaTags
-  title="KN Robocik Hackathon"
+  title="KN Robocik - Hackathon"
   description="Hackathon organizowany przez Koło Naukowe Automatyki i Robotyki „Robocik”"
   openGraph={{
     url: 'http://www.robocik.pwr.edu.pl/hackathon',
-    title: 'KN Robocik Hackathon',
+    title: 'KN Robocik - Hackathon',
     description:
       'Hackathon organizowany przez Koło Naukowe Automatyki i Robotyki „Robocik”',
     images: [

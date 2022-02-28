@@ -10,8 +10,11 @@
 </script>
 
 <script>
+  import Meta from '$lib/Ghost/Meta.svelte';
   import Post from '$lib/Ghost/Post.svelte';
   export let post;
 </script>
+
+<Meta subtitle="Rekrutacja" data={post} />
 
 <Post {...post} />

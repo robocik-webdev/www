@@ -11,10 +11,13 @@
 </script>
 
 <script>
+  import Meta from '$lib/Ghost/Meta.svelte';
   import Page from '$lib/Ghost/Page.svelte';
   export let page;
   export let marketing;
 </script>
+
+<Meta subtitle="Rekrutacja" data={page} />
 
 <Page
   {page}
