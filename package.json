@@ -8,7 +8,6 @@
     "package": "svelte-kit package"
   },
   "devDependencies": {
-    "@originjs/vite-plugin-content": "^1.0.1",
     "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
     "@tryghost/content-api": "^1.6.0",

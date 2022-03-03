@@ -1,29 +1,7 @@
 <script>
   import { langChoice } from '$lib/lang.js';
   import { onMount, onDestroy } from 'svelte';
-  import csv from '$lib/data/team.csv';
-
-  function json() {
-    const keys = csv.shift();
-    let people = [];
-    for (const p of csv) {
-      let person = {};
-      for (let [i, key] of keys.entries()) {
-        const locale = key.match(/eng|pl/);
-        if (locale) {
-          if (locale == $langChoice) {
-            key = key.replace(`_${locale}`, '');
-          } else continue;
-        }
-        const value = p[i].split(';');
-        person[key] = value.length == 1 ? value[0] : value;
-      }
-      people.push(person);
-    }
-    return people;
-  }
-
-  let team = json();
+  import team from '$lib/data/team.json';
 
   const time = 6; // s
   const fps = 25;
@@ -116,18 +94,18 @@
         <img src={t.photo} alt="crew member" />
         <h2 class="name">{t.name} {t.surname}</h2>
 
-        {#if Array.isArray(t.division)}
+        {#if Array.isArray(t.division[$langChoice])}
           <div class="division">
-            {#each t.division as d}
+            {#each t.division[$langChoice] as d}
               <h3>{d}</h3>
             {/each}
           </div>
         {:else}
-          <h3 class="division">{t.division}</h3>
+          <h3 class="division">{t.division[$langChoice]}</h3>
         {/if}
 
-        {#if t.specialty}
-          <p class="specialty">{t.specialty}</p>
+        {#if t.specialty[$langChoice]}
+          <p class="specialty">{t.specialty[$langChoice]}</p>
         {/if}
 
         <div class="contact">
@@ -143,8 +121,8 @@
           {/if}
         </div>
 
-        {#if t.quote}
-          <p class="quote">{t.quote}</p>
+        {#if t.quote[$langChoice]}
+          <p class="quote">{t.quote[$langChoice]}</p>
         {/if}
       </div>
     {/each}
