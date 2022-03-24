@@ -115,7 +115,7 @@
 
   <div class="docs">
     <img src="/img/tech/docs.webp" alt="blurry text" />
-    <a href="http://robocik.pwr.edu.pl/docs">
+    <a sveltekit:prefetch href="http://robocik.pwr.edu.pl/docs" rel="external">
       <span>{@html $lang.menu_tech}</span>
     </a>
   </div>
