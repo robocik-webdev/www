@@ -1,10 +1,8 @@
 <script>
   import Sidebar from '$lib/Docs/Sidebar.svelte';
   import Content from '$lib/Docs/Content.svelte';
-  import Navbar from '$lib/Docs//Navbar.svelte';
 </script>
 
-<Navbar />
 <div class="main">
   <Sidebar />
   <Content />

@@ -1,12 +1,14 @@
 <script>
-  import { hidden } from '../header.js';
-  import { opened, picState } from '../sidebar.js';
+  import { hidden } from '$lib/header.js';
+  import { opened, picState } from '$lib/sidebar.js';
 
   $: if ($hidden) $opened = false;
 
   function showSidebar() {
     $opened = !$opened;
-    $picState = !$opened ? './rsc/Logo/menu.svg' : './rsc/Logo/close.svg';
+    $picState = !$opened
+      ? '/img/docs/Logo/menu.svg'
+      : '/img/docs/Logo/close.svg';
   }
 </script>
 
@@ -16,7 +18,7 @@
       <a class="navbar__logo--link" href="http://robocik.pwr.edu.pl/">
         <img
           class="navbar__logo--link--img1"
-          src="rsc/Logo/logo.svg"
+          src="/img/docs/Logo/logo.svg"
           alt="logo"
         />
         <h1 class="navbar__logo--link--txt">PWr Diving Crew</h1>
@@ -27,7 +29,7 @@
         class="navbar__menu--link--img2"
         class:opened={$opened}
         src={$picState}
-        alt="( ͡° ͜ʖ ͡°)"
+        alt="it bwoke :'("
         on:click={showSidebar}
       />
     </div>
@@ -35,10 +37,13 @@
 </div>
 
 <style>
+  h1 {
+    margin: 0;
+  }
   div.navbar {
     z-index: 2;
     top: 0;
-    background-color: var(--text-color);
+    background-color: var(--color-main);
     width: 100%;
     height: 55px;
     position: static;
@@ -66,7 +71,7 @@
     align-items: center;
     height: 100%;
     text-decoration: none;
-    width: 250px;
+    width: 350px;
   }
 
   .navbar__logo--link--img1 {
@@ -78,9 +83,12 @@
   }
 
   .navbar__logo--link--txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: 12px;
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 250;
     color: #fff;
   }
 

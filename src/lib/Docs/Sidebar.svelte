@@ -1,14 +1,16 @@
 <script>
-  import { scrollto } from '../utils.js';
-  import { lang } from '../content.js';
-  import { hidden } from '../header.js';
-  import { opened, picState } from '../sidebar.js';
+  import { scrollto } from '$lib/utils.js';
+  import { lang } from '$lib/content.js';
+  import { hidden } from '$lib/header.js';
+  import { opened, picState } from '$lib/sidebar.js';
 
   $: if ($hidden) $opened = false;
 
   function showSidebar() {
     $opened = !$opened;
-    $picState = !$opened ? './rsc/Logo/menu.svg' : './rsc/Logo/close.svg';
+    $picState = !$opened
+      ? '/img/docs/Logo/menu.svg'
+      : '/img/docs/Logo/close.svg';
   }
 
   let sidebar = [
@@ -32,7 +34,7 @@
     'SoftwareDesign',
     'ExternalInterfaces',
     'Security',
-    'Experience',
+    'Experience'
   ];
 </script>
 
@@ -233,7 +235,7 @@
     position: fixed;
     width: 280px;
     height: calc(100% - 55px);
-    background-color: var(--background-color);
+    background-color: var(--color-light);
     transition: transform 400ms;
   }
 
@@ -247,14 +249,14 @@
     margin: auto;
     padding: 3px 10px;
     display: flex;
-    color: var(--text-color);
+    color: var(--color-dark);
     text-decoration: none;
     cursor: pointer;
   }
 
   .sidebar li:hover {
-    background-color: var(--text-color);
-    color: var(--background-color);
+    background-color: var(--color-main);
+    color: var(--color-light);
   }
 
   .sidebar__smallOne {

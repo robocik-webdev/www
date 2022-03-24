@@ -1,6 +1,6 @@
 <script>
   import { lang } from '$lib/content.js';
-  let img = '/img/docs';
+  let img = '/img/docs/images';
 </script>
 
 <div class="wrapper">
