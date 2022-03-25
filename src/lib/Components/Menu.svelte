@@ -32,7 +32,11 @@
     >
       {@html $lang.menu_partners}
     </li>
-    <li><a href="/rekrutacja">{@html $lang[`menu_recruitment`]}</a></li>
+    <li>
+      <a sveltekit:prefetch href="/rekrutacja">
+        {@html $lang[`menu_recruitment`]}
+      </a>
+    </li>
   </ul>
   <div class="lang">
     <img

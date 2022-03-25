@@ -26,6 +26,6 @@ export function randomElem(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-export function scrollto(id) {
-  scrollTo({ element: id, duration: 400, offset: -50 });
+export function scrollto(id, offset = -50) {
+  scrollTo({ element: id, duration: 400, offset });
 }
