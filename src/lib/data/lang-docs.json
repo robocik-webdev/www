@@ -2,7 +2,7 @@
   "eng": {
     "reportsummaryHeader": "1. Report Summary",
     "organizationchartHeader": "2. Organization Chart and Task Distribution",
-    "vechicledesignHeader": "3. Vehicle Design",
+    "vehicledesignHeader": "3. Vehicle Design",
     "systemdesignHeader": "3.1 System Design",
     "mechanicaldesignHeader": "3.2 Mechanical Design of the Vehicle",
     "mechanicaldesignprocessHeader": "3.2.1 Mechanical Design Process",

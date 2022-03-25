@@ -1,288 +1,107 @@
 <script>
   import { scrollto } from '$lib/utils.js';
-  import { lang } from '$lib/content.js';
-  import { hidden } from '$lib/header.js';
-  import { opened, picState } from '$lib/sidebar.js';
+  import { lang } from '$lib/Docs/lang.js';
+  import { opened } from '$lib/Docs/sidebar.js';
 
-  $: if ($hidden) $opened = false;
-
-  function showSidebar() {
+  function toggleSidebar() {
     $opened = !$opened;
-    $picState = !$opened
-      ? '/img/docs/Logo/menu.svg'
-      : '/img/docs/Logo/close.svg';
   }
 
-  let sidebar = [
-    'ReportSummary',
-    'OrganizationChart',
-    'VehicleDesign',
-    'SystemDesign',
-    'MechanicalDesign',
-    'MechanicalDesignProcess',
-    'Materials',
-    'ProductionMethods',
-    'PhysicalProperties',
-    'ElectronicDesign',
-    'ElectronicDesignProcess',
-    'PowerSupply',
-    'LogicControl',
-    'Sensors',
-    'Communication',
-    'VisionSystem',
-    'AlgorithmDesign',
-    'SoftwareDesign',
-    'ExternalInterfaces',
-    'Security',
-    'Experience'
+  const items = [
+    { depth: 0, title: 'ReportSummary' },
+    { depth: 0, title: 'OrganizationChart' },
+    { depth: 0, title: 'VehicleDesign' },
+    { depth: 1, title: 'SystemDesign' },
+    { depth: 1, title: 'MechanicalDesign' },
+    { depth: 2, title: 'MechanicalDesignProcess' },
+    { depth: 2, title: 'Materials' },
+    { depth: 2, title: 'ProductionMethods' },
+    { depth: 2, title: 'PhysicalProperties' },
+    { depth: 1, title: 'ElectronicDesign' },
+    { depth: 2, title: 'ElectronicDesignProcess' },
+    { depth: 3, title: 'PowerSupply' },
+    { depth: 3, title: 'LogicControl' },
+    { depth: 3, title: 'Sensors' },
+    { depth: 3, title: 'Communication' },
+    { depth: 3, title: 'VisionSystem' },
+    { depth: 2, title: 'AlgorithmDesign' },
+    { depth: 2, title: 'SoftwareDesign' },
+    { depth: 1, title: 'ExternalInterfaces' },
+    { depth: 0, title: 'Security' },
+    { depth: 0, title: 'Experience' }
   ];
 </script>
 
-<div class="wrapper" class:opened={$opened} on:click={showSidebar}>
-  <div class="sidebar">
-    <li
-      role="button"
-      on:click={() => {
-        scrollto('#' + sidebar[0]);
-      }}
-    >
-      {$lang.reportsummaryHeader}
-    </li>
-    <li
-      role="button"
-      on:click={() => {
-        scrollto('#' + sidebar[1]);
-      }}
-    >
-      {$lang.organizationchartHeader}
-    </li>
-    <li
-      role="button"
-      on:click={() => {
-        scrollto('#' + sidebar[2]);
-      }}
-    >
-      {$lang.vechicledesignHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallOne"
-      on:click={() => {
-        scrollto('#' + sidebar[3]);
-      }}
-    >
-      {$lang.systemdesignHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallOne"
-      on:click={() => {
-        scrollto('#' + sidebar[4]);
-      }}
-    >
-      {$lang.mechanicaldesignHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallTwo"
-      on:click={() => {
-        scrollto('#' + sidebar[5]);
-      }}
-    >
-      {$lang.mechanicaldesignprocessHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallTwo"
-      on:click={() => {
-        scrollto('#' + sidebar[6]);
-      }}
-    >
-      {$lang.materialsHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallTwo"
-      on:click={() => {
-        scrollto('#' + sidebar[7]);
-      }}
-    >
-      {$lang.productionmethodsHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallTwo"
-      on:click={() => {
-        scrollto('#' + sidebar[8]);
-      }}
-    >
-      {$lang.physicalpropertiesHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallOne"
-      on:click={() => {
-        scrollto('#' + sidebar[9]);
-      }}
-    >
-      {$lang.electronicdesignHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallTwo"
-      on:click={() => {
-        scrollto('#' + sidebar[10]);
-      }}
-    >
-      {$lang.electronicdesignprocessHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallThree"
-      on:click={() => {
-        scrollto('#' + sidebar[11]);
-      }}
-    >
-      {$lang.powersupplyHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallThree"
-      on:click={() => {
-        scrollto('#' + sidebar[12]);
-      }}
-    >
-      {$lang.logiccontrolHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallThree"
-      on:click={() => {
-        scrollto('#' + sidebar[13]);
-      }}
-    >
-      {$lang.sensorsHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallThree"
-      on:click={() => {
-        scrollto('#' + sidebar[14]);
-      }}
-    >
-      {$lang.communicationHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallThree"
-      on:click={() => {
-        scrollto('#' + sidebar[15]);
-      }}
-    >
-      {$lang.visionsystemHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallTwo"
-      on:click={() => {
-        scrollto('#' + sidebar[16]);
-      }}
-    >
-      {$lang.algorithmdesignHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallTwo"
-      on:click={() => {
-        scrollto('#' + sidebar[17]);
-      }}
-    >
-      {$lang.softwaredesignHeader}
-    </li>
-    <li
-      role="button"
-      class="sidebar__smallOne"
-      on:click={() => {
-        scrollto('#' + sidebar[18]);
-      }}
-    >
-      {$lang.externalinterfacesHeader}
-    </li>
-    <li
-      role="button"
-      on:click={() => {
-        scrollto('#' + sidebar[19]);
-      }}
-    >
-      {$lang.securityHeader}
-    </li>
-
-    <li
-      role="button"
-      on:click={() => {
-        scrollto('#' + sidebar[20]);
-      }}
-    >
-      {$lang.experienceHeader}
-    </li>
+<nav class:opened={$opened} on:click={toggleSidebar}>
+  <div class="wrapper">
+    {#each items as { depth, title }}
+      <li
+        role="button"
+        class={'depth--' + depth}
+        on:click={() => scrollto('#' + title, -70)}
+      >
+        {$lang[title.toLowerCase() + 'Header']}
+      </li>
+    {/each}
   </div>
-</div>
+</nav>
 
 <style>
-  .wrapper {
+  nav {
+    --header-height: 55px;
     overflow-y: auto;
-    flex: left;
+    z-index: 1;
     position: fixed;
-    width: 280px;
-    height: calc(100% - 55px);
+    top: var(--header-height);
+    padding: 1rem;
+    width: 100%;
+    height: calc(100% - var(--header-height));
     background-color: var(--color-light);
+    transform: translateX(100%);
     transition: transform 400ms;
   }
+  nav.opened {
+    transform: translateX(0);
+  }
 
-  .sidebar {
+  .wrapper {
     overflow-y: auto;
-    padding: 55px 0;
   }
 
-  .sidebar li {
-    display: block;
-    margin: auto;
-    padding: 3px 10px;
-    display: flex;
-    color: var(--color-dark);
-    text-decoration: none;
+  li {
     cursor: pointer;
+    display: block;
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
   }
-
-  .sidebar li:hover {
+  li:hover {
     background-color: var(--color-main);
     color: var(--color-light);
   }
-
-  .sidebar__smallOne {
-    padding-left: 3% !important;
+  li.depth--1 {
+    margin-left: 1rem;
+  }
+  li.depth--2 {
+    margin-left: 1.5rem;
+  }
+  li.depth--3 {
+    margin-left: 2rem;
   }
 
-  .sidebar__smallTwo {
-    padding-left: 6% !important;
-  }
-
-  .sidebar__smallThree {
-    padding-left: 9% !important;
-  }
-
-  @media (max-width: 1000px) {
-    .wrapper {
-      width: 100%;
-      transform: translateX(100%);
-    }
-
-    .wrapper.opened {
+  @media (min-width: 1000px) {
+    nav {
+      --width: 35%;
+      --header-height: 55px;
+      position: sticky;
+      height: calc(100vh - var(--header-height));
+      width: var(--width);
       transform: translateX(0);
     }
-
-    .sidebar {
-      padding: 10px 0;
+    li {
+      padding: 0.3rem 1rem;
     }
   }
 </style>

@@ -1,23 +1,29 @@
 <script>
+  import Header from '$lib/Docs/Header.svelte';
   import Sidebar from '$lib/Docs/Sidebar.svelte';
   import Content from '$lib/Docs/Content.svelte';
 </script>
 
-<div class="main">
-  <Sidebar />
-  <Content />
+<Header />
+
+<div class="wrapper">
+  <main>
+    <Sidebar />
+    <Content />
+  </main>
 </div>
 
 <style>
-  .main {
-    width: 1000px;
-    height: 100%;
-    margin: auto;
+  .wrapper {
+    --header-height: 55px;
+    display: flex;
+    justify-content: center;
+    margin-top: var(--header-height);
   }
-
-  @media (max-width: 1000px) {
-    .main {
-      width: 100%;
-    }
+  main {
+    --max-width: 1000px;
+    display: flex;
+    width: 100%;
+    max-width: var(--max-width);
   }
 </style>
