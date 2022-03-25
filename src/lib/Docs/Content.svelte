@@ -84,7 +84,7 @@
         </figure>
         <p>{@html $lang.materialsContent4}</p>
         <figure>
-          <img src="{img}/gripper_crosdiv.webp" alt="gripper crosdiv" />
+          <img src="{img}/gripper_crossection.webp" alt="gripper crosdiv" />
           <figcaption>Fig.10 - Mechanical gripper render.</figcaption>
         </figure>
         <!-- inne zdjęcie niż w docxie-->
