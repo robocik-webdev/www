@@ -76,6 +76,22 @@
       <h1>{@html $lang.partners_title}</h1>
       <p>{@html $lang.partners_text}</p>
 
+      <p>{@html $lang.partners_text_brochure}</p>
+      <div class="brochures">
+        <div class="file">
+          <a
+            href="https://drive.google.com/file/d/1Kne9tE6h_qbhRd6RwA9q6cPlMD5z6mtT/view?usp=sharing"
+            target="_blank"><img src="/icon/download.svg" alt="" />ENG</a
+          >
+        </div>
+        <div class="file">
+          <a
+            href="https://drive.google.com/file/d/1vgoWluqU-giMLhKhlXG3ZxIqI9atl6mE/view?usp=sharing"
+            target="_blank"><img src="/icon/download.svg" alt="" />PL</a
+          >
+        </div>
+      </div>
+
       {#each Object.keys(partners) as tier}
         <h2>{@html $lang[`partners_${tier}`]}</h2>
         <hr />
@@ -122,7 +138,7 @@
 
   h1,
   p {
-    margin-bottom: 40px;
+    margin-bottom: 1rem;
     text-align: center;
   }
 
@@ -192,5 +208,24 @@
     .icon img {
       width: 100%;
     }
+  }
+
+  .brochures {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  .file a {
+    display: flex;
+    align-items: center;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-complement);
+    color: var(--color-light);
+    text-decoration: none;
+  }
+  .file img {
+    margin-right: 0.5rem;
+    height: 80%;
   }
 </style>
