@@ -121,7 +121,7 @@
     "contact_location_1": "Politechnika Wrocławska",
     "contact_location_2": "Łukasiewicza 7/9, bud. B-9, p.40<br>50-371 Wrocław",
     "contact_email_title": "E-mail :",
-    "contact_email": "knrobocik@gmail.com",
+    "contact_email": "knrobocik@pwr.edu.pl",
     "contact_phone_title": "Kontakt telefoniczny :",
     "contact_phone_1": "Prezes Zarządu",
     "contact_phone_2": "Kornelia Głód <a href=\"tel:+48697993038\">+48 697 993 038</a>",
@@ -131,6 +131,7 @@
 
     "partners_title": "Nasi partnerzy",
     "partners_text": "Fundament naszego sukcesu.<br>Pomagają nam dostarczając części i nieocenioną wiedzę specjalistyczną.<br>Tylko dzięki nim mamy szansę konkurować z uczelniami światowej klasy.",
+    "partners_text_brochure": "Zapraszamy do zapoznania się z naszą broszurą 2021/2022:",
     "partners_platinum": "Platynowi patroni",
     "partners_gold": "Złoci patroni",
     "partners_silver": "Srebrni patroni"
@@ -267,6 +268,7 @@
 
     "partners_title": "Our partners",
     "partners_text": "Our partnes are the foundation of our success.<br>They gratuitously help us by providing both parts and invaluable know-how.<br>Only thanks to them we are able to compete with world's top universities.",
+    "partners_text_brochure": "Take a look at our 2021/2022 brochure:",
     "partners_platinum": "Platinum patrons",
     "partners_gold": "Gold patrons",
     "partners_silver": "Silver patrons"
