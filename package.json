@@ -12,8 +12,10 @@
     "@sveltejs/kit": "next",
     "@tryghost/content-api": "^1.6.0",
     "animejs": "^3.2.1",
+    "luxon": "^2.3.1",
     "prettier": "^2.5.1",
     "prettier-plugin-svelte": "^2.5.0",
+    "socket.io-client": "^4.4.1",
     "svelte": "^3.44.0",
     "svelte-meta-tags": "^2.3.0",
     "svelte-scrollto": "^0.2.0"
