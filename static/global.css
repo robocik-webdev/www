@@ -32,6 +32,7 @@
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
   font-size: clamp(0.95rem, 2vw, 1.1rem);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -149,4 +150,12 @@ section.dark * {
 }
 .ghost h3 {
   margin-top: 1.5rem;
+}
+
+.glass {
+  /* box-shadow: 0 0 2rem 100rem rgba(255, 255, 255, 0.15) inset; */
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* backdrop-filter: blur(20px); */
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.15);
+  background-color: #2e3442;
 }

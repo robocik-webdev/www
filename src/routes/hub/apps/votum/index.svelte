@@ -2,7 +2,7 @@
   export function load() {
     return {
       status: 308,
-      redirect: '/votum/admin/questions'
+      redirect: '/hub/apps/votum/questions'
     };
   }
 </script>
