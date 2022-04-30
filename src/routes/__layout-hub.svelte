@@ -22,8 +22,7 @@
 <script>
   import { goto } from '$app/navigation';
   import { onDestroy, onMount } from 'svelte';
-  import { io } from 'socket.io-client';
-  import { api, socket, saveUser, readUser } from '$lib/Hub/api';
+  import { socket, connect, saveUser, readUser } from '$lib/Hub/api';
 
   export let origin;
   export let loginPage;
@@ -34,11 +33,11 @@
     if (!loginPage) goto(`${loginPathname}?o=${origin}`);
   }
 
-  onMount(() => {
+  onMount(async () => {
     if (!token) {
       const user = readUser(window);
       if (user) {
-        $socket = io(api, { auth: { token: user.refreshToken } });
+        connect(user.refreshToken);
         $socket.on('connect_error', gotoLogin);
         saveUser(window, user);
       } else gotoLogin();
@@ -48,7 +47,13 @@
   onDestroy(() => $socket?.disconnect());
 </script>
 
-<div class="bg" />
+<svelte:head>
+  <style>
+    body {
+      background-color: var(--c-main);
+    }
+  </style>
+</svelte:head>
 
 <main>
   <slot />
@@ -58,20 +63,13 @@
   :root {
     --w: 50ch;
     --h-bar: 4rem;
-    --h: 3rem;
+    --h: 3.5rem;
     --t: cubic-bezier(0.85, 0, 0.15, 1);
-  }
-
-  .bg {
-    z-index: -1;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--color-main);
-    /* background: linear-gradient(165deg, rgb(22, 33, 67), rgb(32, 98, 151)); */
-    /* background-color: rgb(32, 98, 151); */
+    --c-main: var(--color-main);
+    --c-second: hsl(223, 49%, 32%);
+    --c-action: var(--color-complement);
+    --c-input: rgb(13, 20, 38);
+    --c-red: rgb(255, 80, 80);
   }
 
   main {

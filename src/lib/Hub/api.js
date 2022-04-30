@@ -1,19 +1,16 @@
 import { writable } from 'svelte/store';
 import { goto } from '$app/navigation';
+import { io } from 'socket.io-client';
 
-// export const api = 'http://192.168.1.17:8000';
-export const api = 'http://localhost:8000';
+// const api = 'http://localhost:8000';
+const api = 'http://192.168.1.10:8000';
+// const api = 'http://192.168.1.17:8000';
 
 export const socket = writable(null);
 export const me = writable(null);
 
-async function getPhoto() {
-  try {
-    const res = await fetch('https://picsum.photos/100.webp');
-    return await res.url;
-  } catch (err) {
-    return '/icon/hub/user.svg';
-  }
+export function connect(token) {
+  socket.set(io(api, { auth: { token } }));
 }
 
 export async function saveUser(window, user) {
@@ -21,7 +18,7 @@ export async function saveUser(window, user) {
     firstName: user.firstName,
     lastName: user.lastName,
     admin: user.adminUser,
-    photo: await getPhoto()
+    photo: user.photo
   });
   window.localStorage.setItem('user', JSON.stringify(user));
 }

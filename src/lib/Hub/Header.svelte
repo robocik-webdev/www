@@ -1,9 +1,9 @@
 <script>
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
+  import { edited } from '$lib/Hub/stores';
 
   import Menu from '$lib/Hub/Menu.svelte';
-
   import User from '$lib/Hub/User.svelte';
   import UserButton from '$lib/Hub/UserButton.svelte';
 
@@ -29,8 +29,8 @@
 </script>
 
 <header class="glass">
-  <div class="button left" on:click={handleButtonLeft}>
-    <img src="/icon/hub/{back ? 'back' : 'menu'}.svg" alt="menu" />
+  <div class="button left" on:click={handleButtonLeft} class:hidden={$edited}>
+    <span class="material-symbols-outlined">{back ? 'arrow_back' : 'menu'}</span>
   </div>
   <div class="logo">
     <img src="/img/logo.svg" alt="logo" />
@@ -53,6 +53,7 @@
 <style>
   header {
     z-index: 100;
+    overflow: hidden;
     position: fixed;
     top: 0.5rem;
     left: 50%;
@@ -72,6 +73,11 @@
     place-items: center;
     padding: 0.75rem 1rem;
     height: 100%;
+    transition: transform 200ms;
+  }
+  .hidden {
+    pointer-events: none;
+    transform: translateX(-100%);
   }
 
   .logo {

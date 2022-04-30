@@ -26,7 +26,7 @@
   {#if $me}
     <div class="buttons">
       {#if $me?.admin}
-        <ButtonSimple icon="/hub/admin.svg" alt="admin" onclick={() => goto('/hub/apps/votum')} />
+        <ButtonSimple icon="admin_panel_settings" onclick={() => goto('/hub/apps/votum')} />
       {/if}
       <UserButton bind:visible={userVisible} />
     </div>
@@ -53,10 +53,9 @@
     height: 100%;
   }
   .buttons {
-    display: grid;
-    grid-template-columns: 2.25rem 2.25rem;
-    place-items: center;
-    column-gap: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     padding: 0.5rem 0;
     height: 100%;
   }

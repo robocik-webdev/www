@@ -28,11 +28,9 @@
   }
   .wrapper {
     position: fixed;
-    top: 0;
-    left: 0;
     border-radius: 0 1rem 1rem 0;
     padding: 0.5rem;
     width: 80%;
-    height: 100vh;
+    height: 100%;
   }
 </style>

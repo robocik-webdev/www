@@ -4,12 +4,12 @@
   export let transparent = false;
 
   export let icon = null;
-  export let alt = null;
+
   export let onclick;
 </script>
 
 <button on:click|preventDefault={onclick} class="glass" class:square class:action class:transparent>
-  {#if icon}<img src="/icon{icon}" {alt} class:margin={$$slots.default} />{/if}
+  {#if icon}<span class="material-symbols-outlined" class:margin={$$slots.default}>{icon}</span>{/if}
   {#if $$slots.default}<slot />{/if}
 </button>
 
@@ -21,15 +21,15 @@
     border-radius: 1rem;
     border: none;
     width: 100%;
-    height: 3rem;
+    height: var(--h);
     color: #fff;
     font-size: 1.1rem;
   }
   .square {
-    width: 3rem;
+    aspect-ratio: 1 / 1;
   }
   .action {
-    background-color: var(--color-complement);
+    background-color: var(--c-action);
   }
   .transparent {
     background-color: rgba(0, 0, 0, 0);
@@ -37,11 +37,7 @@
     box-shadow: none;
   }
 
-  img {
-    height: 60%;
-    width: auto;
-  }
-  img.margin {
+  span.margin {
     margin-right: 0.5rem;
   }
 </style>

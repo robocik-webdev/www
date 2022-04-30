@@ -1,6 +1,7 @@
 <script>
   import { me, logout } from '$lib/Hub/api';
 
+  import UserPhoto from '$lib/Hub/UserPhoto.svelte';
   import Modal from '$lib/Hub/Modal.svelte';
   import Button from '$lib/Hub/Button.svelte';
 
@@ -9,15 +10,13 @@
 
 <Modal bind:visible>
   <div class="user">
-    <div class="photo">
-      <img src={$me?.photo} alt="user" />
-    </div>
+    <UserPhoto />
     <div class="info">
       <span class="name">{$me?.firstName} {$me?.lastName}</span>
       {#if $me?.admin}<small>Admin</small>{/if}
     </div>
   </div>
-  <Button action onclick={() => logout(window)}>Wyloguj</Button>
+  <Button action icon="logout" onclick={() => logout(window)}>Wyloguj</Button>
 </Modal>
 
 <style>
@@ -28,20 +27,6 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
-  }
-
-  .photo {
-    overflow: hidden;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    height: 3rem;
-    width: 3rem;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
-  }
-  .photo img {
-    height: calc(100% + 10px);
-    width: calc(100% + 10px);
   }
 
   .info {

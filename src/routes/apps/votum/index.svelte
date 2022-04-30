@@ -10,7 +10,12 @@
 <br />
 
 <small class="subtitle">Ciekawostka</small>
-<p>Naukowcy z Uniwersytetu nie wynaleźli absolutnie nic ciekawego.</p>
+<p>
+  "Out of this time also rose one of the most legendary of all Tamrielic figures, Ysgramor, from whom all Nordic kings
+  to this day are descended."<br />&nbsp;&nbsp;&nbsp;— Unknown,
+  <a href="https://elderscrolls.fandom.com/wiki/Pocket_Guide_to_the_Empire,_Third_Edition">Pocket Guide to the Empire</a
+  >
+</p>
 
 <style>
   * {

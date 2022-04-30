@@ -19,8 +19,7 @@
 <script>
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  import { io } from 'socket.io-client';
-  import { api, socket, me, saveUser } from '$lib/Hub/api';
+  import { connect, me, saveUser } from '$lib/Hub/api';
 
   import HeaderSimple from '$lib/Hub/HeaderSimple.svelte';
   import Input from '$lib/Hub/Input.svelte';
@@ -36,8 +35,7 @@
   export let error;
 
   function connectSocket() {
-    $socket = io(api, { auth: { token: user.refreshToken } });
-    error = 'dupa';
+    connect(user.refreshToken);
     saveUser(window, user);
     goto(`/${origin.replaceAll('-', '/')}`);
   }
@@ -45,11 +43,8 @@
   async function handleLogin() {
     try {
       user = await login(token);
-      error = 'what';
       connectSocket();
-      error = 'idk';
     } catch (err) {
-      error = 'ugh';
       error = err;
     }
   }
@@ -62,34 +57,28 @@
   $: if ($me) goto(`/${origin.replaceAll('-', '/')}`);
 </script>
 
-<div class="header">
-  <HeaderSimple title="Login" subtitle="Hub" center={true} />
-</div>
-
 <div class="wrapper">
-  {#if error}<span class="error">{error}</span>{/if}
-  <br /><br />
+  <HeaderSimple title="Login" subtitle="Hub" center={true} />
   <form>
-    <Input type="text" bind:value={token}>Token</Input>
+    <!-- <Input type="email" bind:value={email}>Email</Input> -->
+    <!-- <Input type="password" bind:value={password}>Hasło</Input> -->
+    <Input type="password" bind:value={token} {error}>Token</Input>
+    {#if !error}<br />{/if}
     <br /><br />
     <Button action onclick={handleLogin}>Zaloguj</Button>
   </form>
 </div>
 
 <style>
-  .header {
-    margin-top: 2rem;
-  }
-
   .wrapper {
     position: fixed;
-    bottom: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     padding: 1rem;
-    width: 100%;
+    width: 35ch;
+    transform: translate(-50%, -50%);
   }
-
-  .error {
-    color: rgb(255, 102, 102);
+  form {
+    margin-top: 4rem;
   }
 </style>

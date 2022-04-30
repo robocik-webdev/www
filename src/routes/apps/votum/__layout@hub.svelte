@@ -6,12 +6,12 @@
   items={[
     {
       href: '/apps/votum',
-      icon: '/hub/vote.svg',
+      icon: 'how_to_vote',
       title: 'Głosowanie'
     },
     {
       href: '/apps/votum/results',
-      icon: '/hub/poll.svg',
+      icon: 'leaderboard',
       title: 'Wyniki'
     }
   ]}

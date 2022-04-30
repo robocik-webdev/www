@@ -11,7 +11,7 @@
   import Button from '$lib/Hub/Button.svelte';
   import Input from '$lib/Hub/Input.svelte';
 
-  import { adminQuestions } from '$lib/Hub/store';
+  import { adminQuestions } from '$lib/Hub/stores';
 
   function getDate(iso) {
     return Date.now();
@@ -67,7 +67,7 @@
 
 {#if question}
   <h1 class="title">{question.title}</h1>
-  <Input bind:value={question.title}>Tytuł</Input>
+  <Input bind:value={question.title} edited>Tytuł</Input>
 
   <h3 class="subtitle">Głosowanie</h3>
   <Input type="date" bind:value={question.date}>Data</Input>
@@ -84,10 +84,10 @@
     {#each question.answers as answer, i}
       <div class="answer">
         <Input bind:value={answer.title} />
-        <Button square icon="/hub/trash.svg" alt="usuń" onclick={() => removeAnswer(i)} />
+        <Button square icon="delete" onclick={() => removeAnswer(i)} />
       </div>
     {/each}
-    <Button action onclick={addAnswer} icon="/hub/add.svg" alt="dodaj">Dodaj</Button>
+    <Button action onclick={addAnswer} icon="add">Dodaj</Button>
     <Input buttons type="number" bind:value={question.maxAnswers} min="1" step="1">Max do wyboru</Input>
   </div>
 {/if}
@@ -98,13 +98,14 @@
     color: #fff;
   }
   .title {
-    margin: 1rem 0;
+    margin: 6rem 0 1rem 0;
+    font-size: 2rem;
   }
   .subtitle {
-    margin-top: 2rem;
+    margin-top: 3rem;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     font-weight: 900;
   }
 

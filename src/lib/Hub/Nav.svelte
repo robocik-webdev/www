@@ -1,43 +1,69 @@
 <script>
+  import { fly } from 'svelte/transition';
   import { goto } from '$app/navigation';
 
   import { page } from '$app/stores';
-  $: pathname = $page.url.pathname;
+  import { edited } from '$lib/Hub/stores';
+
+  import ButtonGroup from '$lib/Hub/ButtonGroup.svelte';
+  import Button from '$lib/Hub/Button.svelte';
 
   export let items;
+
+  $: pathname = $page.url.pathname;
 </script>
 
-<nav class="glass">
-  {#each items as { href, icon, title }}
-    <div
-      role="button"
-      class="item"
-      on:click={() => (pathname != href ? goto(href) : () => {})}
-      class:current={pathname == href}
-    >
-      <div class="img">
-        <img src="/icon{icon}" alt={title} />
+{#if $edited}
+  <div class="controls" transition:fly={{ y: 50 }}>
+    <ButtonGroup>
+      <Button icon="close" onclick={() => {}}>Anuluj</Button>
+      <Button action icon="done" onclick={() => {}}>Zapisz</Button>
+    </ButtonGroup>
+  </div>
+{/if}
+
+{#if !$edited}
+  <nav class="glass" transition:fly={{ y: 50, duration: 200 }}>
+    {#each items as { href, icon, title }}
+      <div
+        role="button"
+        class="item"
+        on:click={() => (pathname != href ? goto(href) : () => {})}
+        class:current={pathname == href}
+      >
+        <div class="icon">
+          <span class="material-symbols-outlined">{icon}</span>
+        </div>
+        <small>{title}</small>
       </div>
-      <small>{title}</small>
-    </div>
-  {/each}
-</nav>
+    {/each}
+  </nav>
+{/if}
 
 <style>
-  nav {
+  nav,
+  .controls {
     position: fixed;
     bottom: 0.5rem;
     left: 50%;
-    display: flex;
-    justify-content: space-around;
-    border-radius: 1rem;
     width: calc(100% - 1rem);
-    height: var(--h-bar);
-    margin: auto;
     max-width: calc(var(--w) - 2rem);
+    margin: auto;
     transform: translateX(-50%);
   }
 
+  .controls {
+    z-index: 1000;
+    margin-bottom: 0.25rem;
+  }
+
+  nav {
+    z-index: 100;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 1rem;
+    height: var(--h-bar);
+  }
   .item {
     user-select: none;
     cursor: pointer;
@@ -48,14 +74,15 @@
     padding: 1.11rem;
     height: 100%;
   }
-
-  .img {
+  .icon {
+    display: flex;
+    justify-content: center;
     position: relative;
     width: 4rem;
     height: 100%;
     transition: width 100ms;
   }
-  .img::before {
+  .icon::before {
     z-index: -1;
     content: '';
     position: absolute;
@@ -64,19 +91,15 @@
     border-radius: 1rem;
     height: 100%;
     width: 100%;
-    background-color: var(--color-complement);
+    background-color: var(--c-action);
     opacity: 0;
     transform: translateX(-50%) scaleX(0);
     transition: opacity 200ms, transform 300ms;
   }
-  .item.current .img::before {
+  .item.current .icon::before {
     opacity: 1;
     transform: translateX(-50%) scaleX(1);
   }
-  img {
-    height: 100%;
-  }
-
   small {
     margin-top: 0.3rem;
     font-size: 0.8rem;

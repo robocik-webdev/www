@@ -28,6 +28,10 @@
   background-color: var(--scroll-thumb);
 }
 
+.material-symbols-outlined {
+  color: #fff;
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
@@ -157,5 +161,6 @@ section.dark * {
   /* background-color: rgba(0, 0, 0, 0.5); */
   /* backdrop-filter: blur(20px); */
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.15);
-  background-color: #2e3442;
+  /* background-color: #283d70; */
+  background-color: var(--c-second);
 }
