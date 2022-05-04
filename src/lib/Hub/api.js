@@ -3,8 +3,9 @@ import { goto } from '$app/navigation';
 import { io } from 'socket.io-client';
 
 // const api = 'http://localhost:8000';
-const api = 'http://192.168.1.10:8000';
-// const api = 'http://192.168.1.17:8000';
+// const api = 'http://192.168.1.10:8000';
+const api = 'http://192.168.1.17:8000';
+// const api = 'http://robocik-devtest.ddns.net:8000';
 
 export const socket = writable(null);
 export const me = writable(null);

@@ -34,7 +34,7 @@
   {:else if type == 'date'}
     <input {id} class:error class:edited bind:value type="date" />
   {:else if type == 'time'}
-    <input {id} class:error class:edited bind:value type="time" />
+    <input {id} class:error class:edited {step} bind:value type="time" />
   {:else if type == 'checkbox'}
     <div class="checkbox" class:error class:edited on:click={() => (value = !value)}>
       <input {id} bind:checked={value} type="checkbox" />

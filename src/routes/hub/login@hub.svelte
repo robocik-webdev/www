@@ -34,6 +34,8 @@
   export let token;
   export let error;
 
+  let waiting = false;
+
   function connectSocket() {
     connect(user.refreshToken);
     saveUser(window, user);
@@ -42,8 +44,10 @@
 
   async function handleLogin() {
     try {
+      waiting = true;
       user = await login(token);
       connectSocket();
+      waiting = false;
     } catch (err) {
       error = err;
     }
@@ -65,7 +69,9 @@
     <Input type="password" bind:value={token} {error}>Token</Input>
     {#if !error}<br />{/if}
     <br /><br />
-    <Button action onclick={handleLogin}>Zaloguj</Button>
+    <Button action onclick={handleLogin}>
+      {#if waiting}Łączenie...{:else}Zaloguj{/if}
+    </Button>
   </form>
 </div>
 

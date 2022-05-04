@@ -7,7 +7,7 @@
   export let onclick;
 </script>
 
-<div class="button" on:click={onclick} class:icon>
+<div role="button" class="button" on:click={onclick} class:icon>
   {#if src}
     <img {src} {alt} />
   {:else if icon}
@@ -23,6 +23,8 @@
   }
 
   .button {
+    user-select: none;
+    cursor: pointer;
     display: grid;
     place-items: center;
     aspect-ratio: 1 / 1;

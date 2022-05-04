@@ -6,91 +6,153 @@
 
 <script>
   import { socket } from '$lib/Hub/api';
-  // import { datetime } from 'luxon';
+  import { edited, debug, adminQuestions } from '$lib/Hub/stores';
+
+  import { copy } from '$lib/Hub/utils';
+  import { cancel, save } from '$lib/Hub/actions';
+
+  import { DateTime } from 'luxon';
+
   import ButtonGroup from '$lib/Hub/ButtonGroup.svelte';
   import Button from '$lib/Hub/Button.svelte';
   import Input from '$lib/Hub/Input.svelte';
-
-  import { adminQuestions } from '$lib/Hub/stores';
+  import { onMount } from 'svelte';
 
   function getDate(iso) {
-    return Date.now();
+    // yyyy-mm-dd
+    return DateTime.fromISO(iso).toISODate();
   }
   function getTime(iso) {
-    return Date.now();
+    // hh:mm:ss
+    return DateTime.fromISO(iso).toISOTime().split('.')[0];
   }
   function makeISO(date, time) {
-    return '';
+    // ISO 8601
+    return DateTime.fromISO(date + 'T' + time).toISO();
+  }
+
+  function removeAnswer(i) {
+    data.answers.splice(i,1);
+    data = data;
+  }
+  function addAnswer() {
+    data.answers.push({
+      id: null,
+      title: ''
+    });
+    data = data;
   }
 
   export let id;
+  let error;
 
-  let question;
-  let questionOriginal;
+  let dataOriginal;
+  let data;
+  $: $edited = JSON.stringify(data) != JSON.stringify(dataOriginal);
 
-  // TODO: generate ISO times with luxon
-  // $: question.openTime = datetime.
-  // $: question.closeTime = datetime.
+  $: $socket?.on('adminModifyQuestion',d=>console.log('mq',d))
+  $: $socket?.on('adminModifyAnswer',d=>console.log('ma',d))
+  $: $socket?.on('adminAddAnswer',d=>console.log('aa',d))
+  $: $socket?.on('adminRemoveAnswer',d=>console.log('ra',d))
 
-  $: {
-    console.log($adminQuestions);
-    if ($adminQuestions.length == 0) {
-      $socket?.emit('adminQuestions');
-    }
-    const q = $adminQuestions.find(q => q.id == id);
-    if (q) {
-      questionOriginal = {
-        title: q.title,
-        date: getDate(q.openTime),
-        timeOpen: getTime(q.openTime),
-        timeClose: getTime(q.closeTime),
-        maxAnswers: q.possibleAnswers,
-        answers: q.answers
-      };
-      console.log(JSON.stringify(question));
-      console.log(JSON.stringify(questionOriginal));
-      if (question && JSON.stringify(question) != JSON.stringify(questionOriginal)) {
-        // show modal for permission
+  $cancel = () => (data = copy(dataOriginal));
+  $save = async () => {
+    $socket.emit('adminModifyQuestion', {
+      id: id,
+      title: data.title,
+      openTime: makeISO(data.date, data.timeOpen),
+      closeTime: makeISO(data.date, data.timeClose),
+      showAnswers: data.showAnswers,
+      possibleAnswers: data.maxAnswers
+    });
+    // TODO: this is probably very unefficient
+    for (const answer of data.answers) {
+      const answerOriginal = dataOriginal.answers.find(d => d.id == answer.id)
+      if (answerOriginal) {
+        if (JSON.stringify(answer) != JSON.stringify(answerOriginal)) {
+          // modify existing questions
+          console.log('mod', answer);
+          $socket.emit('adminModifyAnswer', {
+            id: answer.id,
+            title: answer.title
+          });
+        }
       } else {
-        question = questionOriginal; // is this a copy or ref? XD
+        // add new questions
+        console.log('new', answer);
+        $socket.emit('adminAddAnswer', {
+          title: answer.title,
+          questionId: id
+        });
       }
     }
-  }
+    for (const answer of dataOriginal.answers) {
+      if (!data.answers.find(d => d.id == answer.id)) {
+        // remove removed questions
+        console.log('rem', answer);
+        $socket.emit('adminRemoveAnswer', {
+          id: answer.id
+        });
+      }
+    }
+    // dataOriginal = copy(data);
+  };
 
-  function removeAnswer(i) {}
-  function addAnswer() {}
-
+  // load data and forbid to refresh (workaround async refreshing)
+  // let loaded = false;
+  $: $socket?.emit('adminQuestions');
+  // TODO: find a different way of handling socket event refreshing, because this also refreshes when ANYTHING INSIDE changes (idea: make a function to call inside or make sure the socket is already connected)
   $: $socket?.on('adminQuestions', res => {
     $adminQuestions = res.data.questions;
+    console.log('why');
+    console.log($adminQuestions);
+    // if (!loaded) {
+      const q = $adminQuestions.find(q => q.id == id);
+      if (q) {
+        dataOriginal = {
+          title: q.title,
+          date: getDate(q.openTime),
+          timeOpen: getTime(q.openTime),
+          timeClose: getTime(q.closeTime),
+          showAnswers: q.showAnswers,
+          answers: q.answers,
+          maxAnswers: q.possibleAnswers
+        };
+        data = copy(dataOriginal);
+      } else {
+        error = 'Brak pytania o podanym ID!';
+      }
+    // }
+    // loaded = true;
   });
 </script>
 
-{#if question}
-  <h1 class="title">{question.title}</h1>
-  <Input bind:value={question.title} edited>Tytuł</Input>
+{#if data}
+  <h1 class="title">{data.title}</h1>
+  <Input bind:value={data.title}>Tytuł</Input>
 
   <h3 class="subtitle">Głosowanie</h3>
-  <Input type="date" bind:value={question.date}>Data</Input>
+  <Input type="date" bind:value={data.date}>Data</Input>
   <ButtonGroup>
-    <Input type="time" bind:value={question.timeOpen}>Otwarcie</Input>
-    <Input type="time" bind:value={question.timeClose}>Zamknięcie</Input>
+    <Input type="time" step={1} bind:value={data.timeOpen}>Otwarcie</Input>
+    <Input type="time" step={1} bind:value={data.timeClose}>Zamknięcie</Input>
   </ButtonGroup>
 
   <h3 class="subtitle">Wyniki</h3>
-  <Input type="checkbox" bind:value={question.showAnswers}>Pokaż wyniki</Input>
+  <Input type="checkbox" bind:value={data.showAnswers}>Pokaż wyniki</Input>
 
   <h3 class="subtitle">Odpowiedzi</h3>
   <div class="answers">
-    {#each question.answers as answer, i}
+    {#each data.answers as answer, i}
       <div class="answer">
         <Input bind:value={answer.title} />
         <Button square icon="delete" onclick={() => removeAnswer(i)} />
       </div>
     {/each}
     <Button action onclick={addAnswer} icon="add">Dodaj</Button>
-    <Input buttons type="number" bind:value={question.maxAnswers} min="1" step="1">Max do wyboru</Input>
+    <Input buttons type="number" bind:value={data.maxAnswers} min="1" step="1">Max do wyboru</Input>
   </div>
-{/if}
+{:else if error}{error}{/if}
 
 <style>
   .title,

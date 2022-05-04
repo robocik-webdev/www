@@ -1,11 +1,15 @@
 <script>
   import { socket } from '$lib/Hub/api';
-  import { edited, adminQuestions } from '$lib/Hub/stores';
+  import { edited, debug, adminQuestions } from '$lib/Hub/stores';
 
   import { DateTime } from 'luxon';
   import { onMount } from 'svelte';
+  import { fly } from 'svelte/transition';
 
   import Button from '$lib/Hub/Button.svelte';
+
+  import { copy } from '$lib/Hub/utils';
+  import { cancel, save } from '$lib/Hub/actions';
 
   function diff(time, now) {
     const pad = time => String(time).padStart(2, '0');
@@ -21,31 +25,36 @@
 
   let dataOriginal = [];
   let data = [];
-  let changes = [];
-  $: {
-    changes = data
-      .map((d, i) => {
-        if (d.showAnswers != dataOriginal[i].showAnswers) {
-          return { id: d.id, showAnswers: d.showAnswers };
-        }
-      })
-      .filter(d => d);
-  }
-  $: $edited = changes.length > 0;
-  $: console.log(changes);
-  // data.map(d => {
-  //   // @ts-ignore
-  //   if (d.showAnswers != dataOriginal.showAnswers) {
-  //     return { id: d.id, showAnswers: d.showAnswers };
-  //   }
-  // });
-  // @ts-ignore
-  // $: $edited = changes.find((c, i) => $adminQuestions[i].showAnswers != changes[i].showAnswers);
-  $: console.log('dataOriginal', data);
-  $: console.log('data', data);
-  $: console.log('changes', changes);
-  // $: console.log('edited', $edited);
+  $: $edited = data.find((d, i) => d.showAnswers != dataOriginal[i].showAnswers);
 
+  $cancel = () => (data = copy(dataOriginal));
+  $save = async () => {
+    for (const [i, { id, showAnswers }] of data.entries()) {
+      if (showAnswers != dataOriginal[i].showAnswers) {
+        $socket.emit('adminSetQuestionShowAnswers', { id, showAnswers });
+      }
+    }
+    dataOriginal = copy(data);
+    // $socket.emit('adminQuestions');
+  };
+
+  $: $socket?.on('adminSetQuestionShowAnswers', data => console.log(data));
+
+  // load data and forbid to refresh (workaround async refreshing)
+  let loaded = false;
+  $: $socket?.emit('adminQuestions');
+  $: $socket?.on('adminQuestions', res => {
+    res.data.questions.sort((a, b) => a.id - b.id);
+    $adminQuestions = res.data.questions;
+    if (!loaded) {
+      // show modal (or small info somewhere) to ask to accept changes?
+      dataOriginal = copy($adminQuestions);
+      data = copy($adminQuestions);
+      loaded = true;
+    }
+  });
+
+  // clock
   let now = DateTime.now();
   onMount(() => {
     const interval = setInterval(() => {
@@ -53,29 +62,6 @@
     }, 1000);
     return () => clearInterval(interval);
   });
-
-  // function toggleAnswers(id) {
-  //   $edited = !$edited;
-  //   data[id].showAnswers = !data[id].showAnswers;
-  // }
-
-  $: $socket?.emit('adminQuestions');
-  $: $socket?.on('adminQuestions', res => {
-    $adminQuestions = res.data.questions;
-    // if ($edited) {
-    //   // show modal to ask if changes
-    // }
-    dataOriginal = $adminQuestions.map(d => ({ ...d }));
-    data = $adminQuestions.map(d => ({ ...d }));
-    // console.log('data', data);
-    // dataOriginal = [...data];
-    // console.log('dataOriginal', dataOriginal);
-  });
-
-  // function save() {
-  //   $adminQuestions = [...data];
-  //   dataOriginal = [...data];
-  // }
 
   // debug
   let seed = 'seed';
@@ -89,7 +75,7 @@
 </script>
 
 {#each data as { id, title, openTime, closeTime, showAnswers }, i}
-  <div class="item">
+  <div class="item" in:fly={{ y: 20, duration: 300 + 300 * i }}>
     <a role="button" href="/hub/apps/votum/questions/{id}" sveltekit:prefetch>
       {#if diff(openTime, now)}
         <div class="info">Live in <b>{diff(openTime, now)}</b></div>
@@ -101,19 +87,27 @@
       <div class="title">{title}</div>
     </a>
     <div class="button">
-      <Button square action={showAnswers} icon="leaderboard" onclick={() => (showAnswers = !showAnswers)} />
+      <Button
+        square
+        action={showAnswers}
+        edited={showAnswers != dataOriginal[i].showAnswers}
+        icon="leaderboard"
+        onclick={() => (showAnswers = !showAnswers)}
+      />
     </div>
   </div>
 {/each}
 
-<button
-  on:click={() => {
-    seed = 'working...';
-    $socket.emit('adminSeedDatabase');
-  }}
->
-  {seed}
-</button>
+{#if $debug}
+  <button
+    on:click={() => {
+      seed = 'working...';
+      $socket.emit('adminSeedDatabase');
+    }}
+  >
+    {seed}
+  </button>
+{/if}
 
 <style>
   .item {

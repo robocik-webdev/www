@@ -1,9 +1,11 @@
 <script>
   import { me, logout } from '$lib/Hub/api';
+  import { debug } from '$lib/Hub/stores';
 
   import UserPhoto from '$lib/Hub/UserPhoto.svelte';
   import Modal from '$lib/Hub/Modal.svelte';
   import Button from '$lib/Hub/Button.svelte';
+  import Input from '$lib/Hub/Input.svelte';
 
   export let visible;
 </script>
@@ -16,6 +18,9 @@
       {#if $me?.admin}<small>Admin</small>{/if}
     </div>
   </div>
+  {#if $me?.admin}
+    <Input type="checkbox" bind:value={$debug}>Tryb deweloperski</Input><br />
+  {/if}
   <Button action icon="logout" onclick={() => logout(window)}>Wyloguj</Button>
 </Modal>
 

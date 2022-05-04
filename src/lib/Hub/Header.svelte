@@ -29,7 +29,7 @@
 </script>
 
 <header class="glass">
-  <div class="button left" on:click={handleButtonLeft} class:hidden={$edited}>
+  <div role="button" class="button left" on:click={handleButtonLeft} class:hidden={$edited}>
     <span class="material-symbols-outlined">{back ? 'arrow_back' : 'menu'}</span>
   </div>
   <div class="logo">
@@ -39,7 +39,7 @@
       {#if subtitle}<small class="subtitle">{subtitle}</small>{/if}
     </span>
   </div>
-  <div class="button right">
+  <div role="button" class="button right">
     <UserButton bind:visible={userVisible} />
   </div>
 </header>
@@ -68,6 +68,8 @@
   }
 
   .button {
+    user-select: none;
+    cursor: pointer;
     aspect-ratio: 1 / 1;
     display: grid;
     place-items: center;

@@ -3,7 +3,8 @@
   import { goto } from '$app/navigation';
 
   import { page } from '$app/stores';
-  import { edited } from '$lib/Hub/stores';
+  import { edited, saving } from '$lib/Hub/stores';
+  import { cancel, save } from '$lib/Hub/actions';
 
   import ButtonGroup from '$lib/Hub/ButtonGroup.svelte';
   import Button from '$lib/Hub/Button.svelte';
@@ -16,8 +17,18 @@
 {#if $edited}
   <div class="controls" transition:fly={{ y: 50 }}>
     <ButtonGroup>
-      <Button icon="close" onclick={() => {}}>Anuluj</Button>
-      <Button action icon="done" onclick={() => {}}>Zapisz</Button>
+      <Button icon="close" onclick={$cancel}>Anuluj</Button>
+      <Button
+        action
+        icon="done"
+        onclick={async () => {
+          $saving = true;
+          await $save();
+          $saving = false;
+        }}
+      >
+        {#if $saving}Zapisywanie...{:else}Zapisz{/if}
+      </Button>
     </ButtonGroup>
   </div>
 {/if}
