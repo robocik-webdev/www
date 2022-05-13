@@ -1,27 +1,45 @@
 <script>
-  import { me, logout } from '$lib/Hub/api';
-  import { debug } from '$lib/Hub/stores';
+  import { page } from '$app/stores';
+  import { goto } from '$app/navigation';
 
+  import { logout, disconnect } from '$lib/Hub/api';
+  import { sanitizePathname } from '$lib/Hub/utils';
+  import { me, debug } from '$lib/Hub/stores';
   import UserPhoto from '$lib/Hub/UserPhoto.svelte';
   import Modal from '$lib/Hub/Modal.svelte';
   import Button from '$lib/Hub/Button.svelte';
   import Input from '$lib/Hub/Input.svelte';
 
   export let visible;
+
+  let error;
+
+  async function handleLogout() {
+    try {
+      disconnect();
+      await logout();
+      // move to login page, but move back to current page after next login
+      const origin = sanitizePathname($page.url.pathname);
+      goto(`/hub/login?o=${origin}`);
+    } catch (err) {
+      error = err;
+    }
+  }
 </script>
 
 <Modal bind:visible>
   <div class="user">
     <UserPhoto />
     <div class="info">
-      <span class="name">{$me?.firstName} {$me?.lastName}</span>
+      <span class="name">{$me?.name} {$me?.surname}</span>
       {#if $me?.admin}<small>Admin</small>{/if}
     </div>
   </div>
   {#if $me?.admin}
     <Input type="checkbox" bind:value={$debug}>Tryb deweloperski</Input><br />
   {/if}
-  <Button action icon="logout" onclick={() => logout(window)}>Wyloguj</Button>
+  <Button action icon="logout" onclick={handleLogout}>Wyloguj</Button>
+  {#if error}{error}{/if}
 </Modal>
 
 <style>

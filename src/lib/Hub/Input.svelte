@@ -38,16 +38,16 @@
   {:else if type == 'checkbox'}
     <div class="checkbox" class:error class:edited on:click={() => (value = !value)}>
       <input {id} bind:checked={value} type="checkbox" />
-      {#if $$slots.default}<label for={id}><slot /></label>{/if}
+      {#if $$slots.default}<label for={id} on:click|preventDefault><slot /></label>{/if}
     </div>
   {:else if type == 'number'}
     <div class="number-wrapper">
-      {#if buttons}<Button square icon="remove" onclick={minus} />{/if}
+      {#if buttons}<Button square icon="remove" onclick={minus} disabled={value <= min} />{/if}
       <div class="number">
         <input {id} class:error class:edited class:center={buttons} {min} {max} {step} bind:value type="number" />
         {#if error}<span class="error-info">{error}</span>{/if}
       </div>
-      {#if buttons}<Button square icon="add" onclick={plus} />{/if}
+      {#if buttons}<Button square icon="add" onclick={plus} disabled={value >= max} />{/if}
     </div>
   {/if}
 

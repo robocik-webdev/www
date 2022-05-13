@@ -1,8 +1,7 @@
 <script>
   import { goto } from '$app/navigation';
 
-  import { me } from '$lib/Hub/api';
-
+  import { me } from '$lib/Hub/stores';
   import User from '$lib/Hub/User.svelte';
   import UserButton from '$lib/Hub/UserButton.svelte';
   import ButtonSimple from '$lib/Hub/ButtonSimple.svelte';

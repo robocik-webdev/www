@@ -1,15 +1,15 @@
 <script>
-  import { socket } from '$lib/Hub/api';
-  import { edited, debug, adminQuestions } from '$lib/Hub/stores';
-
-  import { DateTime } from 'luxon';
+  import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
   import { fly } from 'svelte/transition';
+  import { DateTime } from 'luxon';
 
-  import Button from '$lib/Hub/Button.svelte';
-
-  import { copy } from '$lib/Hub/utils';
+  import { api } from '$lib/Hub/api';
   import { cancel, save } from '$lib/Hub/actions';
+  import { copy } from '$lib/Hub/utils';
+  import { edited, debug, adminQuestions } from '$lib/Hub/stores';
+  import Button from '$lib/Hub/Button.svelte';
+  import Add from '$lib/Hub/Add.svelte';
 
   function diff(time, now) {
     const pad = time => String(time).padStart(2, '0');
@@ -23,93 +23,83 @@
     return null;
   }
 
+  async function fetchData() {
+    const res = await api('GET', '/votum/questions');
+    $adminQuestions = res.data.questions;
+    $adminQuestions.sort((a, b) => a.id - b.id);
+    dataOriginal = copy($adminQuestions);
+    data = copy($adminQuestions);
+  }
+
+  let now = DateTime.now();
+
   let dataOriginal = [];
   let data = [];
-  $: $edited = data.find((d, i) => d.showAnswers != dataOriginal[i].showAnswers);
+
+  // THIS CAUSES PROBLEMS
+  // $: $edited = data.find(({ showResults }, i) => showResults != dataOriginal[i].showResults);
+  // THIS IS FINE (why?)
+  $: if (data.find(({ showResults }, i) => showResults != dataOriginal[i].showResults)) {
+    $edited = true;
+  } else {
+    $edited = false;
+  }
 
   $cancel = () => (data = copy(dataOriginal));
-  $save = async () => {
-    for (const [i, { id, showAnswers }] of data.entries()) {
-      if (showAnswers != dataOriginal[i].showAnswers) {
-        $socket.emit('adminSetQuestionShowAnswers', { id, showAnswers });
+  $save = () => {
+    for (const [i, { id, showResults }] of data.entries()) {
+      if (showResults != dataOriginal[i].showResults) {
+        api('PATCH', `/votum/questions/${id}/showResults`, { showResults });
       }
     }
     dataOriginal = copy(data);
-    // $socket.emit('adminQuestions');
   };
+  const add = () => goto('/hub/apps/votum/questions/new');
 
-  $: $socket?.on('adminSetQuestionShowAnswers', data => console.log(data));
-
-  // load data and forbid to refresh (workaround async refreshing)
-  let loaded = false;
-  $: $socket?.emit('adminQuestions');
-  $: $socket?.on('adminQuestions', res => {
-    res.data.questions.sort((a, b) => a.id - b.id);
-    $adminQuestions = res.data.questions;
-    if (!loaded) {
-      // show modal (or small info somewhere) to ask to accept changes?
-      dataOriginal = copy($adminQuestions);
-      data = copy($adminQuestions);
-      loaded = true;
-    }
-  });
-
-  // clock
-  let now = DateTime.now();
   onMount(() => {
-    const interval = setInterval(() => {
-      now = DateTime.now();
-    }, 1000);
+    fetchData();
+    // clock
+    const interval = setInterval(() => (now = DateTime.now()), 1000);
     return () => clearInterval(interval);
-  });
-
-  // debug
-  let seed = 'seed';
-  $: $socket?.on('adminSeedDatabase', res => {
-    if (res.status == 200) {
-      $socket?.emit('adminQuestions');
-      seed = 'success';
-      setTimeout(() => (seed = 'seed'), 2000);
-    }
   });
 </script>
 
-{#each data as { id, title, openTime, closeTime, showAnswers }, i}
-  <div class="item" in:fly={{ y: 20, duration: 300 + 300 * i }}>
-    <a role="button" href="/hub/apps/votum/questions/{id}" sveltekit:prefetch>
-      {#if diff(openTime, now)}
-        <div class="info">Live in <b>{diff(openTime, now)}</b></div>
-      {:else if diff(closeTime, now)}
-        <div class="info"><span class="active">Live</span> &nbsp;|&nbsp; Jeszcze <b>{diff(closeTime, now)}</b></div>
-      {:else}
-        <div class="info">Zakończone</div>
-      {/if}
-      <div class="title">{title}</div>
-    </a>
-    <div class="button">
-      <Button
-        square
-        action={showAnswers}
-        edited={showAnswers != dataOriginal[i].showAnswers}
-        icon="leaderboard"
-        onclick={() => (showAnswers = !showAnswers)}
-      />
+<div class="wrapper">
+  {#each data as { id, title, timeOpen, timeClose, showResults }, i}
+    <div class="item" in:fly={{ y: 20, duration: 300 + 300 * i }}>
+      <a role="button" href="/hub/apps/votum/questions/{id}">
+        {#if diff(timeOpen, now)}
+          <div class="info">Live in <b>{diff(timeOpen, now)}</b></div>
+        {:else if diff(timeClose, now)}
+          <div class="info"><span class="active">Live</span> &nbsp;|&nbsp; Jeszcze <b>{diff(timeClose, now)}</b></div>
+        {:else}
+          <div class="info">Zakończone</div>
+        {/if}
+        <div class="title">{title}</div>
+      </a>
+      <div class="button">
+        <Button
+          square
+          action={showResults}
+          edited={showResults != dataOriginal[i].showResults}
+          icon="leaderboard"
+          onclick={() => (showResults = !showResults)}
+        />
+      </div>
     </div>
-  </div>
-{/each}
+  {/each}
 
-{#if $debug}
-  <button
-    on:click={() => {
-      seed = 'working...';
-      $socket.emit('adminSeedDatabase');
-    }}
-  >
-    {seed}
-  </button>
-{/if}
+  {#if $debug}
+    <button on:click={() => api('POST', '/votum/utilities/seedDB')}>seed database</button>
+  {/if}
+</div>
+
+<Add onclick={add} />
 
 <style>
+  .wrapper {
+    margin-bottom: calc(var(--h-bar) * 2 + 1rem);
+  }
   .item {
     display: flex;
     justify-content: space-between;

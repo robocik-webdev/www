@@ -2,4 +2,4 @@
   import { logout } from '$lib/Hub/api';
 </script>
 
-<button on:click={() => logout(window)}>Logout</button>
+<button on:click={logout}>Logout</button>

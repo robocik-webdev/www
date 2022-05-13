@@ -1,64 +1,40 @@
-<script context="module">
-  import { login } from '$lib/Hub/api';
-
-  export async function load({ url }) {
-    const origin = url.searchParams.get('o') || 'hub';
-    const token = url.searchParams.get('t');
-    if (token) {
-      try {
-        const user = await login(token);
-        return { props: { origin, user } };
-      } catch (error) {
-        return { props: { origin, token, error } };
-      }
-    }
-    return { props: { origin } };
-  }
-</script>
-
 <script>
+  import { page } from '$app/stores';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  import { connect, me, saveUser } from '$lib/Hub/api';
 
+  import { login } from '$lib/Hub/api';
+  import { me } from '$lib/Hub/stores';
   import HeaderSimple from '$lib/Hub/HeaderSimple.svelte';
   import Input from '$lib/Hub/Input.svelte';
   import Button from '$lib/Hub/Button.svelte';
 
-  export let origin;
+  let origin;
+  let token;
 
-  // logged in
-  export let user;
-
-  // failed to login
-  export let token;
-  export let error;
-
+  let error;
   let waiting = false;
 
-  function connectSocket() {
-    connect(user.refreshToken);
-    saveUser(window, user);
+  function gotoOrigin(origin) {
     goto(`/${origin.replaceAll('-', '/')}`);
   }
 
   async function handleLogin() {
     try {
       waiting = true;
-      user = await login(token);
-      connectSocket();
+      $me = await login(token);
       waiting = false;
+      gotoOrigin(origin);
     } catch (err) {
       error = err;
     }
   }
 
-  onMount(() => {
-    // if logged in in load function (with token)
-    if (user) connectSocket();
+  onMount(async () => {
+    origin = $page.url.searchParams.get('o');
+    token = $page.url.searchParams.get('t');
+    if (token) handleLogin(token);
   });
-
-  $: if ($me) goto(`/${origin.replaceAll('-', '/')}`);
 </script>
 
 <div class="wrapper">

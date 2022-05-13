@@ -1,12 +1,12 @@
 <script>
-  import { me } from '$lib/Hub/api';
+  import { me } from '$lib/Hub/stores';
 </script>
 
 <div class="photo">
   {#if $me?.photo}
     <img src={$me?.photo} alt="user" />
   {:else}
-    <span class="initials">{$me?.firstName[0]}{$me?.lastName[0]}</span>
+    <span class="initials">{$me?.name[0]}{$me?.surname[0]}</span>
   {/if}
 </div>
 

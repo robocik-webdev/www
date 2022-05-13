@@ -1,5 +1,6 @@
 <script>
-  import { socket, me } from '$lib/Hub/api';
+  import { socket } from '$lib/Hub/api';
+  import { me } from '$lib/Hub/stores';
   import HeaderSimple from '$lib/Hub/HeaderSimple.svelte';
 </script>
 

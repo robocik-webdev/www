@@ -5,42 +5,73 @@
 </script>
 
 <script>
-  import { socket } from '$lib/Hub/api';
-  import { edited, debug, adminQuestions } from '$lib/Hub/stores';
-
-  import { copy } from '$lib/Hub/utils';
-  import { cancel, save } from '$lib/Hub/actions';
-
+  import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
+  import { fly } from 'svelte/transition';
   import { DateTime } from 'luxon';
 
+  import { api } from '$lib/Hub/api';
+  import { cancel, save } from '$lib/Hub/actions';
+  import { copy } from '$lib/Hub/utils';
+  import { edited, adminQuestions } from '$lib/Hub/stores';
   import ButtonGroup from '$lib/Hub/ButtonGroup.svelte';
   import Button from '$lib/Hub/Button.svelte';
   import Input from '$lib/Hub/Input.svelte';
-  import { onMount } from 'svelte';
+  import Modal from '$lib/Hub/Modal.svelte';
 
-  function getDate(iso) {
-    // yyyy-mm-dd
-    return DateTime.fromISO(iso).toISODate();
-  }
-  function getTime(iso) {
-    // hh:mm:ss
-    return DateTime.fromISO(iso).toISOTime().split('.')[0];
-  }
-  function makeISO(date, time) {
-    // ISO 8601
-    return DateTime.fromISO(date + 'T' + time).toISO();
+  const getDate = iso => DateTime.fromISO(iso).toISODate(); // yyyy-mm-dd
+  const getTime = iso => DateTime.fromISO(iso).toISOTime().split('.')[0]; // hh:mm:ss
+  const makeISO = (date, time) => DateTime.fromISO(date + 'T' + time).toISO(); // ISO 8601
+
+  async function fetchData() {
+    try {
+      if (id == 'new') {
+        const now = DateTime.now().toISO();
+        data = {
+          title: '',
+          date: getDate(now),
+          timeOpen: getTime(now),
+          timeClose: getTime(now),
+          showResults: false,
+          answers: [{ title: '' }, { title: '' }],
+          maxAnswers: 1
+        };
+      } else {
+        let q = $adminQuestions.find(q => q.id == id);
+        if (!q) {
+          const res = await api('GET', `/votum/questions/${id}`);
+          q = res.data;
+        }
+        dataOriginal = {
+          title: q.title,
+          date: getDate(q.timeOpen),
+          timeOpen: getTime(q.timeOpen),
+          timeClose: getTime(q.timeClose),
+          showResults: q.showResults,
+          answers: q.answers.sort((a, b) => a.id - b.id),
+          maxAnswers: q.maxAnswers
+        };
+        data = copy(dataOriginal);
+      }
+    } catch (err) {
+      error = 'Brak pytania o podanym ID!';
+    }
   }
 
   function removeAnswer(i) {
-    data.answers.splice(i,1);
+    data.answers.splice(i, 1);
     data = data;
   }
   function addAnswer() {
-    data.answers.push({
-      id: null,
-      title: ''
-    });
+    data.answers.push({ title: '' });
     data = data;
+  }
+
+  let deleteModal = false;
+  async function deleteQuestion() {
+    await api('DELETE', `/votum/questions/${id}`);
+    $edited = false;
+    goto('/hub/apps/votum/questions');
   }
 
   export let id;
@@ -48,111 +79,93 @@
 
   let dataOriginal;
   let data;
-  $: $edited = JSON.stringify(data) != JSON.stringify(dataOriginal);
+  $: console.log(data);
+  $: if (JSON.stringify(data) != JSON.stringify(dataOriginal)) {
+    $edited = true;
+  } else {
+    $edited = false;
+  }
 
-  $: $socket?.on('adminModifyQuestion',d=>console.log('mq',d))
-  $: $socket?.on('adminModifyAnswer',d=>console.log('ma',d))
-  $: $socket?.on('adminAddAnswer',d=>console.log('aa',d))
-  $: $socket?.on('adminRemoveAnswer',d=>console.log('ra',d))
-
-  $cancel = () => (data = copy(dataOriginal));
+  $cancel = () => {
+    if (id == 'new') {
+      $edited = false;
+      goto('/hub/apps/votum/questions');
+    } else {
+      data = copy(dataOriginal);
+    }
+  };
   $save = async () => {
-    $socket.emit('adminModifyQuestion', {
-      id: id,
-      title: data.title,
-      openTime: makeISO(data.date, data.timeOpen),
-      closeTime: makeISO(data.date, data.timeClose),
-      showAnswers: data.showAnswers,
-      possibleAnswers: data.maxAnswers
-    });
-    // TODO: this is probably very unefficient
-    for (const answer of data.answers) {
-      const answerOriginal = dataOriginal.answers.find(d => d.id == answer.id)
-      if (answerOriginal) {
-        if (JSON.stringify(answer) != JSON.stringify(answerOriginal)) {
-          // modify existing questions
-          console.log('mod', answer);
-          $socket.emit('adminModifyAnswer', {
-            id: answer.id,
-            title: answer.title
-          });
-        }
+    try {
+      data.answers = data.answers.filter(a => a.title != '');
+      const updates = {
+        title: data.title,
+        timeOpen: makeISO(data.date, data.timeOpen),
+        timeClose: makeISO(data.date, data.timeClose),
+        showResults: data.showResults,
+        answers: data.answers.map(a => a.title),
+        maxAnswers: data.maxAnswers
+      };
+      console.log(updates);
+      if (id == 'new') {
+        const res = await api('POST', `/votum/questions`, updates);
+        console.log(res);
+        $edited = false;
+        goto('/hub/apps/votum/questions');
       } else {
-        // add new questions
-        console.log('new', answer);
-        $socket.emit('adminAddAnswer', {
-          title: answer.title,
-          questionId: id
-        });
+        api('PUT', `/votum/questions/${id}`, updates);
       }
+      dataOriginal = copy(data);
+    } catch (err) {
+      error = err;
     }
-    for (const answer of dataOriginal.answers) {
-      if (!data.answers.find(d => d.id == answer.id)) {
-        // remove removed questions
-        console.log('rem', answer);
-        $socket.emit('adminRemoveAnswer', {
-          id: answer.id
-        });
-      }
-    }
-    // dataOriginal = copy(data);
   };
 
-  // load data and forbid to refresh (workaround async refreshing)
-  // let loaded = false;
-  $: $socket?.emit('adminQuestions');
-  // TODO: find a different way of handling socket event refreshing, because this also refreshes when ANYTHING INSIDE changes (idea: make a function to call inside or make sure the socket is already connected)
-  $: $socket?.on('adminQuestions', res => {
-    $adminQuestions = res.data.questions;
-    console.log('why');
-    console.log($adminQuestions);
-    // if (!loaded) {
-      const q = $adminQuestions.find(q => q.id == id);
-      if (q) {
-        dataOriginal = {
-          title: q.title,
-          date: getDate(q.openTime),
-          timeOpen: getTime(q.openTime),
-          timeClose: getTime(q.closeTime),
-          showAnswers: q.showAnswers,
-          answers: q.answers,
-          maxAnswers: q.possibleAnswers
-        };
-        data = copy(dataOriginal);
-      } else {
-        error = 'Brak pytania o podanym ID!';
-      }
-    // }
-    // loaded = true;
-  });
+  onMount(fetchData);
 </script>
 
 {#if data}
-  <h1 class="title">{data.title}</h1>
-  <Input bind:value={data.title}>Tytuł</Input>
+  <div class="wrapper" in:fly={{ duration: 300 }}>
+    <h1 class="title">{data.title}</h1>
+    <Input bind:value={data.title}>Tytuł</Input>
 
-  <h3 class="subtitle">Głosowanie</h3>
-  <Input type="date" bind:value={data.date}>Data</Input>
-  <ButtonGroup>
-    <Input type="time" step={1} bind:value={data.timeOpen}>Otwarcie</Input>
-    <Input type="time" step={1} bind:value={data.timeClose}>Zamknięcie</Input>
-  </ButtonGroup>
+    <h3 class="subtitle">Głosowanie</h3>
+    <Input type="date" bind:value={data.date}>Data</Input>
+    <ButtonGroup>
+      <Input type="time" step={1} bind:value={data.timeOpen}>Otwarcie</Input>
+      <Input type="time" step={1} bind:value={data.timeClose}>Zamknięcie</Input>
+    </ButtonGroup>
 
-  <h3 class="subtitle">Wyniki</h3>
-  <Input type="checkbox" bind:value={data.showAnswers}>Pokaż wyniki</Input>
+    <h3 class="subtitle">Wyniki</h3>
+    <Input type="checkbox" bind:value={data.showResults}>Pokaż wyniki</Input>
 
-  <h3 class="subtitle">Odpowiedzi</h3>
-  <div class="answers">
-    {#each data.answers as answer, i}
-      <div class="answer">
-        <Input bind:value={answer.title} />
-        <Button square icon="delete" onclick={() => removeAnswer(i)} />
-      </div>
-    {/each}
-    <Button action onclick={addAnswer} icon="add">Dodaj</Button>
-    <Input buttons type="number" bind:value={data.maxAnswers} min="1" step="1">Max do wyboru</Input>
+    <h3 class="subtitle">Odpowiedzi</h3>
+    <div class="answers">
+      {#each data.answers as answer, i}
+        <div class="answer">
+          <Input bind:value={answer.title} />
+          <Button square icon="delete" onclick={() => removeAnswer(i)} />
+        </div>
+      {/each}
+      <Button action onclick={addAnswer} icon="add">Dodaj</Button>
+      <Input buttons type="number" bind:value={data.maxAnswers} min="1" max="3" step="1">Max do wyboru</Input>
+    </div>
+
+    <h3 class="subtitle">Danger zone</h3>
+    {#if id != 'new'}
+      <Button action onclick={() => (deleteModal = !deleteModal)} icon="delete">Usuń</Button>
+    {/if}
   </div>
-{:else if error}{error}{/if}
+{:else if error}
+  {error}
+{/if}
+
+<Modal bind:visible={deleteModal}>
+  <h1>Na pewno chcesz usunąć to pytanie?</h1>
+  <ButtonGroup>
+    <Button action onclick={(deleteModal = false)}>Anuluj</Button>
+    <Button transparent onclick={deleteQuestion}>Usuń</Button>
+  </ButtonGroup>
+</Modal>
 
 <style>
   .title,

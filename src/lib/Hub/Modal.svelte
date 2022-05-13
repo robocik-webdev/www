@@ -14,17 +14,17 @@
 {/if}
 
 <style>
+  .bg {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
   .bg,
   .wrapper {
-    z-index: 1000;
+    z-index: 10000;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-  }
-  .bg {
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
   }
   .wrapper {
     left: 50%;
