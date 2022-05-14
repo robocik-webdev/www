@@ -18,6 +18,10 @@
       [
         ['1_3__cnc_kramet.png', 'http://cnckramet.pl/index.php/en/'],
         ['2_6__botland.png', 'https://botland.com.pl/pl/']
+      ],
+      [
+        ['2_20__mitutoyo.png', 'https://www.mitutoyo.pl/pl_pl'],
+        ['2_21__bossard.svg', 'https://www.bossard.com/pl-pl/']
       ]
     ],
     gold: [
@@ -30,7 +34,8 @@
       [
         ['1_8__wolczanka.svg', 'https://www.wolczanka.pl/'],
         ['1_9__lapp.svg', 'https://www.lappgroup.com/'],
-        ['1_10__inprogress.svg', 'https://inprogress.pl/']
+        ['1_10__inprogress.svg', 'https://inprogress.pl/'],
+        ['2_22__alox.png', 'https://www.alox.pl/']
       ]
     ],
     silver: [
