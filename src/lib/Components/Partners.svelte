@@ -34,7 +34,8 @@
         ['1_9__lapp.svg', 'https://www.lappgroup.com/'],
         ['1_10__inprogress.svg', 'https://inprogress.pl/'],
         ['2_22__alox.png', 'https://www.alox.pl/']
-      ]
+      ],
+      [['2_23__3dconnexion.png', 'https://3dconnexion.com/pl/']]
     ],
     silver: [
       [
