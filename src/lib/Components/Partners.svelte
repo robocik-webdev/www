@@ -26,14 +26,17 @@
       [
         ['1_4__dps_software.svg', 'https://www.dps-software.pl/'],
         ['1_5__aquapark_wroclaw.svg', 'https://aquapark.wroc.pl/'],
-        ['1_6__w4.png', 'http://weka.pwr.edu.pl/'],
-        ['1_7__gralmarine.png', 'https://www.gralmarine.com/']
+        ['1_6__w4.png', 'http://weka.pwr.edu.pl/']
       ],
       [
+        ['1_7__gralmarine.png', 'https://www.gralmarine.com/'],
         ['1_8__wolczanka.svg', 'https://www.wolczanka.pl/'],
-        ['1_9__lapp.svg', 'https://www.lappgroup.com/'],
+        ['1_9__lapp.svg', 'https://www.lappgroup.com/']
+      ],
+      [
         ['1_10__inprogress.svg', 'https://inprogress.pl/'],
-        ['2_22__alox.png', 'https://www.alox.pl/']
+        ['2_22__alox.png', 'https://www.alox.pl/'],
+        ['2_23__3dconnexion.png', 'https://3dconnexion.com/pl/']
       ]
     ],
     silver: [
