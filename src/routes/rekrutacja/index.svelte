@@ -1,5 +1,5 @@
 <script context="module">
-  import { getPage, getPosts } from '$lib/API.js';
+  import { getPage, getPosts } from '$lib/Ghost/API.js';
   export async function load() {
     return {
       props: {
@@ -30,9 +30,7 @@
     url: 'http://www.robocik.pwr.edu.pl/rekrutacja',
     title: 'KN Robocik - Rekrutacja',
     description: 'Rekrutacja do Koła Naukowego Automatyki i Robotyki „Robocik”',
-    images: [
-      { url: 'http://robocik.pwr.edu.pl/static/img/timeline/robosub.webp' }
-    ]
+    images: [{ url: 'http://robocik.pwr.edu.pl/achievements/robosub.webp' }]
   }}
 />
 
@@ -40,7 +38,7 @@
   schema={{
     '@type': 'Organization',
     url: 'http://robocik.pwr.edu.pl/',
-    logo: 'http://robocik.pwr.edu.pl/static/favicon.png'
+    logo: 'http://robocik.pwr.edu.pl/favicon.png'
   }}
 />
 

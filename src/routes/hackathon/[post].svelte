@@ -1,5 +1,5 @@
 <script context="module">
-  import { getPost } from '$lib/API.js';
+  import { getPost } from '$lib/Ghost/API.js';
   export async function load({ params }) {
     return {
       props: {

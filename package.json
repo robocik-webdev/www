@@ -2,10 +2,9 @@
   "name": "www",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev --host",
-    "build": "svelte-kit build",
+    "dev": "svelte-kit dev --host --port 3000",
     "preview": "svelte-kit preview --host",
-    "package": "svelte-kit package"
+    "build": "svelte-kit build"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^1.0.0-next.29",
