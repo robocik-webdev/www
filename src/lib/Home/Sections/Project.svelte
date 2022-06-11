@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { fly } from 'svelte/transition';
   import { lang } from '$lib/lang.js';
 
@@ -192,4 +192,4 @@
       border-radius: 0.5vw;
     }
   }
-</style>
+</style> -->

@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { lang } from '$lib/lang.js';
 
   const imgs = [
@@ -145,4 +145,4 @@
       width: calc(100% / 3);
     }
   }
-</style>
+</style> -->

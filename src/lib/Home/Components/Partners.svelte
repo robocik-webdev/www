@@ -1,13 +1,8 @@
 <script>
-  import { fade } from 'svelte/transition';
-  import { visible } from '$lib/partners.js';
-  import { hidden as headerHidden } from '$lib/header.js';
   import { lang } from '$lib/lang.js';
-
-  function hide() {
-    $visible = false;
-    $headerHidden = false;
-  }
+  import { partnersOpened } from '$lib/Home/stores.js';
+  import Popup from '$lib/Home/Components/Popup.svelte';
+  import Button from '$lib/Home/Components/Button.svelte';
 
   const partners = {
     platinum: [
@@ -63,83 +58,52 @@
       ],
       [
         ['2_17__blue_robotics.png', 'https://boltman.pl/'],
-        [
-          '2_19__mechatronika_dla_wszystkich.png',
-          'https://mechatronikadlawszystkich.pl/'
-        ]
+        ['2_19__mechatronika_dla_wszystkich.png', 'https://mechatronikadlawszystkich.pl/']
       ]
     ]
   };
 </script>
 
-<div transition:fade={{ duration: 400 }} class="wrapper">
-  <div class="popup">
-    <div class="close" on:click={hide}>
-      <img src="/icon/close_dark.svg" alt="cross icon" />
-    </div>
-
-    <div class="content">
-      <h1>{@html $lang.partners_title}</h1>
-      <p>{@html $lang.partners_text}</p>
-
-      <p>{@html $lang.partners_text_brochure}</p>
-      <div class="brochures">
-        <div class="file">
-          <a
-            href="https://drive.google.com/file/d/1Kne9tE6h_qbhRd6RwA9q6cPlMD5z6mtT/view?usp=sharing"
-            target="_blank"><img src="/icon/download.svg" alt="" />ENG</a
-          >
-        </div>
-        <div class="file">
-          <a
-            href="https://drive.google.com/file/d/1vgoWluqU-giMLhKhlXG3ZxIqI9atl6mE/view?usp=sharing"
-            target="_blank"><img src="/icon/download.svg" alt="" />PL</a
-          >
-        </div>
-      </div>
-
-      {#each Object.keys(partners) as tier}
-        <h2>{@html $lang[`partners_${tier}`]}</h2>
-        <hr />
-        <div class="icons {tier}">
-          {#each partners[tier] as row}
-            <div class="row">
-              {#each row as partner}
-                <a href={partner[1]} class="icon">
-                  <img
-                    src="/img/partners/{partner[0]}"
-                    alt="partner {partner[0]}"
-                  />
-                </a>
-              {/each}
-            </div>
-          {/each}
-        </div>
-      {/each}
-    </div>
+<Popup>
+  <div class="close" on:click={() => ($partnersOpened = false)}>
+    <span class="material-symbols-outlined">close</span>
   </div>
-</div>
+
+  <div class="content">
+    <h1>{@html $lang.partners_title}</h1>
+    <p>{@html $lang.partners_text}</p>
+
+    <p>{@html $lang.partners_text_brochure}</p>
+    <div class="brochures">
+      <Button href="https://drive.google.com/file/d/1Kne9tE6h_qbhRd6RwA9q6cPlMD5z6mtT/view?usp=sharing" target="_blank">
+        <span class="material-symbols-outlined">download</span>ENG
+      </Button>
+      <Button href="https://drive.google.com/file/d/1vgoWluqU-giMLhKhlXG3ZxIqI9atl6mE/view?usp=sharing" target="_blank">
+        <span class="material-symbols-outlined">download</span>PL
+      </Button>
+    </div>
+
+    {#each Object.keys(partners) as tier}
+      <h2>{@html $lang[`partners_${tier}`]}</h2>
+      <hr />
+      <div class="icons {tier}">
+        {#each partners[tier] as row}
+          <div class="row">
+            {#each row as partner}
+              <a href={partner[1]} class="icon">
+                <img src="/partners/{partner[0]}" alt="partner {partner[0]}" />
+              </a>
+            {/each}
+          </div>
+        {/each}
+      </div>
+    {/each}
+  </div>
+</Popup>
 
 <style>
-  .wrapper {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 20px 1fr 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 100%;
-    width: 100%;
-  }
-  .popup {
-    overflow-y: scroll;
-    grid-column: 2 / 12;
-    grid-row: 2;
-    position: relative;
-    padding: 20px;
-    background: var(--color-light);
+  * {
+    color: var(--c-main);
   }
 
   h1,
@@ -173,16 +137,14 @@
     cursor: pointer;
     position: absolute;
     position: sticky;
-    margin-left: auto;
     top: 0;
-    right: 0;
-    padding: 10px;
-    width: 50px;
-    height: 50px;
-    transition: background-color var(--t-fast);
+    left: 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
   }
-  .close:hover {
-    background-color: rgb(235, 235, 235);
+  .close span {
+    font-size: 2.5rem;
   }
 
   .content {
@@ -219,19 +181,10 @@
   .brochures {
     display: flex;
     justify-content: center;
+    gap: 1rem;
     margin-bottom: 3rem;
   }
-  .file a {
-    display: flex;
-    align-items: center;
-    margin: 0 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--color-complement);
-    color: var(--color-light);
-    text-decoration: none;
-  }
-  .file img {
-    margin-right: 0.5rem;
-    height: 80%;
+  .brochures span {
+    color: var(--c-white);
   }
 </style>

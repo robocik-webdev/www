@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { lang } from '$lib/lang.js';
   const divisions = ['electronics', 'software', 'construction', 'marketing'];
 </script>
@@ -82,4 +82,4 @@
       width: 25%;
     }
   }
-</style>
+</style> -->

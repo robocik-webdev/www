@@ -1,36 +1,56 @@
 <script>
-  import { hidden } from '$lib/header.js';
-  import { opened as showMenu } from '$lib/menu.js';
+  import { lang } from '$lib/lang.js';
+  import { menuOpened, modalOpened, partnersOpened } from '$lib/Home/stores.js';
   import { scrollto } from '$lib/utils.js';
   import Menu from '$lib/Home/Components/Menu.svelte';
+  import Social from '$lib/Home/Components/Social.svelte';
+  import Lang from '$lib/Home/Components/Lang.svelte';
 
   let y;
-  let w;
   let h;
-  $: scrolled = y > (h / 10) * 2;
-  $: showLogo = !$hidden && ($showMenu || scrolled);
-  $: showButton = !$hidden;
+  let lastY;
+  let visible = true;
+  $: {
+    visible = !$modalOpened && (y == 0 || y < lastY);
+    lastY = y;
+  }
 
   function toggleMenu() {
-    $showMenu = !$showMenu;
+    $menuOpened = !$menuOpened;
   }
 </script>
 
-<svelte:window bind:scrollY={y} bind:innerWidth={w} bind:innerHeight={h} />
+<svelte:window bind:scrollY={y} bind:innerHeight={h} />
 
-<header>
-  <div class="part logo" class:visible={showLogo} on:click={() => scrollto('#top')}>
-    <img src="/img/logo.svg" alt="robocik logo" />
-    <h1><span>PW</span>R <span>D</span>IVING <span>C</span>REW</h1>
+<header class:visible>
+  <Social vertical />
+
+  <div class="menu left">
+    <div role="button" on:click={() => scrollto('#vision')}>{@html $lang['menu_vision']}</div>
+    <div role="button" on:click={() => scrollto('#achievements')}>{@html $lang['menu_achievements']}</div>
+    <div role="button" on:click={() => scrollto('#project')}>{@html $lang['menu_project']}</div>
   </div>
 
-  <Menu />
+  <div class="part logo" on:click={() => scrollto('#top')}>
+    <img src="/logo-dark.svg" alt="robocik logo" class:visible={!$menuOpened} />
+    <img src="/logo-light.svg" alt="robocik logo" class:visible={$menuOpened} />
+  </div>
 
-  <div class="part hamburger" class:visible={showButton} on:click={toggleMenu}>
-    <img class="icon" class:visible={$showMenu} src="/icon/close_light.svg" alt="close menu" />
-    <img class="icon" class:visible={!$showMenu} src="/icon/menu_light.svg" alt="open menu" />
+  <div class="menu right">
+    <div role="button" on:click={() => scrollto('#team')}>{@html $lang['menu_team']}</div>
+    <div role="button" on:click={() => scrollto('#contact')}>{@html $lang['menu_contact']}</div>
+    <div role="button" on:click={() => ($partnersOpened = true)}>{@html $lang['menu_partners']}</div>
+  </div>
+
+  <!-- <Lang vertical /> -->
+
+  <div class="part hamburger" on:click={toggleMenu}>
+    <span class="material-symbols-outlined open" alt="open menu" class:visible={!$menuOpened}>menu</span>
+    <span class="material-symbols-outlined close" alt="close menu" class:visible={$menuOpened}>close</span>
   </div>
 </header>
+
+<Menu />
 
 <style>
   header {
@@ -39,61 +59,73 @@
     top: 0;
     left: 0;
     display: flex;
+    justify-content: space-between;
     width: 100%;
-    height: 50px;
+    transform: translateY(-100%);
+    transition: transform var(--t-normal);
+  }
+  header.visible {
+    transform: translateY(0);
+  }
+  header * {
+    color: var(--c-main);
+  }
+  .menu {
+    height: 5rem;
+    display: none;
+    align-items: center;
+    gap: 2rem;
+  }
+  .menu.left {
+    margin-right: 1rem;
+  }
+  .menu.right {
+    margin-left: 1rem;
+  }
+  .menu div {
+    cursor: pointer;
+    font-weight: bold;
+    /* text-shadow: 0px 0px 10px var(--c-white); */
+  }
+  @media (min-width: 800px) {
+    header {
+      justify-content: center;
+    }
+    .menu {
+      display: flex;
+    }
   }
 
   .part {
-    transform: translateY(-100%);
-    background-color: var(--color-main);
-    transition: transform var(--t-normal);
-  }
-  .part.visible {
-    transform: translateY(0);
-  }
-
-  .logo {
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 0 var(--margin-mobile);
-    height: 100%;
-    width: calc(100% - 50px);
+    padding: 1rem;
   }
-  .logo img {
-    margin-right: 10px;
-    height: 30px;
-    width: 30px;
-  }
-  .logo h1 {
-    display: inline-block;
-    margin: 0;
-    white-space: nowrap;
-    font-weight: 400;
-    font-size: 1.1rem;
-    color: var(--color-light);
+  .part img,
+  .part span {
+    height: 3rem;
+    width: 3rem;
+    font-size: 3rem;
   }
 
-  .hamburger {
-    padding: 12px;
-    height: 100%;
-    width: 50px;
-  }
-  .icon {
+  .logo img {
     display: none;
   }
-  .icon.visible {
+  .logo img.visible {
     display: block;
   }
 
-  @media (min-width: 600px) {
-    header {
-      background-color: var(--color-main);
-    }
-    .logo {
-      padding-left: var(--margin-pc);
-      width: auto;
-    }
+  .hamburger span {
+    display: none;
+    color: var(--c-main);
+  }
+  .hamburger span.visible {
+    display: block;
+  }
+  .hamburger span.close {
+    color: var(--c-white);
+  }
+
+  @media (min-width: 800px) {
     .hamburger {
       display: none;
     }

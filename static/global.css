@@ -1,47 +1,49 @@
 :root {
-  --color-main: #132142;
-  --color-complement: #1f9baa;
-  --color-light: #fff;
-  --color-dark: #000;
-  --scroll-thumb: rgba(255, 255, 255, 0.75);
-  --scroll-track: rgba(0, 0, 0, 0.2);
+  --c-main: #1a2340;
+  --c-complement: #209ca8;
+  --c-accent-light: #f8f5ec;
+  --c-accent-dark: #ddd8b1;
+  --c-white: #fff;
+  --c-black: #000;
+  --c-scroll-thumb: rgba(255, 255, 255, 0.75);
+  --c-scroll-track: rgba(0, 0, 0, 0.2);
   --t-rapid: 0.15s;
   --t-fast: 0.25s;
   --t-normal: 0.5s;
   --t-slow: 1s;
   --t-slug: 3s;
-  --margin-mobile: 20px;
-  --margin-pc: 10vw;
-  --content-w: 60ch;
-  --header-h: 50px;
-  --header-margin: 10px;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background-color: var(--scroll-track);
+  background-color: var(--c-scroll-track);
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: var(--scroll-thumb);
+  background-color: var(--c-scroll-thumb);
 }
 
 .material-symbols-outlined {
-  color: #fff;
+  color: var(--c-white);
 }
 
 * {
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-size: clamp(0.95rem, 4vw, 1.3rem);
   -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
 }
 
 body {
   overflow: overlay;
-  margin: 0;
 }
 
 h1,
@@ -55,12 +57,12 @@ p {
   padding: 0;
 }
 h1 {
-  margin: 10px 0 25px 0;
+  margin: 1rem 0 1rem 0;
   font-weight: 900;
-  font-size: clamp(1.6rem, 2vw, 2.5rem);
+  font-size: clamp(1.6rem, 7vw, 2.5rem);
 }
 h1 span {
-  margin: 10px 0;
+  margin: 1rem 0;
   font-size: 1.3em;
 }
 h2 {
@@ -69,17 +71,8 @@ h2 {
 h3 {
   font-size: clamp(1.2rem, 2vw, 1.5rem);
 }
-h4 {
-  font-size: clamp(1.15rem, 2vw, 1.3rem);
-}
-h5 {
-  font-size: clamp(1.1rem, 2vw, 1.25rem);
-}
-h6 {
-  font-size: clamp(0.8rem, 2vw, 1rem);
-}
 p {
-  margin: 10px 0;
+  margin: 1rem 0;
   line-height: 1.5;
 }
 
@@ -94,23 +87,13 @@ button {
 
 section {
   padding: 1rem;
-  color: var(--color-main);
-}
-section.dark {
-  padding: 40px 20px;
-  background-color: var(--color-main);
-}
-section.dark * {
-  color: var(--color-light);
+  color: var(--c-white);
 }
 @media (min-width: 600px) {
   section {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    padding: 40px 0;
-  }
-  section.dark {
-    padding: 40px 0;
+    padding: 2rem 0;
   }
 }
 
@@ -122,7 +105,7 @@ section.dark * {
   background-color: var(--bg);
 }
 .box * {
-  color: var(--color-light);
+  color: var(--c-white);
 }
 
 /* background gradient transition */
@@ -144,7 +127,7 @@ section.dark * {
 }
 
 .ghost * {
-  color: var(--color-light);
+  color: var(--c-white);
 }
 .ghost p {
   margin: 1rem 0;

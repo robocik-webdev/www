@@ -2,7 +2,7 @@
   import { MetaTags, JsonLd } from 'svelte-meta-tags';
   import CTA from '$lib/Home/Sections/CTA.svelte';
   import Vision from '$lib/Home/Sections/Vision.svelte';
-  import Projects from '$lib/Home/Sections/Projects.svelte';
+  import Project from '$lib/Home/Sections/Project.svelte';
   import Achievements from '$lib/Home/Sections/Achievements.svelte';
   import Team from '$lib/Home/Sections/Team.svelte';
   import Contact from '$lib/Home/Sections/Contact.svelte';
@@ -29,11 +29,21 @@
 
 <main id="top">
   <CTA />
-  <div>
+  <div class="underwater">
     <Vision />
-    <Projects />
+    <Project />
     <Achievements />
     <Team />
     <Contact />
   </div>
 </main>
+
+<style>
+  main {
+    height: 100%;
+  }
+  .underwater {
+    min-height: 200vh;
+    background: linear-gradient(var(--c-complement), var(--c-main));
+  }
+</style>

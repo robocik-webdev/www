@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { lang } from '$lib/lang.js';
   import Newsletter from '$lib/Home/Components/Newsletter.svelte';
 
@@ -132,4 +132,4 @@
       grid-template-rows: repeat(2, auto);
     }
   }
-</style>
+</style> -->

@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { lang } from '$lib/lang.js';
 </script>
 
@@ -69,4 +69,4 @@
       margin-right: 60px;
     }
   }
-</style>
+</style> -->

@@ -1,120 +1,74 @@
 <script>
-  import { lang, langChoice } from '$lib/lang.js';
+  import { lang } from '$lib/lang.js';
   import { scrollto } from '$lib/utils.js';
-  import { hidden } from '$lib/header.js';
-  import { opened } from '$lib/menu.js';
-  import { visible as showPartners } from '$lib/partners.js';
-  import Partners from '$lib/Home/Components/Partners.svelte';
+  import { menuOpened, partnersOpened } from '$lib/Home/stores.js';
+  import Lang from '$lib/Home/Components/Lang.svelte';
+  import Social from '$lib/Home/Components/Social.svelte';
 
-  $: if ($hidden) $opened = false;
+  let menu = ['vision', 'achievements', 'project', 'team', 'contact'];
 
-  let menu = ['vision', 'timeline', 'project', 'team', 'contact'];
+  console.log($menuOpened);
+
+  function gotoSection(section) {
+    scrollto('#' + section);
+    $menuOpened = false;
+  }
 </script>
 
-<nav class:opened={$opened}>
+<nav class:opened={$menuOpened}>
   <ul>
     {#each menu as item}
-      <li
-        on:click={() => {
-          scrollto('#' + item);
-          $opened = false;
-        }}
-      >
+      <li on:click={() => gotoSection(item)}>
         {@html $lang[`menu_${item}`]}
       </li>
     {/each}
     <li
       on:click={() => {
-        $opened = false;
-        $hidden = true;
-        $showPartners = true;
+        $menuOpened = false;
+        $partnersOpened = true;
       }}
     >
       {@html $lang.menu_partners}
     </li>
-    <li>
-      <a sveltekit:prefetch href="/rekrutacja">
-        {@html $lang[`menu_recruitment`]}
-      </a>
-    </li>
   </ul>
-  <div class="lang">
-    <img src="/icon/lang/eng.svg" alt="english version" on:click={() => ($langChoice = 'eng')} />
-    <img src="/icon/lang/pl.svg" alt="polish version" on:click={() => ($langChoice = 'pl')} />
-  </div>
+  <Lang />
+  <Social />
 </nav>
-
-{#if $showPartners}
-  <Partners />
-{/if}
 
 <style>
   nav {
+    overflow-y: auto;
+    z-index: 99;
     position: fixed;
+    top: 0;
     left: 0;
-    top: 50px;
-    padding: 20px 20px 20px 60px;
+    padding: 1rem;
+    padding-top: 7rem;
     width: 100%;
-    height: calc(100% - 50px);
+    height: 100%;
+    background-color: var(--c-main);
     transform: translateX(100%);
-    transition: transform var(--t-fast);
-    background-color: var(--color-main);
+    transition: transform var(--t-normal);
   }
+  nav.opened {
+    transform: translateX(0);
+  }
+
   ul {
     margin: 0;
     padding: 0;
   }
-  li,
-  a {
+  li {
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: 1.75rem;
     list-style: none;
-    font-size: 2.2rem;
-    color: var(--color-light);
-  }
-  .opened {
-    transform: translateX(0);
-  }
-  .lang {
-    display: flex;
-    align-items: flex-start;
-    margin-top: 40px;
-  }
-  .lang img {
-    cursor: pointer;
-    margin-right: 20px;
-    width: 40px;
+    font-size: 10vw;
+    color: var(--c-white);
   }
 
-  @media (min-width: 600px) {
+  /* @media (min-width: 600px) {
     nav {
-      position: static;
-      display: flex;
-      justify-content: flex-end;
-      padding: 0;
-      padding-right: var(--margin-pc);
-      height: 50px;
-      transform: translateX(0);
+      display: none;
     }
-    ul {
-      display: flex;
-      align-items: center;
-    }
-    li,
-    a {
-      margin: 0;
-      margin-right: 20px;
-      font-size: 1.1rem;
-    }
-    .lang {
-      display: flex;
-      align-items: center;
-      margin-top: 0;
-      margin-right: 5px;
-    }
-    .lang img {
-      margin-right: 15px;
-      width: 30px;
-    }
-  }
+  } */
 </style>

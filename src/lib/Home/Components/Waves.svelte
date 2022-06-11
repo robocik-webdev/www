@@ -1,28 +1,24 @@
 <script>
-  import anime from 'animejs';
   import { range } from '$lib/utils.js';
 
-  const wavesRange = range(1, 10);
-  let waves = [];
-  $: {
-    waves.forEach((wave, i) => {
-      let offset = 5 + i * 5;
-      if (offset > 50) offset = 50;
-      anime({
-        targets: wave,
-        translateY: -offset,
-        direction: 'alternate',
-        loop: true,
-        duration: i * 500,
-        easing: 'cubicBezier(.45, 0, .55, 1)'
-      });
-    });
-  }
+  export let h; // cta section height
+  let y; // window scroll
+
+  const wavesRange = range(1, 4);
+  $: offsets = wavesRange.map(i => {
+    if (i == wavesRange.length) return 0;
+    const scrolled = (h - y) / h;
+    const multiplier = i + 2;
+    let offset = y < h ? (1 - scrolled) / multiplier : 0;
+    return offset;
+  });
 </script>
+
+<svelte:window bind:scrollY={y} />
 
 <div>
   {#each wavesRange as i}
-    <img class="wave" src="/img/wavesbg/{i}.svg" alt="" bind:this={waves[i]} />
+    <img class="wave" src="/cta/wave{i}.svg" alt="" style="transform: translateY({offsets[i - 1] * 100}%)" />
   {/each}
 </div>
 
@@ -31,7 +27,7 @@
     z-index: 0;
     overflow: hidden;
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
@@ -39,11 +35,11 @@
   }
   img {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
-    opacity: 0.5;
   }
   @media (max-width: 600px) {
+    /* TODO: scale with browser width */
     img {
       left: -100%;
       width: 200%;
