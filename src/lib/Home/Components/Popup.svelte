@@ -4,7 +4,7 @@
 
 <div class="bg" transition:fade={{ duration: 400 }}>
   <div class="wrapper">
-    <div class="content">
+    <div class="content" id="docs-content">
       <slot />
     </div>
   </div>
@@ -32,7 +32,6 @@
   }
   .content {
     overflow-y: scroll;
-    padding: 1rem;
     height: 100%;
   }
 </style>
