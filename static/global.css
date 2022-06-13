@@ -1,0 +1,94 @@
+:root {
+  --c-main: #1a2340;
+  --c-complement: #209ca8;
+  --c-accent-light: #f8f5ec;
+  --c-accent-dark: #ddd8b1;
+  --c-white: #fff;
+  --c-black: #000;
+  --c-scroll-thumb: rgba(255, 255, 255, 0.75);
+  --c-scroll-track: rgba(0, 0, 0, 0.2);
+  --t-rapid: 0.15s;
+  --t-fast: 0.25s;
+  --t-normal: 0.5s;
+  --t-slow: 1s;
+  --t-slug: 3s;
+  --fs-200: clamp(0.8em, 2.4vw, 1.2944rem);
+  --fs-400: clamp(1em, 3vw, 1.618rem);
+  --fs-700: clamp(1.4rem, 4.2vw, 2.2652rem);
+  --fs-900: clamp(1.7rem, 5.1vw, 2.7506rem);
+  --w-max: 80ch;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--c-scroll-track);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--c-scroll-thumb);
+}
+
+.material-symbols-outlined {
+  color: var(--c-white);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  font-size: var(--fs-400);
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-size: 1rem;
+}
+
+body {
+  overflow: overlay;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 1rem 0;
+  padding: 0;
+}
+h1 {
+  font-size: var(--fs-900);
+  font-weight: 900;
+}
+h1 span {
+  font-size: 1.3em;
+}
+h2 {
+  font-size: var(--fs-700);
+  font-weight: bold;
+}
+h3 {
+  font-weight: bold;
+}
+p {
+  line-height: 1.5;
+}
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+section {
+  color: var(--c-white);
+}

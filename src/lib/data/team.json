@@ -1,263 +1,10 @@
 [
   {
-    "name": "Kornelia",
-    "surname": "Głód",
-    "division": {
-      "eng": "Management",
-      "pl": "Zarząd"
-    },
-    "specialty": {
-      "eng": "CEO",
-      "pl": "Prezes"
-    },
-    "linkedin": "https://www.linkedin.com/in/kornelia-g%C5%82%C3%B3d-29b97b1b6/",
-    "email": "kornelia.glod@gmail.com",
-    "quote": {
-      "eng": "\"To achieve anything in this game, you must be prepared to dabble in the boundary of disaster.\" - S.M.",
-      "pl": "\"Aby cokolwiek osiągnąć, musisz być przygotowany do balansowania na krawędzi.\" - S.M."
-    },
-    "photo": "/img/team/Kornelia_Glod.jpg"
-  },
-  {
-    "name": "Magdalena",
-    "surname": "Gut",
-    "division": {
-      "eng": "Management",
-      "pl": "Zarząd"
-    },
-    "specialty": {
-      "eng": "CMO",
-      "pl": "Wiceprezes ds. Organizacyjnych i Promocji"
-    },
-    "linkedin": "https://www.linkedin.com/in/magdalena-gut-3391a7152/",
-    "email": "mag.gut98@gmail.com",
-    "quote": {
-      "eng": "Life is too short to drink bad coffee",
-      "pl": "Życie jest zbyt krótkie by pić niedobre kawki"
-    },
-    "photo": "/img/team/Magdalena_Gut.jpg"
-  },
-  {
-    "name": "Jakub",
-    "surname": "Szwedowicz",
-    "division": {
-      "eng": "Management",
-      "pl": "Zarząd"
-    },
-    "specialty": {
-      "eng": "CFO",
-      "pl": "Wiceprezes ds. Finansowych"
-    },
-    "linkedin": "https://www.linkedin.com/in/jakub-szwedowicz-43b113206/",
-    "email": "kuba.szwedowicz@gmail.com",
-    "quote": {
-      "eng": "Only those who have patience to do simple things perfectly ever acquire the skill to do difficult things easily.",
-      "pl": null
-    },
-    "photo": "/img/team/Jakub_Szwedowicz.jpg"
-  },
-  {
-    "name": "Wiktor",
-    "surname": "Paluch",
-    "division": {
-      "eng": "Fundraising",
-      "pl": "Fundraising"
-    },
-    "specialty": {
-      "eng": "Finance & Relations Specialist",
-      "pl": "Specjalista ds. Finansów i Relacji"
-    },
-    "linkedin": null,
-    "email": "wiktorpaluch072@gmail.com",
-    "quote": {
-      "eng": "A reed before the wind lives on, while mighty oaks do fall.",
-      "pl": "Potężna wichura łamiąc duże drzewa, trzciną zaledwie tylko kołysze."
-    },
-    "photo": "/img/team/Wiktor_Paluch.jpg"
-  },
-  {
-    "name": "Konrad",
-    "surname": "Kacperowski",
-    "division": {
-      "eng": "Construction",
-      "pl": "Konstrukcja"
-    },
-    "specialty": {
-      "eng": null,
-      "pl": null
-    },
-    "linkedin": "https://www.linkedin.com/in/konrad-kacperowski-7b67011b0/",
-    "email": "konrad.kacperowski@gmail.com",
-    "quote": {
-      "eng": "If a man was afraid to try, he would never came out the cave",
-      "pl": "Gdyby człowiek bał się próbować, nigdy nie wyszedłby z jaskini"
-    },
-    "photo": "/img/team/Konrad_Kacperowski.jpg"
-  },
-  {
-    "name": "Marcel",
-    "surname": "Skrok",
-    "division": {
-      "eng": "Construction",
-      "pl": "Konstrukcja"
-    },
-    "specialty": {
-      "eng": "Construction Team Leader",
-      "pl": "Lider działu konstrukcji"
-    },
-    "linkedin": null,
-    "email": null,
-    "quote": {
-      "eng": null,
-      "pl": "Punkt widzenia zależy od punktu siedzenia."
-    },
-    "photo": "/img/team/Marcel_Skrok.jpg"
-  },
-  {
-    "name": "Mikołaj",
-    "surname": "Kaźmierczak",
-    "division": {
-      "eng": [
-        "Software",
-        "Marketing"
-      ],
-      "pl": [
-        "Software",
-        "Marketing"
-      ]
-    },
-    "specialty": {
-      "eng": "Web Development",
-      "pl": "Web Development"
-    },
-    "linkedin": null,
-    "email": "mikolaj@kazmierczak.pl",
-    "quote": {
-      "eng": "Of course it is happening inside your head, Harry, but why on earth should that mean that it is not real?",
-      "pl": "Ależ oczywiście to dzieje się w twojej głowie, Harry, tylko skąd, u licha, wniosek, że wobec tego nie dzieje się to naprawdę?"
-    },
-    "photo": "/img/team/Mikolaj_Kazmierczak.jpg"
-  },
-  {
-    "name": "Jędrzej",
-    "surname": "Jamnicki",
-    "division": {
-      "eng": "Software",
-      "pl": "Software"
-    },
-    "specialty": {
-      "eng": null,
-      "pl": null
-    },
-    "linkedin": "https://www.linkedin.com/in/jamnicki/",
-    "email": "jedrzej.jamnicki@gmail.com",
-    "quote": {
-      "eng": null,
-      "pl": "Jak nie, jak tak."
-    },
-    "photo": "/img/team/Jedrzej_Jamnicki.jpg"
-  },
-  {
-    "name": "Kuba",
-    "surname": "Borowiec",
-    "division": {
-      "eng": "Marketing",
-      "pl": "Marketing"
-    },
-    "specialty": {
-      "eng": null,
-      "pl": null
-    },
-    "linkedin": null,
-    "email": null,
-    "quote": {
-      "eng": null,
-      "pl": "Wiem co to strach, gdy nie zrobisz zadania. Na czole zimny pot, nie masz nieprzygotowania."
-    },
-    "photo": "/img/team/Kuba_Borowiec.jpg"
-  },
-  {
-    "name": "Artur",
-    "surname": "Stopa",
-    "division": {
-      "eng": "Software",
-      "pl": "Software"
-    },
-    "specialty": {
-      "eng": null,
-      "pl": null
-    },
-    "linkedin": "https://www.linkedin.com/in/artur-stopa/",
-    "email": "arturstopa10@gmail.com",
-    "quote": {
-      "eng": "You can't change Your past, but You can still mess up Your future.",
-      "pl": "Farszem nabijam cukinię, jeśli bit byłby cukinią..\nDING DONG nie pojedziesz tą windą!"
-    },
-    "photo": "/img/team/Artur_Stopa.jpg"
-  },
-  {
-    "name": "Wiktor",
-    "surname": "Bożek",
-    "division": {
-      "eng": "Electronics",
-      "pl": "Elektronika"
-    },
-    "specialty": {
-      "eng": "Hydrophones",
-      "pl": "Hydrofony"
-    },
-    "linkedin": null,
-    "email": "wiktor.bozek@wp.pl",
-    "quote": {
-      "eng": "Happiness is a good book and a comfortable armchair",
-      "pl": "Szczęście to dobra książka i wygodny fotel"
-    },
-    "photo": "/img/team/Wiktor_Bozek.jpg"
-  },
-  {
-    "name": "Maciej",
-    "surname": "Osak",
-    "division": {
-      "eng": "Electronics",
-      "pl": "Elektronika"
-    },
-    "specialty": {
-      "eng": null,
-      "pl": null
-    },
-    "linkedin": null,
-    "email": "maciek3092@gmail.com",
-    "quote": {
-      "eng": "Stay creative",
-      "pl": null
-    },
-    "photo": "/img/team/Maciej_Osak.jpg"
-  },
-  {
-    "name": "Kacper",
-    "surname": "Lara",
-    "division": {
-      "eng": "Marketing",
-      "pl": "Marketing"
-    },
-    "specialty": {
-      "eng": "Fundraising",
-      "pl": "Fundraising"
-    },
-    "linkedin": "https://www.linkedin.com/in/kacper-lara-0197b320b/",
-    "email": null,
-    "quote": {
-      "eng": null,
-      "pl": null
-    },
-    "photo": "/img/team/Kacper_Lara.jpg"
-  },
-  {
     "name": "Emilia",
     "surname": "Szymańska",
     "division": {
-      "eng": null,
-      "pl": null
+      "eng": "Electronics",
+      "pl": "Elektronika"
     },
     "specialty": {
       "eng": "Project management",
@@ -269,26 +16,273 @@
       "eng": "\"If a wardrobe had a string, it would be called an elevator.\" - M.W.",
       "pl": "\"Gdyby szafa miała sznurek, to by była windą.\" - M.W."
     },
-    "photo": "/img/team/Emilia_Szymanska.jpg"
+    "photo": "Emilia_Szymanska.webp"
+  },
+  {
+    "name": "Marcel",
+    "surname": "Skrok",
+    "division": {
+      "eng": "Mechanics",
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "Mechanics Team Leader",
+      "pl": "Lider działu konstrukcji"
+    },
+    "linkedin": "https://www.linkedin.com/in/marcel-skrok-856751231/",
+    "email": "robocik.mskrok@gmail.com",
+    "quote": {
+      "eng": "I take all responsibility. Let's say, seventy percent.",
+      "pl": "Biorę na siebie całą odpowiedzialność. Powiedzmy, siedemdziesiąt procent."
+    },
+    "photo": "Marcel_Skrok.webp"
   },
   {
     "name": "Aleksandra",
     "surname": "Komorowska",
     "division": {
-      "eng": "Construction",
+      "eng": "Mechanics",
       "pl": "Konstrukcja"
     },
     "specialty": {
-      "eng": null,
-      "pl": null
+      "eng": "FEA analysis specialist",
+      "pl": "Specjalistka ds analiz MES"
     },
-    "linkedin": null,
+    "linkedin": "https://www.linkedin.com/in/aleksandra-komorowska-539433240/",
     "email": "komorowska.alexa@gmail.com",
     "quote": {
-      "eng": "\"The essence of strengthening is to reduce the movement of dislocation\" ~K.W.",
-      "pl": "\"Istotą umocnienia jest utrudnianie ruchu dyslokacji\" ~K.W."
+      "eng": "Most problems already have existing solutions..",
+      "pl": "Większość problemów ma już istniejące rozwiązania.."
     },
-    "photo": "/img/team/Aleksandra_Komorowska.jpg"
+    "photo": "Aleksandra_Komorowska.webp"
+  },
+  {
+    "name": "Agnieszka",
+    "surname": "Ilnicka",
+    "division": {
+      "eng": "Mechanics",
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "3D Printing",
+      "pl": "Druk 3D"
+    },
+    "linkedin": "https://www.linkedin.com/in/agnieszka-ilnicka-0443161a7/",
+    "email": "robocik.ailnicka@gmail.com",
+    "quote": {
+      "eng": "Once we accept our limits, we go beyond them.",
+      "pl": "Nie pokonasz przeszkody, dopóki nie uznasz jej istnienia."
+    },
+    "photo": "Agnieszka_Ilnicka.webp"
+  },
+  {
+    "name": "Sebastian",
+    "surname": "Leszczyk",
+    "division": {
+      "eng": "Mechanics",
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "Logistic specialist",
+      "pl": "Specjalista ds logistyki"
+    },
+    "linkedin": "https://www.linkedin.com/in/sebastian-leszczyk-ab8a271aa/",
+    "email": "sebastian.leszczyk@gmail.com",
+    "quote": {
+      "eng": "Okay, now tell me, which welder will you weld thin sheet metal, electrode or migomat?",
+      "pl": "Dobra, to powiedz mi teraz, którą spawarką zespawasz cienką blachę, elektrodową czy migomatem?"
+    },
+    "photo": "Sebastian_Leszczyk.webp"
+  },
+  {
+    "name": "Michał",
+    "surname": "Purzycki",
+    "division": {
+      "eng": "Mechanics",
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "Manipulator specialist",
+      "pl": "Specjalista ds. manipulatorów podwodnych"
+    },
+    "linkedin": "https://www.linkedin.com/in/micha%C5%82-purzycki-119091210/",
+    "email": "purzyckim23@gmail.com",
+    "quote": {
+      "eng": "It would give nothing",
+      "pl": "To by nic nie dało"
+    },
+    "photo": "Michal_Purzycki.webp"
+  },
+  {
+    "name": "Michał",
+    "surname": "Pawłowski",
+    "division": {
+      "eng": "Mechanics",
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "3D Modeling",
+      "pl": "Modelowanie 3D"
+    },
+    "linkedin": "https://www.linkedin.com/in/micha%C5%82-paw%C5%82owski-b906a319a",
+    "email": "pawlowski.michal1a@gmail.com",
+    "quote": {
+      "eng": "I am a demand of technical departments",
+      "pl": "Jestem zapotrzebowaniem działów technicznych"
+    },
+    "photo": "Michal_Pawlowski.webp"
+  },
+  {
+    "name": "Radosław",
+    "surname": "Tomzik",
+    "division": {
+      "eng": "Mechanics",
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "Torpedo specialist",
+      "pl": "Specjalista ds. Torped"
+    },
+    "linkedin": "https://www.linkedin.com/in/radosław-tomzik-4609a5208",
+    "email": "radoslaw.tomzik9@gmail.com",
+    "quote": {
+      "eng": "Continuous improvement is a key to success",
+      "pl": "Ciągłe doskonalenie to klucz do sukcesu"
+    },
+    "photo": "Radoslaw_Tomzik.webp"
+  },
+  {
+    "name": "Michał",
+    "surname": "Jedliński",
+    "division": {
+      "eng": "Mechanics",
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "3D Printing specialist",
+      "pl": "Specjalista ds. Druku 3D"
+    },
+    "linkedin": null,
+    "email": "jedlinskispolka@gmail.com",
+    "quote": {
+      "eng": "Every 20 minute print is one clogged nozzle away from becoming a 3 day ordeal.",
+      "pl": "Każdy 20-minutowy wydruk od stania się 3-dniową naprawą dzieli jedna zapchana dysza."
+    },
+    "photo": "Michal_Jedlinski.webp"
+  },
+  {
+    "name": "Jakub",
+    "surname": "Papież",
+    "division": {
+      "eng": ["Mechanics", "Marketing"],
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "3D Modeling/Photographer",
+      "pl": "Modelowanie 3D/ Fotograf"
+    },
+    "linkedin": null,
+    "email": "papiez.jakub02@gmail.com",
+    "quote": {
+      "eng": "Marian, it is quite luxury here",
+      "pl": "Marian, tu jest jakby luksusowo"
+    },
+    "photo": "Jakub_Papiez.webp"
+  },
+  {
+    "name": "Mateusz",
+    "surname": "Binkowski",
+    "division": {
+      "eng": "Mechanics",
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "3D Modeling",
+      "pl": "Modelowanie 3D"
+    },
+    "linkedin": null,
+    "email": "mateusz.binkowski77@gmail.com",
+    "quote": {
+      "eng": "“If you can dream it, you can do it.” ~ W.D",
+      "pl": "Jeśli potrafisz o czymś marzyć, to potrafisz także tego dokonać. ~ W.D"
+    },
+    "photo": "Mateusz_Binkowski.webp"
+  },
+  {
+    "name": "Robert",
+    "surname": "Moroz",
+    "division": {
+      "eng": "Mechanics",
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "3D modeling",
+      "pl": "Modelowanie 3D"
+    },
+    "linkedin": null,
+    "email": "rob.morozm@gmail.com",
+    "quote": {
+      "eng": "remember that anything you do is totally not worth it",
+      "pl": "cokolwiek robisz pamiętaj - nie warto"
+    },
+    "photo": "Robert_Moroz.webp"
+  },
+  {
+    "name": "Maja",
+    "surname": "Bielawska",
+    "division": {
+      "eng": "Mechanics",
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "Insulation specialist",
+      "pl": "Specjalistka ds uszczelnień"
+    },
+    "linkedin": "https://www.linkedin.com/in/maja-bielawska-435964215",
+    "email": "maja.bielawska33@gmail.com",
+    "quote": {
+      "eng": "We all are constructors of our own fate, but I once again forgot my pencil. ",
+      "pl": "Wszyscy jesteśmy konstruktorami własnego losu, a ja znowu zapomniałam ołówka. "
+    },
+    "photo": "Maja_Bielawska.webp"
+  },
+  {
+    "name": "Grzegorz",
+    "surname": "Wyborski",
+    "division": {
+      "eng": "Mechanics",
+      "pl": "Konstrukcja"
+    },
+    "specialty": {
+      "eng": "3D Modeling",
+      "pl": "Modelowanie 3D"
+    },
+    "linkedin": null,
+    "email": "grzegorzwyborski0@gmail.com",
+    "quote": {
+      "eng": "Go big or go home ",
+      "pl": "Daj z siebie wszystko, albo daj sobie spokój"
+    },
+    "photo": "Grzegorz_Wyborski.webp"
+  },
+  {
+    "name": "Maciej",
+    "surname": "Osak",
+    "division": {
+      "eng": "Electronics",
+      "pl": "Elektronika"
+    },
+    "specialty": {
+      "eng": "Electronics design and repair",
+      "pl": "Projektowanie i naprawa elektroniki"
+    },
+    "linkedin": "https://www.linkedin.com/in/maciej-osak-241301235",
+    "email": "maciek3092@gmail.com",
+    "quote": {
+      "eng": "I was electronic in the Old Camp, did you forget?",
+      "pl": "Byłem elektronikiem w Starym Obozie, już zapomniałeś?"
+    },
+    "photo": "Maciej_Osak.webp"
   },
   {
     "name": "Bartosz",
@@ -301,133 +295,13 @@
       "eng": "Electronics repairs, microcontrollers, also bad jokes",
       "pl": "Nieśmieszne żarty, mikrokontrolery i naprawa elektroniki"
     },
-    "linkedin": "https://linkedin.com/in/bhornicki/",
-    "email": null,
+    "linkedin": "https://www.linkedin.com/in/bhornicki",
+    "email": "bartoszhornicki@gmail.com",
     "quote": {
-      "eng": "Life before death, strength before weakness, journey before pancakes.",
-      "pl": "Czym pospawasz cienką blachę, elektrodówką czy migomatem?\nYyyy, oesu, elektrodówką!\nDobrze.\nNaprawdę?!?!\nPS. TigMasterRace"
+      "eng": "Life before death, strength before weakness, thin sheet with electrode before migomat.",
+      "pl": "Życie ponad śmiercią, siła ponad słabością, cienka blacha elektrodówką ponad migomatem"
     },
-    "photo": "/img/team/Bartosz_Hornicki.jpg"
-  },
-  {
-    "name": "Paweł",
-    "surname": "Owczarek",
-    "division": {
-      "eng": [
-        "Electronics",
-        "Marketing"
-      ],
-      "pl": [
-        "Elektronika",
-        "Marketing"
-      ]
-    },
-    "specialty": {
-      "eng": "Electronics & Formality",
-      "pl": "Elektronika i Formalności"
-    },
-    "linkedin": "https://www.linkedin.com/in/pawe%C5%82-owczarek-4ba060161/",
-    "email": null,
-    "quote": {
-      "eng": null,
-      "pl": "Sprawy trudne rozwiązujemy w kwadrans, rzeczy niemożliwe w mniej niż godzinę..."
-    },
-    "photo": "/img/team/Pawel_Owczarek.jpg"
-  },
-  {
-    "name": "Agnieszka",
-    "surname": "Ilnicka",
-    "division": {
-      "eng": "Construction",
-      "pl": "Konstrukcja"
-    },
-    "specialty": {
-      "eng": "3D Printing",
-      "pl": "Druk 3D"
-    },
-    "linkedin": "https://www.linkedin.com/in/agnieszka-ilnicka-0443161a7/",
-    "email": null,
-    "quote": {
-      "eng": "Once we accept our limits, we go beyond them.",
-      "pl": "Once we accept our limits, we go beyond them."
-    },
-    "photo": "/img/team/Agnieszka_Ilnicka.jpg"
-  },
-  {
-    "name": "Sebastian",
-    "surname": "Leszczyk",
-    "division": {
-      "eng": "Construction",
-      "pl": "Konstrukcja"
-    },
-    "specialty": {
-      "eng": null,
-      "pl": null
-    },
-    "linkedin": "https://www.linkedin.com/in/sebastian-leszczyk-ab8a271aa/",
-    "email": "sebastian.leszczyk@gmail.com",
-    "quote": {
-      "eng": "Nothing by force, everything with a hammer.",
-      "pl": "Dobra, to powiedz mi teraz, którą spawarką zespawasz cienką blachę, elektrodową czy migomatem?"
-    },
-    "photo": "/img/team/Sebastian_Leszczyk.jpg"
-  },
-  {
-    "name": "Mikołaj",
-    "surname": "Czerniak",
-    "division": {
-      "eng": "Electronics",
-      "pl": "Elektronika"
-    },
-    "specialty": {
-      "eng": null,
-      "pl": null
-    },
-    "linkedin": null,
-    "email": "czerniakczerniak26@gmail.com",
-    "quote": {
-      "eng": null,
-      "pl": "Może nie wiem wszystkiego, ale od czego jest google."
-    },
-    "photo": "/img/team/Mikolaj_Czerniak.jpg"
-  },
-  {
-    "name": "Michał",
-    "surname": "Wierzbicki",
-    "division": {
-      "eng": "Marketing",
-      "pl": "Marketing"
-    },
-    "specialty": {
-      "eng": "Social Media",
-      "pl": "Social Media"
-    },
-    "linkedin": null,
-    "email": "amakondem@interia.pl",
-    "quote": {
-      "eng": "There's nothing like a good book.",
-      "pl": "Jedni zasypiają w pracy, inni pracują we śnie."
-    },
-    "photo": "/img/team/Michal_Wierzbicki.jpg"
-  },
-  {
-    "name": "Bartosz",
-    "surname": "Barbarzak",
-    "division": {
-      "eng": "Fundraising",
-      "pl": "Fundraising"
-    },
-    "specialty": {
-      "eng": null,
-      "pl": null
-    },
-    "linkedin": "https://www.linkedin.com/in/bartek-barbarzak-90752a19a/",
-    "email": "bartekbarbarzak@gmail.com",
-    "quote": {
-      "eng": null,
-      "pl": null
-    },
-    "photo": "/img/team/Bartosz_Barbarzak.jpg"
+    "photo": "Bartosz_Hornicki.webp"
   },
   {
     "name": "Damian",
@@ -446,7 +320,7 @@
       "eng": "Good production is team effort",
       "pl": "Z wierzchu nie różni sie niczym od poprzedniej wersji, ale w środku..."
     },
-    "photo": "/img/team/Damian_Kociolek.jpg"
+    "photo": "Damian_Kociolek.webp"
   },
   {
     "name": "Piotr",
@@ -456,72 +330,509 @@
       "pl": "Elektronika"
     },
     "specialty": {
-      "eng": "PCB design & uC",
-      "pl": "PCB design & uC"
+      "eng": "PCB Design & Microcontrollers",
+      "pl": "Projekty PCB oraz mikrokontrolery"
     },
     "linkedin": "https://www.linkedin.com/in/piotr-zieli%C5%84ski-218ba6197/",
     "email": "kontakt@piotr-zielinski.pl",
     "quote": {
-      "eng": "A PCB designer is never late. Nor is he early. He delivers precisely when he means to.",
-      "pl": null
+      "eng": "Fast, Cheap, and Good…pick two. If it’s fast and cheap it won’t be good. If it’s cheap and good it won’t be fast. If it’s fast and good it won’t be cheap.",
+      "pl": "Szybko, tanio i dobrze. Szkoda, że można wybrać maksymalnie dwa. "
     },
-    "photo": "/img/team/Piotr_Zielinski.jpg"
+    "photo": "Piotr_Zielinski.webp"
   },
   {
-    "name": "Volodymyr",
-    "surname": "Mykyta",
+    "name": "Maciej",
+    "surname": "Gajek",
     "division": {
-      "eng": "Construction",
-      "pl": "Konstrukcja"
+      "eng": "Electronics",
+      "pl": "Elektronika"
     },
     "specialty": {
-      "eng": null,
-      "pl": null
+      "eng": "Embedded developer",
+      "pl": "Programista embedded"
     },
-    "linkedin": "https://www.linkedin.com/in/volodymyr-mykyta/",
-    "email": "volodymyr.mykyta@o2.pl",
+    "linkedin": "https://www.linkedin.com/in/maciej-gajek",
+    "email": "mac.gajek@gmail.com",
     "quote": {
-      "eng": null,
-      "pl": null
+      "eng": "I saved the best for last - quadruple STM32 at the front and back!",
+      "pl": "Najlepsze zostawiłem na koniec - poczwórna STMka z tyłu i z przodu!"
     },
-    "photo": "/img/team/Volodymyr_Mykyta.jpg"
+    "photo": "Maciej_Gajek.webp"
   },
   {
     "name": "Michał",
-    "surname": "Purzycki",
+    "surname": "Uznański",
     "division": {
-      "eng": "Construction",
-      "pl": "Konstrukcja"
+      "eng": "Electronics",
+      "pl": "Elektronika"
     },
     "specialty": {
-      "eng": null,
-      "pl": null
+      "eng": "Embedded developer, CANist",
+      "pl": "Programista embedded, puszkowiec"
     },
-    "linkedin": null,
-    "email": null,
+    "linkedin": "https://www.linkedin.com/in/micha%C5%82-uzna%C5%84ski/",
+    "email": "michal.uznanski12@gmail.com",
     "quote": {
-      "eng": null,
-      "pl": null
+      "eng": "I did not hit her, it's not true, it's bullshit, I did not hit her. I did not. Oh, hi Mark.",
+      "pl": "W ogóle, centralnie, kamieniem go bez kitu"
     },
-    "photo": "/img/team/Michal_Purzycki.jpg"
+    "photo": "Michal_Uznanski.webp"
   },
   {
-    "name": "Maja",
-    "surname": "Bielawska",
+    "name": "Igor",
+    "surname": "Zieliński",
     "division": {
-      "eng": "Construction",
-      "pl": "Konstrukcja"
+      "eng": "Electronics",
+      "pl": "Elektronika"
     },
     "specialty": {
-      "eng": null,
-      "pl": null
+      "eng": "Electronics specialist / Embedded software developer ",
+      "pl": "Elektronik / Programista embedded "
     },
-    "linkedin": "https://www.linkedin.com/in/maja-bielawska-435964215",
-    "email": "maja.bielawska33@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/igor-zieli%C5%84ski-b338031a9",
+    "email": "igorzielinski3c@wp.pl",
     "quote": {
-      "eng": "Despite all these modern construction tools, I think the shovel is the most groundbreaking.",
-      "pl": null
+      "eng": "\"I don't know anything about this kind of bubble gum\" ~John Paul II",
+      "pl": "\"Nie wiem nic o takiej gumie\" ~ Jan Paweł II"
     },
-    "photo": "/img/team/Maja_Bielawska.jpg"
+    "photo": "Igor_Zielinski.webp"
+  },
+  {
+    "name": "Michał",
+    "surname": "Stanisławski",
+    "division": {
+      "eng": "Electronics",
+      "pl": "Elektronika"
+    },
+    "specialty": {
+      "eng": "Electronics specialist",
+      "pl": "Elektronik "
+    },
+    "linkedin": "https://www.linkedin.com/in/micha%C5%82-stanis%C5%82awski-0a732423b/",
+    "email": "michal.stanislawski3@wp.pl",
+    "quote": {
+      "eng": "if I knew that I would fall over, I would lie down",
+      "pl": "Gdybym wiedział że się przewrócę to bym się położył"
+    },
+    "photo": "Michal_Stanislawski.webp"
+  },
+  {
+    "name": "Mateusz",
+    "surname": "Wójcik",
+    "division": {
+      "eng": "Electronics",
+      "pl": "Elektronika"
+    },
+    "specialty": {
+      "eng": "Electronic circuits and PCB designer",
+      "pl": "Projektant układów elektronicznych i PCB"
+    },
+    "linkedin": "https://www.linkedin.com/in/mateusz-w%C3%B3jcik-4a2188168",
+    "email": "mwojcik2573@gmail.com",
+    "quote": {
+      "eng": "Have it done already!",
+      "pl": "Rób, zrób!"
+    },
+    "photo": "Mateusz_Wojcik.webp"
+  },
+  {
+    "name": "Michał",
+    "surname": "Pietrzak",
+    "division": {
+      "eng": ["Management", "Electronics"],
+      "pl": "Zarząd"
+    },
+    "specialty": {
+      "eng": "CTO",
+      "pl": "Wiceprezes ds. Technicznych"
+    },
+    "linkedin": "https://www.linkedin.com/in/m-pietrzak18/",
+    "email": "robocik.mpietrzak@gmail.com",
+    "quote": {
+      "eng": "Don't look back. You're not going that way.",
+      "pl": "Lepiej gruby kijek pocienkować, niż go potem pogrubasić."
+    },
+    "photo": "Michal_Pietrzak.webp"
+  },
+  {
+    "name": "Kornelia",
+    "surname": "Głód",
+    "division": {
+      "eng": "Management",
+      "pl": "Zarząd"
+    },
+    "specialty": {
+      "eng": "CEO",
+      "pl": "Prezes"
+    },
+    "linkedin": "https://www.linkedin.com/in/kornelia-g%C5%82%C3%B3d-29b97b1b6/",
+    "email": "kornelia.glod@pwr.edu.pl",
+    "quote": {
+      "eng": "\"To achieve anything in this game, you must be prepared to dabble in the boundary of disaster.\" - S.M.",
+      "pl": "\"Aby cokolwiek osiągnąć, musisz być przygotowany do balansowania na krawędzi.\" - S.M."
+    },
+    "photo": "Kornelia_Glod.webp"
+  },
+  {
+    "name": "Magdalena",
+    "surname": "Gut",
+    "division": {
+      "eng": ["Management", "Marketing"],
+      "pl": "Zarząd"
+    },
+    "specialty": {
+      "eng": "CMO",
+      "pl": "Wiceprezes ds. Organizacyjnych i Promocji"
+    },
+    "linkedin": "https://www.linkedin.com/in/magdalena-gut-3391a7152/",
+    "email": "mag.gut98@gmail.com",
+    "quote": {
+      "eng": "Life is too short to drink bad coffee",
+      "pl": "Życie jest zbyt krótkie by pić niedobre kawki"
+    },
+    "photo": "Magdalena_Gut.webp"
+  },
+  {
+    "name": "Jakub",
+    "surname": "Szwedowicz",
+    "division": {
+      "eng": ["Management", "Marketing"],
+      "pl": "Zarząd"
+    },
+    "specialty": {
+      "eng": "CFO",
+      "pl": "Wiceprezes ds. Finansowych"
+    },
+    "linkedin": "https://www.linkedin.com/in/jakub-szwedowicz-43b113206/",
+    "email": "kuba.szwedowicz@gmail.com",
+    "quote": {
+      "eng": "Only those who have patience to do simple things perfectly ever acquire the skill to do difficult things easily.",
+      "pl": "Tylko ci którzy mają cierpliwość robić proste rzeczy idealnie, mogą zacząć robić trudne rzeczy z łatwością"
+    },
+    "photo": "Jakub_Szwedowicz.webp"
+  },
+  {
+    "name": "Artur",
+    "surname": "Stopa",
+    "division": {
+      "eng": "Software",
+      "pl": "Software"
+    },
+    "specialty": {
+      "eng": "Python Dev, Computer Vision",
+      "pl": "Python Dev, Wizja Komputerowa"
+    },
+    "linkedin": "https://www.linkedin.com/in/artur-stopa/",
+    "email": "arturstopa10@gmail.com",
+    "quote": {
+      "eng": "Summarizing all aspects of the essence of the topic, I come to a fundamental conclusion, POLAND IS A MOUNTAIN!",
+      "pl": "Reasumując wszystkie aspekty kwintesencji tematu, dochodzę do fundamentalnej konkluzji, POLSKA GUROM!"
+    },
+    "photo": "Artur_Stopa.webp"
+  },
+  {
+    "name": "Mikołaj",
+    "surname": "Kaźmierczak",
+    "division": {
+      "eng": ["Software", "Marketing"],
+      "pl": ["Software", "Marketing"]
+    },
+    "specialty": {
+      "eng": "Web Development",
+      "pl": "Web Development"
+    },
+    "linkedin": null,
+    "email": "mikolaj@kazmierczak.pl",
+    "quote": {
+      "eng": "Of course it is happening inside your head, Harry, but why on earth should that mean that it is not real?",
+      "pl": "Ależ oczywiście to dzieje się w twojej głowie, Harry, tylko skąd, u licha, wniosek, że wobec tego nie dzieje się to naprawdę?"
+    },
+    "photo": "Mikolaj_Kazmierczak.webp"
+  },
+  {
+    "name": "Piotr",
+    "surname": "Szlęg",
+    "division": {
+      "eng": "Software",
+      "pl": "Software"
+    },
+    "specialty": {
+      "eng": "Software Team Leader ",
+      "pl": "Lider działu software "
+    },
+    "linkedin": "https://www.linkedin.com/in/piotr-szl%C4%99g-b027171b4/",
+    "email": "szlegp@gmail.com",
+    "quote": {
+      "eng": "Do you pine for the days when men were men and wrote their own device drivers? - Linus Torvalds",
+      "pl": "Czyż nie tęsknicie za czasami, gdy mężczyźni byli mężczyznami i sami pisali swoje sterowniki? - Linus Torvalds"
+    },
+    "photo": "Piotr_Szleg.webp"
+  },
+  {
+    "name": "Patryk",
+    "surname": "Świat",
+    "division": {
+      "eng": "Software",
+      "pl": "Software"
+    },
+    "specialty": {
+      "eng": "Python developer, neural networks",
+      "pl": "Programista Python, sieci neuronowe"
+    },
+    "linkedin": null,
+    "email": "patrykswiat@gmail.com",
+    "quote": {
+      "eng": "Paradoxically, it's mostly diet, ma'am",
+      "pl": "Paradoksalnie to głównie dieta proszę pani"
+    },
+    "photo": "Patryk_Swiat.webp"
+  },
+  {
+    "name": "Piotr",
+    "surname": "Dębski",
+    "division": {
+      "eng": "Software",
+      "pl": "Software"
+    },
+    "specialty": {
+      "eng": "Computer Vision",
+      "pl": "Wizja Komputerowa"
+    },
+    "linkedin": "https://www.linkedin.com/in/piotr-d%C4%99bski-7114b818a",
+    "email": "ppdebski@interia.eu",
+    "quote": {
+      "eng": "Take perspective, look deep inside",
+      "pl": "Przyjmij perspektywę, spójrz wgłąb"
+    },
+    "photo": "Piotr_Debski.webp"
+  },
+  {
+    "name": "Paweł ",
+    "surname": "Barczyk",
+    "division": {
+      "eng": "Software",
+      "pl": "Software"
+    },
+    "specialty": {
+      "eng": "Unity Developer",
+      "pl": "Programista Unity"
+    },
+    "linkedin": null,
+    "email": "260393@student.pwr.edu.pl",
+    "quote": {
+      "eng": "\"Thay've thought up them durak contraptions cause thay had naw strength in arms!\"",
+      "pl": "\"Wymyślili te durackie maszyny, bo siły w rencach nie mieli!\""
+    },
+    "photo": "Pawel_Barczyk.webp"
+  },
+  {
+    "name": "Wiktor",
+    "surname": "Sadowy",
+    "division": {
+      "eng": "Software",
+      "pl": "Software"
+    },
+    "specialty": {
+      "eng": "Neural Networks",
+      "pl": "Sieci Neuronowe"
+    },
+    "linkedin": "https://www.linkedin.com/in/wiktor-sadowy-4664271b8/",
+    "email": "wiktor.sadowy@onet.pl",
+    "quote": {
+      "eng": "If the model worked fine immediately, then I wouldn't have a job",
+      "pl": "Gdyby model od razu działał, to nie miałbym pracy"
+    },
+    "photo": "Wiktor_Sadowy.webp"
+  },
+  {
+    "name": "Kuba",
+    "surname": "Borowiec",
+    "division": {
+      "eng": "Software",
+      "pl": "Software"
+    },
+    "specialty": {
+      "eng": "Web Development",
+      "pl": "Web Development"
+    },
+    "linkedin": null,
+    "email": "k.borowiec2f@gmail.com",
+    "quote": {
+      "eng": "szechlem mechlem kerku myszke",
+      "pl": "szechlem mechlem kerku myszke"
+    },
+    "photo": "Kuba_Borowiec.webp"
+  },
+  {
+    "name": "Zuzanna",
+    "surname": "Bendiuł",
+    "division": {
+      "eng": "Marketing",
+      "pl": "Marketing"
+    },
+    "specialty": {
+      "eng": "Social Media coordinator",
+      "pl": "Koordynatorka ds. Social Media"
+    },
+    "linkedin": "https://www.linkedin.com/in/zuzannabendiul/",
+    "email": "zbendiul@gmail.com",
+    "quote": {
+      "eng": "With commas as with men - either too many at once or none at all.",
+      "pl": "Z przecinkami jak z facetami - albo za dużo na raz albo żadnego."
+    },
+    "photo": "Zuzanna_Bendiul.webp"
+  },
+  {
+    "name": "Jakub",
+    "surname": "Klawon",
+    "division": {
+      "eng": "Marketing",
+      "pl": "Marketing"
+    },
+    "specialty": {
+      "eng": "Fundraiser/Filmmaker",
+      "pl": "Fundraiser/Filmowiec"
+    },
+    "linkedin": "https://www.linkedin.com/in/jakub-klawon/",
+    "email": "jakubklawon.kontakt@gmail.com",
+    "quote": {
+      "eng": "You come at the king, you best not miss",
+      "pl": "Dwa litry to może mieć czajnik"
+    },
+    "photo": "Jakub_Klawon.webp"
+  },
+  {
+    "name": "Natasza",
+    "surname": "Borzyszkowska",
+    "division": {
+      "eng": "Marketing",
+      "pl": "Marketing"
+    },
+    "specialty": {
+      "eng": "crewmate",
+      "pl": "crewmate"
+    },
+    "linkedin": null,
+    "email": "borzyszkowska.n@gmail.com",
+    "quote": {
+      "eng": "yolo - we're all gonna die anyway",
+      "pl": "yolo - i tak wszyscy umrzemy"
+    },
+    "photo": "Natasza_Borzyszkowska.webp"
+  },
+  {
+    "name": "Aleksandra",
+    "surname": "Tądel",
+    "division": {
+      "eng": "Marketing",
+      "pl": "Marketing"
+    },
+    "specialty": {
+      "eng": "Graphic deisgner",
+      "pl": "Graficzka"
+    },
+    "linkedin": "https://www.linkedin.com/in/tadelaleksandra/",
+    "email": "tadelaleksandra@gmail.com",
+    "quote": {
+      "eng": "d-_-b",
+      "pl": "każdy nieoddany strzał jest nietrafiony"
+    },
+    "photo": "Aleksandra_Tadel.webp"
+  },
+  {
+    "name": "Nazar",
+    "surname": "Yakovets",
+    "division": {
+      "eng": "Marketing",
+      "pl": "Marketing"
+    },
+    "specialty": {
+      "eng": "Copywriter/Filmmaker",
+      "pl": "Copywriter/Filmowiec"
+    },
+    "linkedin": "https://www.linkedin.com/in/nazar-iakovets-064bb0182/",
+    "email": "nazaryakovets7@gmail.com",
+    "quote": {
+      "eng": "Description kills.",
+      "pl": "Opis zabija."
+    },
+    "photo": "Nazar_Yakovets.webp"
+  },
+  {
+    "name": "Aleksandra",
+    "surname": "Ostrowska",
+    "division": {
+      "eng": "Marketing",
+      "pl": "Marketing"
+    },
+    "specialty": {
+      "eng": "Graphic designer",
+      "pl": "Graficzka"
+    },
+    "linkedin": "https://www.linkedin.com/in/aleksandra-ostrowska-b19147203/",
+    "email": "olaost99@gmail.com",
+    "quote": {
+      "eng": "I want better and higher, I’m not saying I want more",
+      "pl": "Chcę lepiej i wyżej, nie mówię, że więcej"
+    },
+    "photo": "Aleksandra_Ostrowska.webp"
+  },
+  {
+    "name": "Dominika",
+    "surname": "Winiarska",
+    "division": {
+      "eng": "Marketing",
+      "pl": "Marketing"
+    },
+    "specialty": {
+      "eng": "Copywriter",
+      "pl": "Copywriterka"
+    },
+    "linkedin": null,
+    "email": "dwiniarska27@gmail.com",
+    "quote": {
+      "eng": "that's the barbecue at Gawron's",
+      "pl": "Ciężkie to są kamienie, reszta może być najwyżej trudna."
+    },
+    "photo": "Dominika_Winiarska.webp"
+  },
+  {
+    "name": "Agnieszka",
+    "surname": "Faryś",
+    "division": {
+      "eng": "Marketing",
+      "pl": "Marketing"
+    },
+    "specialty": {
+      "eng": "Graphic designer ",
+      "pl": "Graficzka"
+    },
+    "linkedin": null,
+    "email": "agnieszkafarys6@gmail.com ",
+    "quote": {
+      "eng": "\"Do you know what acupuncture is? A wire in the back\" - K. P. ",
+      "pl": "\"Wie Pan co to akupunktura? Drut w plecy\" - K. P. "
+    },
+    "photo": "Agnieszka_Farys.webp"
+  },
+  {
+    "name": "Aleksandra",
+    "surname": "Ławrynowicz",
+    "division": {
+      "eng": "Marketing",
+      "pl": "Marketing"
+    },
+    "specialty": {
+      "eng": "Fundraiser",
+      "pl": "Fundraiserka"
+    },
+    "linkedin": null,
+    "email": "aleksandralawrynowicz99@gmail.com",
+    "quote": {
+      "eng": "I'm not superstitious but I am a little stitious",
+      "pl": "Jedyną stałą rzeczą w życiu jest zmiana"
+    },
+    "photo": "Aleksandra_Lawrynowicz.webp"
   }
 ]
