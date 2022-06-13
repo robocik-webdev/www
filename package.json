@@ -16,5 +16,8 @@
     "svelte-meta-tags": "^2.3.0",
     "svelte-scrollto": "^0.2.0"
   },
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": ">=16"
+  }
 }
