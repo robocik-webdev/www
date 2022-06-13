@@ -20,7 +20,7 @@
   $: console.log(zp);
   $: s = zp * 1.5;
   // $: r = 0(z(hp) * -y) / 40; // rotation
-  $: r = hp * 90; // rotation
+  $: r = hp * 40; // rotation
   // $: ty = y - hw; // translation y
   // $: tx = hp * ws * 0.1; // translation x
   $: ty = ((hp * hs) / 3) * 2; // translation y

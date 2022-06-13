@@ -1,7 +1,19 @@
 <script>
   import { lang } from '$lib/lang.js';
 
-  const imgs = ['robosub.webp', 'robomaticon.webp', '3mind.webp', 'strategic_science_club.webp'];
+  const imgs = [
+    'robomaticon',
+    'robosub18',
+    'robosub19',
+    'erl',
+    'obh',
+    'pro_juvenes',
+    '3mind',
+    'robosub2020',
+    'robosub2021',
+    'robomotion',
+    'ks'
+  ];
 
   let section;
   let slider;
@@ -67,7 +79,7 @@
     <div class="slider" bind:this={slider}>
       {#each imgs as img, i}
         <div class="slide" bind:this={slides[i]}>
-          <img src="/achievements/{img}" alt="achievement image {img}" />
+          <img src="/achievements/{img}.webp" alt="achievement image {img}" />
           <h2>{@html $lang[`achievements_${i + 1}_title`]}</h2>
           <h3>{@html $lang[`achievements_${i + 1}_subtitle_1`]}</h3>
           <h3>

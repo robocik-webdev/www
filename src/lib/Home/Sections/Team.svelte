@@ -103,7 +103,7 @@
     <div class="slider" style="transform: translateX({offset}px)" bind:this={slider}>
       {#each team as t, i}
         <div class="card" bind:this={cards[i]}>
-          <img class="photo" src={t.photo} alt="crew member" />
+          <img class="photo" src="/team/photos/{t.photo}" alt="crew member" />
           <h2 class="name">{t.name}<br />{t.surname}</h2>
 
           {#if Array.isArray(t.division[$langChoice])}

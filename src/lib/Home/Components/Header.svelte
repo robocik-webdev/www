@@ -18,6 +18,10 @@
   function toggleMenu() {
     $menuOpened = !$menuOpened;
   }
+
+  $: if (y < 200) {
+    $menuOpened = false;
+  }
 </script>
 
 <svelte:window bind:scrollY={y} bind:innerHeight={h} />
@@ -50,7 +54,7 @@
     <Lang vertical />
   </div>
 
-  <div class="part hamburger" on:click={toggleMenu}>
+  <div class="part hamburger" class:visible={y > 200} on:click={toggleMenu}>
     <span class="material-symbols-outlined open" alt="open menu" class:visible={!$menuOpened}>menu</span>
     <span class="material-symbols-outlined close" alt="close menu" class:visible={$menuOpened}>close</span>
   </div>
@@ -121,6 +125,8 @@
   }
 
   .hamburger {
+    position: fixed;
+    right: 0;
     display: grid;
     place-items: center;
   }
@@ -139,6 +145,15 @@
   @media (min-width: 1260px) {
     .hamburger {
       display: none;
+      padding: 2rem;
+      padding-right: 2.5rem;
+    }
+    .hamburger span {
+      border-radius: 4rem;
+      font-size: 4rem;
+    }
+    .hamburger.visible {
+      display: grid;
     }
   }
 </style>

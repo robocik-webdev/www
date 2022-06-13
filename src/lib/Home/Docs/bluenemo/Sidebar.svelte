@@ -68,9 +68,9 @@
   li {
     cursor: pointer;
     display: block;
-    padding: 1rem 1rem;
+    padding: 1rem;
     font-size: 1rem;
-    background-color: #f0f0f0;
+    background-color: var(--c-accent-dark);
     border-radius: 10px;
     margin-bottom: 0.5rem;
   }
@@ -92,7 +92,6 @@
     nav {
       --width: 35%;
       --header-height: 105px;
-
       position: sticky;
       position: absolute;
       height: calc(100vh - var(--header-height));
@@ -100,7 +99,7 @@
       transform: translateX(0);
     }
     li {
-      padding: 0.3rem 1rem;
+      padding: 0.5rem 1rem;
     }
   }
 </style>

@@ -1,5 +1,6 @@
 <script>
   export let vertical = false;
+  export let right = false;
   export let dark = false;
 
   $: color = dark ? 'dark' : 'light';
@@ -11,7 +12,7 @@
   ];
 </script>
 
-<div class="wrapper" class:vertical>
+<div class="wrapper" class:vertical class:right>
   {#each socialMedia as sm}
     <a href={sm[1]} target="_blank">
       <img class="icon" src="/social/{sm[0]}" alt="{sm[0]} icon" />
@@ -32,5 +33,8 @@
 
   .vertical {
     flex-direction: column;
+  }
+  .right {
+    justify-content: flex-end;
   }
 </style>

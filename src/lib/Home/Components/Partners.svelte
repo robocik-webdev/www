@@ -119,6 +119,7 @@
     left: 0;
     display: flex;
     justify-content: flex-end;
+    padding: 1rem;
     width: 100%;
   }
   .close span {
@@ -126,6 +127,7 @@
   }
 
   .content {
+    margin: 1rem;
     margin-top: 2rem;
   }
   h1,

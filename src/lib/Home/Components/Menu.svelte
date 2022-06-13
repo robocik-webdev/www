@@ -32,9 +32,9 @@
       {/if}
     {/each}
   </ul>
-  <Lang />
+  <Lang right />
   <div class="br" />
-  <Social />
+  <Social right />
 </nav>
 
 <style>
@@ -73,5 +73,11 @@
   }
   .br {
     height: 2rem;
+  }
+
+  @media (min-width: 1260px) {
+    nav {
+      padding-top: 8.5rem;
+    }
   }
 </style>

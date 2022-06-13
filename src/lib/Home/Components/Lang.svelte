@@ -2,9 +2,10 @@
   import { langChoice } from '$lib/lang.js';
 
   export let vertical = false;
+  export let right = false;
 </script>
 
-<div class="lang" class:vertical>
+<div class="lang" class:vertical class:right>
   <img src="/lang/eng.svg" alt="english version" on:click={() => ($langChoice = 'eng')} />
   <img src="/lang/pl.svg" alt="polish version" on:click={() => ($langChoice = 'pl')} />
 </div>
@@ -22,5 +23,8 @@
   }
   .vertical {
     flex-direction: column;
+  }
+  .right {
+    justify-content: flex-end;
   }
 </style>
