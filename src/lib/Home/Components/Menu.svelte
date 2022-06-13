@@ -5,9 +5,7 @@
   import Lang from '$lib/Home/Components/Lang.svelte';
   import Social from '$lib/Home/Components/Social.svelte';
 
-  let menu = ['vision', 'achievements', 'project', 'team', 'contact'];
-
-  console.log($menuOpened);
+  let menu = ['vision', 'project', 'achievements', 'team', 'partners', 'contact'];
 
   function gotoSection(section) {
     scrollto('#' + section);
@@ -18,20 +16,24 @@
 <nav class:opened={$menuOpened}>
   <ul>
     {#each menu as item}
-      <li on:click={() => gotoSection(item)}>
-        {@html $lang[`menu_${item}`]}
-      </li>
+      {#if item == 'partners'}
+        <li
+          on:click={() => {
+            $menuOpened = false;
+            $partnersOpened = true;
+          }}
+        >
+          {@html $lang.menu_partners}
+        </li>
+      {:else}
+        <li on:click={() => gotoSection(item)}>
+          {@html $lang[`menu_${item}`]}
+        </li>
+      {/if}
     {/each}
-    <li
-      on:click={() => {
-        $menuOpened = false;
-        $partnersOpened = true;
-      }}
-    >
-      {@html $lang.menu_partners}
-    </li>
   </ul>
   <Lang />
+  <div class="br" />
   <Social />
 </nav>
 
@@ -42,13 +44,15 @@
     position: fixed;
     top: 0;
     left: 0;
-    padding: 1rem;
+    padding: 2rem;
     padding-top: 7rem;
     width: 100%;
     height: 100%;
-    background-color: var(--c-main);
+    background-color: rgba(0, 0, 0, 0.5);
     transform: translateX(100%);
     transition: transform var(--t-normal);
+    text-align: right;
+    backdrop-filter: blur(10px);
   }
   nav.opened {
     transform: translateX(0);
@@ -56,19 +60,18 @@
 
   ul {
     margin: 0;
+    margin-bottom: 3rem;
     padding: 0;
   }
   li {
     cursor: pointer;
     margin-bottom: 1.75rem;
     list-style: none;
-    font-size: 10vw;
+    font-size: clamp(2rem, 10vw, 4rem);
     color: var(--c-white);
+    font-weight: 900;
   }
-
-  /* @media (min-width: 600px) {
-    nav {
-      display: none;
-    }
-  } */
+  .br {
+    height: 2rem;
+  }
 </style>

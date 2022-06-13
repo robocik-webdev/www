@@ -2,11 +2,11 @@
   import { createEventDispatcher } from 'svelte';
   const dispatch = createEventDispatcher();
 
-  export let dark;
-  export let clear;
+  export let dark = false;
+  export let clear = false;
 
-  export let href;
-  export let target;
+  export let href = null;
+  export let target = null;
 </script>
 
 {#if href}

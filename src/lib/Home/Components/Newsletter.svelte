@@ -22,12 +22,9 @@
       <div id="mc_embed_signup_scroll">
         <div class="mc-field-group">
           <input id="mce-EMAIL" name="EMAIL" type="email" value="" placeholder={$lang.newsletter_email} />
-          <input id="mc-embedded-subscribe" name="subscribe" type="submit" value={$lang.newsletter_submit} />
-        </div>
-
-        <div id="mce-responses">
-          <div id="mce-error-response" style="display:none" />
-          <div id="mce-success-response" style="display:none" />
+          <button id="mc-embedded-subscribe" name="subscribe" type="submit">
+            <span class="material-symbols-outlined">send</span>
+          </button>
         </div>
 
         <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups -->
@@ -52,49 +49,45 @@
 </div>
 
 <style>
-  h1,
-  p {
-    grid-column: 4 / 10;
-    text-align: center;
+  * {
+    color: var(--c-white);
   }
 
   #mc_embed_signup {
-    grid-column: 4 / 10;
-    margin-top: 25px;
     user-select: none;
   }
 
-  #mc_embed_signup_scroll {
+  .mc-field-group {
     display: flex;
-    /* justify-content: center; */
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  input {
+    border-radius: 2rem;
+    border: none;
+    padding: 0.5rem 1em;
+  }
+  input:focus {
+    outline: solid 4px var(--c-complement);
+  }
+  #mc-embedded-subscribe {
+    display: grid;
+    place-items: center;
+    border-radius: 2rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    background-color: var(--c-complement);
+    font-weight: bold;
   }
 
   small {
     display: block;
-    margin-top: 15px;
+    margin-top: 1rem;
     line-height: 1.5;
     font-size: 0.6rem;
     max-width: 380px;
   }
   small * {
     font-size: 0.6rem;
-  }
-
-  input {
-    padding: 10px;
-    color: var(--color-main);
-    border: none;
-  }
-  input:focus {
-    outline: solid 2px var(--color-complement);
-  }
-
-  #mc-embedded-subscribe {
-    cursor: pointer;
-    background-color: var(--color-complement);
-    font-weight: bold;
   }
 </style>

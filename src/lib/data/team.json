@@ -16,7 +16,7 @@
       "eng": "\"To achieve anything in this game, you must be prepared to dabble in the boundary of disaster.\" - S.M.",
       "pl": "\"Aby cokolwiek osiągnąć, musisz być przygotowany do balansowania na krawędzi.\" - S.M."
     },
-    "photo": "/img/team/Kornelia_Glod.jpg"
+    "photo": "/team/photos/Kornelia_Glod.jpg"
   },
   {
     "name": "Magdalena",
@@ -35,7 +35,7 @@
       "eng": "Life is too short to drink bad coffee",
       "pl": "Życie jest zbyt krótkie by pić niedobre kawki"
     },
-    "photo": "/img/team/Magdalena_Gut.jpg"
+    "photo": "/team/photos/Magdalena_Gut.jpg"
   },
   {
     "name": "Jakub",
@@ -54,7 +54,7 @@
       "eng": "Only those who have patience to do simple things perfectly ever acquire the skill to do difficult things easily.",
       "pl": null
     },
-    "photo": "/img/team/Jakub_Szwedowicz.jpg"
+    "photo": "/team/photos/Jakub_Szwedowicz.jpg"
   },
   {
     "name": "Wiktor",
@@ -73,7 +73,7 @@
       "eng": "A reed before the wind lives on, while mighty oaks do fall.",
       "pl": "Potężna wichura łamiąc duże drzewa, trzciną zaledwie tylko kołysze."
     },
-    "photo": "/img/team/Wiktor_Paluch.jpg"
+    "photo": "/team/photos/Wiktor_Paluch.jpg"
   },
   {
     "name": "Konrad",
@@ -92,7 +92,7 @@
       "eng": "If a man was afraid to try, he would never came out the cave",
       "pl": "Gdyby człowiek bał się próbować, nigdy nie wyszedłby z jaskini"
     },
-    "photo": "/img/team/Konrad_Kacperowski.jpg"
+    "photo": "/team/photos/Konrad_Kacperowski.jpg"
   },
   {
     "name": "Marcel",
@@ -111,20 +111,14 @@
       "eng": null,
       "pl": "Punkt widzenia zależy od punktu siedzenia."
     },
-    "photo": "/img/team/Marcel_Skrok.jpg"
+    "photo": "/team/photos/Marcel_Skrok.jpg"
   },
   {
     "name": "Mikołaj",
     "surname": "Kaźmierczak",
     "division": {
-      "eng": [
-        "Software",
-        "Marketing"
-      ],
-      "pl": [
-        "Software",
-        "Marketing"
-      ]
+      "eng": ["Software", "Marketing"],
+      "pl": ["Software", "Marketing"]
     },
     "specialty": {
       "eng": "Web Development",
@@ -136,7 +130,7 @@
       "eng": "Of course it is happening inside your head, Harry, but why on earth should that mean that it is not real?",
       "pl": "Ależ oczywiście to dzieje się w twojej głowie, Harry, tylko skąd, u licha, wniosek, że wobec tego nie dzieje się to naprawdę?"
     },
-    "photo": "/img/team/Mikolaj_Kazmierczak.jpg"
+    "photo": "/team/photos/Mikolaj_Kazmierczak.jpg"
   },
   {
     "name": "Jędrzej",
@@ -155,7 +149,7 @@
       "eng": null,
       "pl": "Jak nie, jak tak."
     },
-    "photo": "/img/team/Jedrzej_Jamnicki.jpg"
+    "photo": "/team/photos/Jedrzej_Jamnicki.jpg"
   },
   {
     "name": "Kuba",
@@ -174,7 +168,7 @@
       "eng": null,
       "pl": "Wiem co to strach, gdy nie zrobisz zadania. Na czole zimny pot, nie masz nieprzygotowania."
     },
-    "photo": "/img/team/Kuba_Borowiec.jpg"
+    "photo": "/team/photos/Kuba_Borowiec.jpg"
   },
   {
     "name": "Artur",
@@ -193,7 +187,7 @@
       "eng": "You can't change Your past, but You can still mess up Your future.",
       "pl": "Farszem nabijam cukinię, jeśli bit byłby cukinią..\nDING DONG nie pojedziesz tą windą!"
     },
-    "photo": "/img/team/Artur_Stopa.jpg"
+    "photo": "/team/photos/Artur_Stopa.jpg"
   },
   {
     "name": "Wiktor",
@@ -212,7 +206,7 @@
       "eng": "Happiness is a good book and a comfortable armchair",
       "pl": "Szczęście to dobra książka i wygodny fotel"
     },
-    "photo": "/img/team/Wiktor_Bozek.jpg"
+    "photo": "/team/photos/Wiktor_Bozek.jpg"
   },
   {
     "name": "Maciej",
@@ -231,7 +225,7 @@
       "eng": "Stay creative",
       "pl": null
     },
-    "photo": "/img/team/Maciej_Osak.jpg"
+    "photo": "/team/photos/Maciej_Osak.jpg"
   },
   {
     "name": "Kacper",
@@ -250,7 +244,7 @@
       "eng": null,
       "pl": null
     },
-    "photo": "/img/team/Kacper_Lara.jpg"
+    "photo": "/team/photos/Kacper_Lara.jpg"
   },
   {
     "name": "Emilia",
@@ -269,7 +263,7 @@
       "eng": "\"If a wardrobe had a string, it would be called an elevator.\" - M.W.",
       "pl": "\"Gdyby szafa miała sznurek, to by była windą.\" - M.W."
     },
-    "photo": "/img/team/Emilia_Szymanska.jpg"
+    "photo": "/team/photos/Emilia_Szymanska.jpg"
   },
   {
     "name": "Aleksandra",
@@ -288,7 +282,7 @@
       "eng": "\"The essence of strengthening is to reduce the movement of dislocation\" ~K.W.",
       "pl": "\"Istotą umocnienia jest utrudnianie ruchu dyslokacji\" ~K.W."
     },
-    "photo": "/img/team/Aleksandra_Komorowska.jpg"
+    "photo": "/team/photos/Aleksandra_Komorowska.jpg"
   },
   {
     "name": "Bartosz",
@@ -307,20 +301,14 @@
       "eng": "Life before death, strength before weakness, journey before pancakes.",
       "pl": "Czym pospawasz cienką blachę, elektrodówką czy migomatem?\nYyyy, oesu, elektrodówką!\nDobrze.\nNaprawdę?!?!\nPS. TigMasterRace"
     },
-    "photo": "/img/team/Bartosz_Hornicki.jpg"
+    "photo": "/team/photos/Bartosz_Hornicki.jpg"
   },
   {
     "name": "Paweł",
     "surname": "Owczarek",
     "division": {
-      "eng": [
-        "Electronics",
-        "Marketing"
-      ],
-      "pl": [
-        "Elektronika",
-        "Marketing"
-      ]
+      "eng": ["Electronics", "Marketing"],
+      "pl": ["Elektronika", "Marketing"]
     },
     "specialty": {
       "eng": "Electronics & Formality",
@@ -332,7 +320,7 @@
       "eng": null,
       "pl": "Sprawy trudne rozwiązujemy w kwadrans, rzeczy niemożliwe w mniej niż godzinę..."
     },
-    "photo": "/img/team/Pawel_Owczarek.jpg"
+    "photo": "/team/photos/Pawel_Owczarek.jpg"
   },
   {
     "name": "Agnieszka",
@@ -351,7 +339,7 @@
       "eng": "Once we accept our limits, we go beyond them.",
       "pl": "Once we accept our limits, we go beyond them."
     },
-    "photo": "/img/team/Agnieszka_Ilnicka.jpg"
+    "photo": "/team/photos/Agnieszka_Ilnicka.jpg"
   },
   {
     "name": "Sebastian",
@@ -370,7 +358,7 @@
       "eng": "Nothing by force, everything with a hammer.",
       "pl": "Dobra, to powiedz mi teraz, którą spawarką zespawasz cienką blachę, elektrodową czy migomatem?"
     },
-    "photo": "/img/team/Sebastian_Leszczyk.jpg"
+    "photo": "/team/photos/Sebastian_Leszczyk.jpg"
   },
   {
     "name": "Mikołaj",
@@ -389,7 +377,7 @@
       "eng": null,
       "pl": "Może nie wiem wszystkiego, ale od czego jest google."
     },
-    "photo": "/img/team/Mikolaj_Czerniak.jpg"
+    "photo": "/team/photos/Mikolaj_Czerniak.jpg"
   },
   {
     "name": "Michał",
@@ -408,7 +396,7 @@
       "eng": "There's nothing like a good book.",
       "pl": "Jedni zasypiają w pracy, inni pracują we śnie."
     },
-    "photo": "/img/team/Michal_Wierzbicki.jpg"
+    "photo": "/team/photos/Michal_Wierzbicki.jpg"
   },
   {
     "name": "Bartosz",
@@ -427,7 +415,7 @@
       "eng": null,
       "pl": null
     },
-    "photo": "/img/team/Bartosz_Barbarzak.jpg"
+    "photo": "/team/photos/Bartosz_Barbarzak.jpg"
   },
   {
     "name": "Damian",
@@ -446,7 +434,7 @@
       "eng": "Good production is team effort",
       "pl": "Z wierzchu nie różni sie niczym od poprzedniej wersji, ale w środku..."
     },
-    "photo": "/img/team/Damian_Kociolek.jpg"
+    "photo": "/team/photos/Damian_Kociolek.jpg"
   },
   {
     "name": "Piotr",
@@ -465,7 +453,7 @@
       "eng": "A PCB designer is never late. Nor is he early. He delivers precisely when he means to.",
       "pl": null
     },
-    "photo": "/img/team/Piotr_Zielinski.jpg"
+    "photo": "/team/photos/Piotr_Zielinski.jpg"
   },
   {
     "name": "Volodymyr",
@@ -484,7 +472,7 @@
       "eng": null,
       "pl": null
     },
-    "photo": "/img/team/Volodymyr_Mykyta.jpg"
+    "photo": "/team/photos/Volodymyr_Mykyta.jpg"
   },
   {
     "name": "Michał",
@@ -503,7 +491,7 @@
       "eng": null,
       "pl": null
     },
-    "photo": "/img/team/Michal_Purzycki.jpg"
+    "photo": "/team/photos/Michal_Purzycki.jpg"
   },
   {
     "name": "Maja",
@@ -522,6 +510,6 @@
       "eng": "Despite all these modern construction tools, I think the shovel is the most groundbreaking.",
       "pl": null
     },
-    "photo": "/img/team/Maja_Bielawska.jpg"
+    "photo": "/team/photos/Maja_Bielawska.jpg"
   }
 ]

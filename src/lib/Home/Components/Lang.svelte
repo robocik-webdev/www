@@ -1,7 +1,7 @@
 <script>
   import { langChoice } from '$lib/lang.js';
 
-  export let vertical;
+  export let vertical = false;
 </script>
 
 <div class="lang" class:vertical>
@@ -13,25 +13,14 @@
   .lang {
     display: flex;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   .lang img {
+    border-radius: 7px;
     cursor: pointer;
-    width: 3rem;
+    width: clamp(2rem, 4vw, 4rem);
   }
   .vertical {
     flex-direction: column;
-  }
-  @media (min-width: 600px) {
-    .lang {
-      display: flex;
-      align-items: center;
-      margin-top: 0;
-      margin-right: 5px;
-    }
-    .lang img {
-      margin-right: 15px;
-      width: 30px;
-    }
   }
 </style>

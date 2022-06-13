@@ -8,12 +8,12 @@
 
   let y;
   let h;
-  let lastY;
-  let visible = true;
-  $: {
-    visible = !$modalOpened && (y == 0 || y < lastY);
-    lastY = y;
-  }
+  // let lastY;
+  // let visible = true;
+  // $: {
+  //   visible = !$modalOpened && (y == 0 || y < lastY);
+  //   lastY = y;
+  // }
 
   function toggleMenu() {
     $menuOpened = !$menuOpened;
@@ -22,27 +22,33 @@
 
 <svelte:window bind:scrollY={y} bind:innerHeight={h} />
 
-<header class:visible>
-  <Social vertical />
-
-  <div class="menu left">
-    <div role="button" on:click={() => scrollto('#vision')}>{@html $lang['menu_vision']}</div>
-    <div role="button" on:click={() => scrollto('#achievements')}>{@html $lang['menu_achievements']}</div>
-    <div role="button" on:click={() => scrollto('#project')}>{@html $lang['menu_project']}</div>
+<header>
+  <div class="corner left">
+    <Social vertical dark />
   </div>
 
-  <div class="part logo" on:click={() => scrollto('#top')}>
-    <img src="/logo-dark.svg" alt="robocik logo" class:visible={!$menuOpened} />
-    <img src="/logo-light.svg" alt="robocik logo" class:visible={$menuOpened} />
+  <div class="center">
+    <div class="menu left">
+      <div role="button" on:click={() => scrollto('#vision')}>{@html $lang['menu_vision']}</div>
+      <div role="button" on:click={() => scrollto('#achievements')}>{@html $lang['menu_achievements']}</div>
+      <div role="button" on:click={() => scrollto('#project')}>{@html $lang['menu_project']}</div>
+    </div>
+
+    <div class="part logo" on:click={() => scrollto('#top')}>
+      <img src="/logo-dark.svg" alt="robocik logo" class:visible={!$menuOpened} />
+      <img src="/logo-light.svg" alt="robocik logo" class:visible={$menuOpened} />
+    </div>
+
+    <div class="menu right">
+      <div role="button" on:click={() => scrollto('#team')}>{@html $lang['menu_team']}</div>
+      <div role="button" on:click={() => ($partnersOpened = true)}>{@html $lang['menu_partners']}</div>
+      <div role="button" on:click={() => scrollto('#contact')}>{@html $lang['menu_contact']}</div>
+    </div>
   </div>
 
-  <div class="menu right">
-    <div role="button" on:click={() => scrollto('#team')}>{@html $lang['menu_team']}</div>
-    <div role="button" on:click={() => scrollto('#contact')}>{@html $lang['menu_contact']}</div>
-    <div role="button" on:click={() => ($partnersOpened = true)}>{@html $lang['menu_partners']}</div>
+  <div class="corner right">
+    <Lang vertical />
   </div>
-
-  <!-- <Lang vertical /> -->
 
   <div class="part hamburger" on:click={toggleMenu}>
     <span class="material-symbols-outlined open" alt="open menu" class:visible={!$menuOpened}>menu</span>
@@ -55,43 +61,42 @@
 <style>
   header {
     z-index: 100;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
-    transform: translateY(-100%);
-    transition: transform var(--t-normal);
-  }
-  header.visible {
-    transform: translateY(0);
   }
   header * {
     color: var(--c-main);
   }
+
+  .corner {
+    display: none;
+    padding: 2.5rem;
+  }
+
+  .center {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
   .menu {
-    height: 5rem;
     display: none;
     align-items: center;
     gap: 2rem;
   }
-  .menu.left {
-    margin-right: 1rem;
-  }
-  .menu.right {
-    margin-left: 1rem;
-  }
   .menu div {
     cursor: pointer;
-    font-weight: bold;
-    /* text-shadow: 0px 0px 10px var(--c-white); */
+    font-weight: 900;
   }
-  @media (min-width: 800px) {
-    header {
-      justify-content: center;
-    }
+  @media (min-width: 1260px) {
     .menu {
+      display: flex;
+    }
+    .corner {
       display: flex;
     }
   }
@@ -100,11 +105,12 @@
     cursor: pointer;
     padding: 1rem;
   }
-  .part img,
+  .part img {
+    height: 4rem;
+    width: 4rem;
+  }
   .part span {
-    height: 3rem;
-    width: 3rem;
-    font-size: 3rem;
+    font-size: 4rem;
   }
 
   .logo img {
@@ -114,18 +120,23 @@
     display: block;
   }
 
+  .hamburger {
+    display: grid;
+    place-items: center;
+  }
   .hamburger span {
+    border-radius: 2rem;
     display: none;
+    padding: 0.5rem;
     color: var(--c-main);
+    background-color: var(--c-white);
+    font-size: 3rem;
   }
   .hamburger span.visible {
-    display: block;
-  }
-  .hamburger span.close {
-    color: var(--c-white);
+    display: grid;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 1260px) {
     .hamburger {
       display: none;
     }

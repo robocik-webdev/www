@@ -5,10 +5,15 @@
   import Button from '$lib/Home/Components/Button.svelte';
 
   const partners = {
+    strategic: [
+      [
+        ['1_2__pwr.png', 'https://pwr.edu.pl/'],
+        ['2_5__manus.png', 'https://manus.pl/']
+      ]
+    ],
     platinum: [
       [
         ['1_1__tme.svg', 'https://www.tme.eu/en/'],
-        ['1_2__pwr.png', 'https://pwr.edu.pl/'],
         ['1_3__cnc_kramet.png', 'http://cnckramet.pl/index.php/en/']
       ],
       [
@@ -26,7 +31,8 @@
       [
         ['1_7__gralmarine.png', 'https://www.gralmarine.com/'],
         ['1_8__wolczanka.svg', 'https://www.wolczanka.pl/'],
-        ['1_9__lapp.svg', 'https://www.lappgroup.com/']
+        ['1_9__lapp.svg', 'https://www.lappgroup.com/'],
+        ['sklad_techniczny.png', 'https://www.skladtechniczny.pl/en/home/']
       ],
       [
         ['1_10__inprogress.svg', 'https://inprogress.pl/'],
@@ -39,8 +45,7 @@
         ['2_1__wobit.png', 'http://www.wobit.com.pl/'],
         ['2_2__zkz.png', 'http://zkz.net.pl/pl/'],
         ['2_3__wimarol.png', 'https://www.wimarol.pl/'],
-        ['2_4__ppg.png', 'https://www.ppg.com/'],
-        ['2_5__manus.png', 'https://manus.pl/']
+        ['2_4__ppg.png', 'https://www.ppg.com/']
       ],
       [
         ['2_7__toya.png', 'https://toya24.pl/'],
@@ -106,33 +111,6 @@
     color: var(--c-main);
   }
 
-  h1,
-  p {
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-
-  h2 {
-    text-align: center;
-  }
-  hr {
-    width: 25%;
-  }
-
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-  .icons {
-    margin-bottom: 80px;
-  }
-  .icon {
-    width: 50%;
-    padding: 10px 3px;
-  }
-
   .close {
     cursor: pointer;
     position: absolute;
@@ -148,21 +126,39 @@
   }
 
   .content {
-    margin-top: 50px;
+    margin-top: 2rem;
+  }
+  h1,
+  p {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+  }
+  hr {
+    width: 25%;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .icons {
+    margin-bottom: 80px;
+  }
+  .icon {
+    width: 50%;
+    padding: 10px 3px;
   }
 
   @media (min-width: 600px) {
-    .close {
-      width: 60px;
-      height: 60px;
-    }
-
-    .content {
-      margin-top: 60px;
-    }
-
     .icon {
       padding: 20px;
+    }
+    .strategic .icon {
+      width: 20%;
     }
     .platinum .icon {
       width: 20%;

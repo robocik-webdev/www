@@ -1,8 +1,10 @@
 <script>
   import { range } from '$lib/utils.js';
+  import { onMount } from 'svelte';
 
   export let h; // cta section height
   let y; // window scroll
+  // let w; // window width
 
   const wavesRange = range(1, 4);
   $: offsets = wavesRange.map(i => {
@@ -12,27 +14,43 @@
     let offset = y < h ? (1 - scrolled) / multiplier : 0;
     return offset;
   });
+
+  // let waves = [
+  //   { offset: 0, direction: -1 },
+  //   { offset: 0, direction: 1 },
+  //   { offset: 0, direction: -1 },
+  //   { offset: 0, direction: 1 }
+  // ];
+  // console.log(waves);
+
+  // onMount(() => {
+  //   const interval = setInterval(() => {
+  //     wavesRange.forEach(i => {
+  //       i -= 1;
+  //       waves[i].offset += waves[i].direction;
+  //       if (waves[i].direction == 1) {
+  //         if (waves[i].offset > 50 * i) waves[i].direction = -1;
+  //       } else {
+  //         if (waves[i].offset < -50 * i) waves[i].direction = 1;
+  //       }
+  //     });
+  //   }, 50);
+  //   return () => clearInterval(interval);
+  // });
 </script>
 
 <svelte:window bind:scrollY={y} />
 
-<div>
-  {#each wavesRange as i}
-    <img class="wave" src="/cta/wave{i}.svg" alt="" style="transform: translateY({offsets[i - 1] * 100}%)" />
-  {/each}
-</div>
+{#each wavesRange as i}
+  <img
+    class="wave"
+    src="/cta/wave{i}.svg"
+    alt=""
+    style="z-index: {i}; transform: translateY({offsets[i - 1] * 100}%)"
+  />
+{/each}
 
 <style>
-  div {
-    z-index: 0;
-    overflow: hidden;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-main);
-  }
   img {
     position: absolute;
     bottom: 0;
@@ -41,7 +59,6 @@
   @media (max-width: 600px) {
     /* TODO: scale with browser width */
     img {
-      left: -100%;
       width: 200%;
     }
   }

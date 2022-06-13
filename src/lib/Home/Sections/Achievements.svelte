@@ -1,12 +1,7 @@
-<!-- <script>
+<script>
   import { lang } from '$lib/lang.js';
 
-  const imgs = [
-    'robosub.webp',
-    'robomaticon.webp',
-    '3mind.webp',
-    'strategic_science_club.webp'
-  ];
+  const imgs = ['robosub.webp', 'robomaticon.webp', '3mind.webp', 'strategic_science_club.webp'];
 
   let section;
   let slider;
@@ -63,62 +58,71 @@
 
 <svelte:window on:scroll={navigation} on:resize={() => set(slideIndex)} />
 
-<section id="timeline" bind:this={section}>
-  <div class="control prev" class:visible={prevVisible} on:click={prev}>
-    <img src="/icon/prev_light.svg" alt="scroll arrow facing left" />
-  </div>
-  <div class="slider" bind:this={slider}>
-    {#each imgs as img, i}
-      <div class="slide" bind:this={slides[i]}>
-        <img src="/img/timeline/{img}" alt="timeline image {img}" />
-        <h2>{@html $lang[`timeline_${i + 1}_title`]}</h2>
-        <h4>{@html $lang[`timeline_${i + 1}_subtitle_1`]}</h4>
-        <h4>
-          {@html $lang[`timeline_${i + 1}_year`]} /
-          {@html $lang[`timeline_${i + 1}_subtitle_2`]}
-        </h4>
-        <p>{@html $lang[`timeline_${i + 1}_text`]}</p>
-      </div>
-    {/each}
-  </div>
-  <div class="control next" class:visible={nextVisible} on:click={next}>
-    <img src="/icon/next_light.svg" alt="scroll arrow facing right" />
+<section id="achievements" bind:this={section}>
+  <div class="wrapper">
+    <div class="control prev" class:visible={prevVisible} on:click={prev}>
+      <span class="material-symbols-outlined">arrow_back</span>
+    </div>
+    <h1><span class="material-symbols-outlined">workspace_premium</span> {@html $lang.achievements_title}</h1>
+    <div class="slider" bind:this={slider}>
+      {#each imgs as img, i}
+        <div class="slide" bind:this={slides[i]}>
+          <img src="/achievements/{img}" alt="achievement image {img}" />
+          <h2>{@html $lang[`achievements_${i + 1}_title`]}</h2>
+          <h3>{@html $lang[`achievements_${i + 1}_subtitle_1`]}</h3>
+          <h3>
+            {@html $lang[`achievements_${i + 1}_year`]} /
+            {@html $lang[`achievements_${i + 1}_subtitle_2`]}
+          </h3>
+          <p>{@html $lang[`achievements_${i + 1}_text`]}</p>
+        </div>
+      {/each}
+    </div>
+    <div class="control next" class:visible={nextVisible} on:click={next}>
+      <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
   </div>
 </section>
 
 <style>
   section {
     overflow: hidden;
-    min-height: 100vh;
+  }
+  .wrapper {
+    padding: 1em;
+    max-width: var(--w-max);
+    margin: 0 auto;
   }
 
   .control {
     cursor: pointer;
+    display: grid;
+    place-items: center;
     z-index: 1;
     position: fixed;
     top: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: var(--color-complement);
+    border-radius: 2rem;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    background-color: var(--c-complement);
     transition: transform var(--t-fast);
   }
   .control.prev {
-    left: 0;
-    transform: translateX(calc(-100% - 1px));
+    left: 1rem;
+    transform: translateX(calc(-100% - 1px - 2rem));
   }
   .control.next {
-    right: 0;
-    transform: translateX(calc(100% + 1px));
+    right: 1rem;
+    transform: translateX(calc(100% + 1px + 2rem));
   }
   .control.visible {
     transform: translateX(0);
   }
-  .control img {
-    padding: 5px;
+  .control span {
+    padding: 0.5rem;
+    font-size: 2.5rem;
   }
 
   .slider {
-    grid-column: 2 / 12;
     display: flex;
     align-items: flex-start;
     transition: transform var(--t-normal);
@@ -128,8 +132,30 @@
     width: 100%;
     flex-shrink: 0;
   }
+  .slide img {
+    border: 5px solid var(--c-white);
+    border-radius: 2rem;
+  }
+  h1 {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+  }
+  h1 span {
+    margin-right: 0.5rem;
+    font-size: 2.5rem;
+  }
   h2 {
-    margin: 20px 0 10px 0;
+    margin: 1rem 0 0.5em 0;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+  h3 {
+    color: var(--c-accent-dark);
+  }
+  p {
+    font-size: var(--fs-200);
   }
 
   @media (min-width: 600px) {
@@ -145,4 +171,4 @@
       width: calc(100% / 3);
     }
   }
-</style> -->
+</style>

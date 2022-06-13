@@ -1,9 +1,9 @@
 <script>
-  import { fade } from 'svelte/transition';
+  import { fade, fly } from 'svelte/transition';
 </script>
 
 <div class="bg" transition:fade={{ duration: 400 }}>
-  <div class="wrapper">
+  <div class="wrapper" transition:fly={{ y: 100, duration: 400 }}>
     <div class="content">
       <slot />
     </div>
