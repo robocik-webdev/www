@@ -1,16 +1,11 @@
 <script>
   import { MetaTags, JsonLd } from 'svelte-meta-tags';
-  import Waves from '$lib/Components/Waves.svelte';
-  import Vehicle from '$lib/Components/Vehicle.svelte';
-  import CTA from '$lib/Sections/CTA.svelte';
-  import Vision from '$lib/Sections/Vision.svelte';
-  import Timeline from '$lib/Sections/Timeline.svelte';
-  import Project from '$lib/Sections/Project.svelte';
-  import Tech from '$lib/Sections/Tech.svelte';
-  import Team from '$lib/Sections/Team.svelte';
-  import People from '$lib/Sections/People.svelte';
-  import Newsletter from '$lib/Sections/Newsletter.svelte';
-  import Contact from '$lib/Sections/Contact.svelte';
+  import CTA from '$lib/Home/Sections/CTA.svelte';
+  import Vision from '$lib/Home/Sections/Vision.svelte';
+  import Project from '$lib/Home/Sections/Project.svelte';
+  import Achievements from '$lib/Home/Sections/Achievements.svelte';
+  import Team from '$lib/Home/Sections/Team.svelte';
+  import Contact from '$lib/Home/Sections/Contact.svelte';
 </script>
 
 <MetaTags
@@ -19,11 +14,8 @@
   openGraph={{
     url: 'http://www.robocik.pwr.edu.pl/',
     title: 'KN Robocik',
-    description:
-      'Koło Naukowe Automatyki i Robotyki „Robocik”, działające na Politechnice Wrocławskiej.',
-    images: [
-      { url: 'http://robocik.pwr.edu.pl/static/img/timeline/robosub.webp' }
-    ]
+    description: 'Koło Naukowe Automatyki i Robotyki „Robocik”, działające na Politechnice Wrocławskiej.',
+    images: [{ url: 'http://robocik.pwr.edu.pl/achievements/robosub.webp' }]
   }}
 />
 
@@ -31,29 +23,27 @@
   schema={{
     '@type': 'Organization',
     url: 'http://robocik.pwr.edu.pl/',
-    logo: 'http://robocik.pwr.edu.pl/static/favicon.png'
+    logo: 'http://robocik.pwr.edu.pl/favicon.png'
   }}
 />
 
 <main id="top">
-  <div>
-    <Waves />
-    <Vehicle />
-    <CTA />
+  <CTA />
+  <div class="underwater">
     <Vision />
+    <Project />
+    <Achievements />
+    <Team />
+    <Contact />
   </div>
-  <Timeline />
-  <Project />
-  <Tech />
-  <Team />
-  <People />
-  <Newsletter />
-  <Contact />
 </main>
 
 <style>
-  div {
-    overflow: hidden;
-    position: relative;
+  main {
+    height: 100%;
+  }
+  .underwater {
+    min-height: 200vh;
+    background: linear-gradient(var(--c-complement), var(--c-main));
   }
 </style>

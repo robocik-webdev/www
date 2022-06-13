@@ -1,14 +1,14 @@
 # KN Robocik Website
 
-Our main website for marketing purposes and online presence.
-Created with [SvelteKit](https://kit.svelte.dev/).
+Our website for marketing purposes and online presence.
+Made with [SvelteKit](https://kit.svelte.dev/).
 
-# run
+## develop
 
-`npm i` `npm run preview`
-
-# develop
+Use [prettier](https://prettier.io/docs/en/install.html) for code styling!
 
 `npm i` `npm run dev`
 
-Use [prettier](https://prettier.io/docs/en/install.html) for code styling!
+## build and preview
+
+`npm i` `npm run build` `npm run preview`
