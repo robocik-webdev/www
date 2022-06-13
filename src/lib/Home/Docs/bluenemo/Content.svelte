@@ -1,6 +1,6 @@
 <script>
-  import { lang } from '$lib/Docs/lang.js';
-  const img = '/img/docs';
+  import { lang } from '$lib/Home/Docs/lang.js';
+  const img = '/drones/bluenemo/docs';
 </script>
 
 <div class="wrapper">
@@ -61,26 +61,22 @@
         <figure>
           <img src="{img}/forces_cylinder.webp" alt="forces cylinder" />
           <figcaption>
-            Fig.7 - The chosen shape and material ensure ample resistance to
-            hydrostatic pressure. The maximum stresses at a depth of 100 m are
-            26.5 MPa.
+            Fig.7 - The chosen shape and material ensure ample resistance to hydrostatic pressure. The maximum stresses
+            at a depth of 100 m are 26.5 MPa.
           </figcaption>
         </figure>
         <p>{@html $lang.materialsContent2}</p>
         <figure>
           <img src="{img}/forces_plate.webp" alt="forces plate" />
           <figcaption>
-            Fig.8 - The chosen shape and material ensure average resistance to
-            hydrostatic pressure. The maximum stresses at a depth of 100 m are
-            59.5 MPa.
+            Fig.8 - The chosen shape and material ensure average resistance to hydrostatic pressure. The maximum
+            stresses at a depth of 100 m are 59.5 MPa.
           </figcaption>
         </figure>
         <p>{@html $lang.materialsContent3}</p>
         <figure>
           <img src="{img}/5.webp" alt="outer skeleton" />
-          <figcaption>
-            Fig.9 - The outer skeleton, i.e. the frame of the pressure chamber.
-          </figcaption>
+          <figcaption>Fig.9 - The outer skeleton, i.e. the frame of the pressure chamber.</figcaption>
         </figure>
         <p>{@html $lang.materialsContent4}</p>
         <figure>
@@ -94,11 +90,7 @@
         </figure>
         <p>{@html $lang.materialsContent5}</p>
         <figure>
-          <img
-            src="{img}/rov_thruster.webp"
-            alt="rov thruster"
-            style="height:25%;width:25%;"
-          />
+          <img src="{img}/rov_thruster.webp" alt="rov thruster" style="height:25%;width:25%;" />
           <figcaption>Fig.12 - BLDC T200 Thruster.</figcaption>
         </figure>
       </div>
@@ -131,11 +123,7 @@
         </ul>
         <p>{@html $lang.electronicdesignprocessContent2}</p>
         <figure>
-          <img
-            src="{img}/diagram_power_communication.webp"
-            alt="electronics diagram"
-            style="height:80%;width:80%;"
-          />
+          <img src="{img}/diagram_power_communication.webp" alt="electronics diagram" style="height:80%;width:80%;" />
           <figcaption>Fig.13 - Electronics block diagram.</figcaption>
         </figure>
 
@@ -150,10 +138,7 @@
           <p>{@html $lang.powersupplyContent2}</p>
           <figure>
             <img src="{img}/board_thrusters.webp" alt="powering motors pcb" />
-            <figcaption>
-              Fig.14 - Proprietary PCB responsible for powering motors (bottom
-              view).
-            </figcaption>
+            <figcaption>Fig.14 - Proprietary PCB responsible for powering motors (bottom view).</figcaption>
           </figure>
           <p>{@html $lang.powersupplyContent3}</p>
         </div>
@@ -176,23 +161,13 @@
           <h4 id="Sensors">{$lang.sensorsHeader}</h4>
           <p>{@html $lang.sensorsContent1}</p>
           <figure>
-            <img
-              src="{img}/module_dvl.webp"
-              alt="wayfinder dvl"
-              style="height:25%;width:25%;"
-            />
+            <img src="{img}/module_dvl.webp" alt="wayfinder dvl" style="height:25%;width:25%;" />
             <figcaption>Fig.17 - Teledyne Marine "Wayfinder DVL".</figcaption>
           </figure>
           <p>{@html $lang.sensorsContent2}</p>
           <figure>
-            <img
-              src="{img}/board_hydrophones.webp"
-              alt="hydrophones modules pcb"
-              style="height:35%;width:35%;"
-            />
-            <figcaption>
-              Fig.18 - Circuit board render of hydrophones modules.
-            </figcaption>
+            <img src="{img}/board_hydrophones.webp" alt="hydrophones modules pcb" style="height:35%;width:35%;" />
+            <figcaption>Fig.18 - Circuit board render of hydrophones modules.</figcaption>
           </figure>
           <p>{@html $lang.sensorsContent3}</p>
         </div>
@@ -206,11 +181,7 @@
           <h4 id="VisionSystem">{$lang.visionsystemHeader}</h4>
           <p>{@html $lang.visionsystemContent}</p>
           <figure>
-            <img
-              src="{img}/module_led.webp"
-              alt="led"
-              style="height:25%;width:25%;"
-            />
+            <img src="{img}/module_led.webp" alt="led" style="height:25%;width:25%;" />
             <figcaption>Fig.19 - Lumen Light R2 module.</figcaption>
           </figure>
         </div>
@@ -221,13 +192,9 @@
         <p>{@html $lang.algorithmdesignContent}</p>
         <figure>
           <img src="{img}/camera_gate.webp" alt="camera gate" />
-          <img
-            src="{img}/camera_probably_edge_detection.webp"
-            alt="edge detecion"
-          />
+          <img src="{img}/camera_probably_edge_detection.webp" alt="edge detecion" />
           <figcaption>
-            Fig.20 - Computer vision examples: gate detection using YOLO and
-            path axis detection using OpenCV.
+            Fig.20 - Computer vision examples: gate detection using YOLO and path axis detection using OpenCV.
           </figcaption>
         </figure>
       </div>
@@ -239,8 +206,7 @@
           <img src="{img}/code_drop_marker.webp" alt="code" />
 
           <figcaption>
-            Fig.21 - On the left example task code, on the right debug view from
-            the virtual machine running it.
+            Fig.21 - On the left example task code, on the right debug view from the virtual machine running it.
           </figcaption>
         </figure>
       </div>
@@ -251,24 +217,17 @@
       <p>{@html $lang.externalinterfacesContent1}</p>
       <figure>
         <img src="{img}/diagram_modules.webp" alt="diagram modules" />
-        <figcaption>
-          Fig.22 - Structure of processing units, programs that they run and
-          connected devices.
-        </figcaption>
+        <figcaption>Fig.22 - Structure of processing units, programs that they run and connected devices.</figcaption>
       </figure>
       <p>{@html $lang.externalinterfacesContent2}</p>
       <figure>
         <img src="{img}/camera_simulator_debug.webp" alt="camera debug view" />
-        <figcaption>
-          Fig.23 - Debug view of the simulation showing exchanged data.
-        </figcaption>
+        <figcaption>Fig.23 - Debug view of the simulation showing exchanged data.</figcaption>
       </figure>
       <p>{@html $lang.externalinterfacesContent3}</p>
       <figure>
         <img src="{img}/camera_simulator_views.webp" alt="camera views" />
-        <figcaption>
-          Fig.24 - Samples from the dataset generated by the simulator program.
-        </figcaption>
+        <figcaption>Fig.24 - Samples from the dataset generated by the simulator program.</figcaption>
       </figure>
       <p>{@html $lang.externalinterfacesContent4}</p>
       <figure>
@@ -320,11 +279,12 @@
     padding: 0 1.5rem;
     width: 100%;
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 600px) {
     .wrapper {
       --width: 65%;
       padding: 0 2rem;
       width: var(--width);
+      margin-left: 35%;
     }
   }
 
@@ -345,7 +305,7 @@
     text-align: left;
   }
   h1 {
-    margin-top: 3rem;
+    margin-top: 0 !important;
     font-size: 2rem;
   }
   h2 {
@@ -372,7 +332,7 @@
     color: rgb(131, 131, 131);
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 600px) {
     .depth--1 {
       margin-left: 1rem;
     }

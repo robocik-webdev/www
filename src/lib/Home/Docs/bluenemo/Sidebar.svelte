@@ -1,7 +1,7 @@
 <script>
   import { scrollto } from '$lib/utils.js';
-  import { lang } from '$lib/Docs/lang.js';
-  import { opened } from '$lib/Docs/sidebar.js';
+  import { lang } from '$lib/Home/Docs/lang.js';
+  import { opened } from '$lib/Home/Docs/sidebar.js';
 
   function toggleSidebar() {
     $opened = !$opened;
@@ -35,11 +35,7 @@
 <nav class:opened={$opened} on:click={toggleSidebar}>
   <div class="wrapper">
     {#each items as { depth, title }}
-      <li
-        role="button"
-        class={'depth--' + depth}
-        on:click={() => scrollto('#' + title, -70)}
-      >
+      <li role="button" class={'depth--' + depth} on:click={() => scrollto('#' + title, -105, '#docs-content')}>
         {$lang[title.toLowerCase() + 'Header']}
       </li>
     {/each}
@@ -48,20 +44,21 @@
 
 <style>
   nav {
-    --header-height: 55px;
+    --header-height: 85px;
     overflow-y: auto;
     z-index: 1;
-    position: fixed;
+    position: absolute;
     top: var(--header-height);
     padding: 1rem;
     width: 100%;
     height: calc(100% - var(--header-height));
-    background-color: var(--color-light);
+    background-color: var(--c-accent-light);
     transform: translateX(100%);
     transition: transform 400ms;
+    border-radius: 2rem;
   }
   nav.opened {
-    transform: translateX(0);
+    transform: translateX(0%);
   }
 
   .wrapper {
@@ -91,11 +88,13 @@
     margin-left: 2rem;
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 600px) {
     nav {
       --width: 35%;
-      --header-height: 55px;
+      --header-height: 105px;
+
       position: sticky;
+      position: absolute;
       height: calc(100vh - var(--header-height));
       width: var(--width);
       transform: translateX(0);

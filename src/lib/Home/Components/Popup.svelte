@@ -3,8 +3,8 @@
 </script>
 
 <div class="bg" transition:fade={{ duration: 400 }}>
-  <div class="wrapper" transition:fly={{ y: 100, duration: 400 }}>
-    <div class="content">
+  <div class="wrapper">
+    <div class="content" id="docs-content">
       <slot />
     </div>
   </div>
@@ -32,7 +32,6 @@
   }
   .content {
     overflow-y: scroll;
-    padding: 1rem;
     height: 100%;
   }
 </style>
