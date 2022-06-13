@@ -82,10 +82,7 @@
           <img src="/achievements/{img}.webp" alt="achievement image {img}" />
           <h2>{@html $lang[`achievements_${i + 1}_title`]}</h2>
           <h3>{@html $lang[`achievements_${i + 1}_subtitle_1`]}</h3>
-          <h3>
-            {@html $lang[`achievements_${i + 1}_year`]} /
-            {@html $lang[`achievements_${i + 1}_subtitle_2`]}
-          </h3>
+          <h3>{@html $lang[`achievements_${i + 1}_subtitle_2`]}</h3>
           <p>{@html $lang[`achievements_${i + 1}_text`]}</p>
         </div>
       {/each}
