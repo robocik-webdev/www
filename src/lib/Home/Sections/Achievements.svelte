@@ -2,17 +2,17 @@
   import { lang } from '$lib/lang.js';
 
   const imgs = [
-    'robomaticon',
-    'robosub18',
-    'robosub19',
-    'erl',
-    'obh',
-    'pro_juvenes',
-    '3mind',
-    'robosub2020',
-    'robosub2021',
+    'ks',
     'robomotion',
-    'ks'
+    'robosub2021',
+    'robosub2020',
+    '3mind',
+    'pro_juvenes',
+    'obh',
+    'erl',
+    'robosub19',
+    'robosub18',
+    'robomaticon'
   ];
 
   let section;
