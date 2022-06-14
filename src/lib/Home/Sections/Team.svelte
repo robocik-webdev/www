@@ -160,10 +160,8 @@
     .divisions {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 3rem;
     }
-  }
-  .division {
-    margin-bottom: 3rem;
   }
   .division .title {
     display: flex;

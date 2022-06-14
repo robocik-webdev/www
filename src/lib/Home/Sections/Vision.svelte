@@ -20,11 +20,11 @@
   $: console.log(zp);
   $: s = zp * 1.5;
   // $: r = 0(z(hp) * -y) / 40; // rotation
-  $: r = hp * 40; // rotation
+  $: r = hp * 90; // rotation
   // $: ty = y - hw; // translation y
   // $: tx = hp * ws * 0.1; // translation x
-  $: ty = ((hp * hs) / 3) * 2; // translation y
-  $: tx = zp * hr; // translation x
+  $: ty = hp < 0.1 ? 0.1 * hs : hp > 0.75 ? 0.75 * hs : hp * hs; // translation y
+  $: tx = zp * hr * 0.15; // translation x
   // $: console.log(tx);
 </script>
 
@@ -57,7 +57,11 @@
     </div>
   </div>
 
-  <div class="drone" style="top: {ty}px; right: {tx}px; transform: rotate({r}deg) scale({s});" bind:clientHeight={hr}>
+  <div
+    class="drone"
+    style="top: {ty}px; right: {tx}px; transform: rotate({r}deg) scale({s}) translateY(-50%);"
+    bind:clientHeight={hr}
+  >
     <img src="/drones/bluenemo/bluenemo-1.webp" alt="bluenemo view from the top" />
   </div>
 </section>
@@ -101,14 +105,12 @@
     z-index: 0;
     position: absolute;
     top: 0;
+    /* top: 50%; */
     right: 0;
-    height: 35%;
+    width: 25vw;
+    transform-origin: top center;
   }
-  .drone img {
-    width: unset;
-    height: 100%;
-  }
-  @media screen and (max-width: 1500px) {
+  @media screen and (max-width: 550px) {
     .drone {
       display: none;
     }
