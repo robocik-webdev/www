@@ -66,6 +66,7 @@
     border-radius: 2rem;
     border: none;
     padding: 0.5rem 1em;
+    color: var(--c-black);
   }
   input:focus {
     outline: solid 4px var(--c-complement);
