@@ -13,11 +13,8 @@
   let hs; // section height (vision section height)
   let ws; // section width (vision section height)
   let hr; // drone height
-  $: console.log(hr);
   $: hp = y / (hw + hs); // hs progress from 0 to 1
   $: zp = hp < 0.5 ? z(hp, 0, 0.5, 0, 1) : z(hp, 0.5, 1, 1, 0); // hs progress from 0 to 1 to 0
-  // $: console.log(hp);
-  $: console.log(zp);
   $: s = zp * 1.5;
   // $: r = 0(z(hp) * -y) / 40; // rotation
   $: r = hp * 90; // rotation
@@ -25,7 +22,6 @@
   // $: tx = hp * ws * 0.1; // translation x
   $: ty = hp < 0.1 ? 0.1 * hs : hp > 0.75 ? 0.75 * hs : hp * hs; // translation y
   $: tx = zp * hr * 0.15; // translation x
-  // $: console.log(tx);
 </script>
 
 <section id="vision" bind:clientHeight={hs} bind:clientWidth={ws}>
