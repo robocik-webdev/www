@@ -1,6 +1,7 @@
 <script>
-  import Post from '$lib/Ghost/Post.svelte';
-  import TileGroup from '$lib/Ghost/TileGroup.svelte';
+  import Post from '$lib/ghost/Post.svelte';
+  import TileGroup from '$lib/ghost/TileGroup.svelte';
+
   export let page;
   export let tileGroups;
 </script>

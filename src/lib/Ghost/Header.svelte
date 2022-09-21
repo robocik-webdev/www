@@ -1,11 +1,11 @@
 <script>
-  import Nav from '$lib/Ghost/Nav.svelte';
   import { page } from '$app/stores';
+  import Nav from '$lib/ghost/Nav.svelte';
 
   export let nav;
   let navVisible;
   let navOpen;
-  $: menuIcon = `/icon/${navOpen ? 'close_light' : 'menu_light'}.svg`;
+  $: menuIcon = `/ghost/icons/${navOpen ? 'close.svg' : 'menu.svg'}`;
   function toggleNav() {
     navOpen = !navOpen;
   }
@@ -25,9 +25,9 @@
   $: inverted = scroll >= threshold;
 
   $: returnIcon = (() => {
-    if (!nav) return 'prev_light.svg';
-    const home = nav.find(item => item.home == true);
-    return href == home.path ? 'home_light.svg' : 'prev_light.svg';
+    if (!nav) return 'prev.svg';
+    const home = nav.find((item) => item.home == true);
+    return href == home.path ? 'home.svg' : 'prev.svg';
   })();
 </script>
 
@@ -35,17 +35,11 @@
 
 <div class="wrapper">
   <header class="box" class:visible class:inverted>
-    <a
-      sveltekit:prefetch
-      class="button arrow"
-      class:visible={href}
-      disabled={href}
-      {href}
-    >
-      <img src="/icon/{returnIcon}" alt="arrow back" />
+    <a data-sveltekit-prefetch data-sveltekit-noscroll class="button arrow" class:visible={href} disabled={href} {href}>
+      <img src="/ghost/icons/{returnIcon}" alt="arrow back" />
     </a>
-    <a sveltekit:prefetch class="logo" href="/">
-      <img src="/img/logo.svg" alt="logo" />
+    <a class="logo" href="/">
+      <img src="/ghost/logo.svg" alt="logo" />
       PWr Diving Crew
     </a>
     <button class="button menu" class:visible={navVisible} on:click={toggleNav}>
@@ -78,8 +72,7 @@
     border-radius: 10px;
     height: var(--header-h);
     background-color: var(--bg);
-    transition: background-color var(--t-normal), color var(--t-normal),
-      filter var(--t-normal), transform var(--t-fast);
+    transition: background-color var(--t-normal), color var(--t-normal), filter var(--t-normal), transform var(--t-fast);
   }
   header.visible {
     transform: translateY(calc(-100% - var(--header-margin)));

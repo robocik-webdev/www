@@ -6,13 +6,11 @@
   export let path;
 
   function truncate(string, limit) {
-    return string && string.length > limit
-      ? string.substring(0, limit) + '...'
-      : string;
+    return string && string.length > limit ? string.substring(0, limit) + '...' : string;
   }
 </script>
 
-<a sveltekit:prefetch class="box wrapper" href="{path}/{slug}">
+<a data-sveltekit-prefetch class="box wrapper" href="{path}/{slug}">
   {#if img}<img src={img} alt="" />{/if}
   <div class="text" class:img>
     <h4 class="title">{title}</h4>

@@ -1,6 +1,7 @@
 <script>
   import { page } from '$app/stores';
   import { MetaTags } from 'svelte-meta-tags';
+
   export let subtitle = '';
   export let data;
   const sub = subtitle ? ` - ${subtitle}` : '';
@@ -10,8 +11,4 @@
   const images = [{ url: data.img }];
 </script>
 
-<MetaTags
-  {title}
-  {description}
-  openGraph={{ url, title, description, images }}
-/>
+<MetaTags {title} {description} openGraph={{ url, title, description, images }} />

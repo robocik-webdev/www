@@ -6,19 +6,19 @@
   export let open = false;
   export let visible;
 
-  nav.forEach(item => {
+  nav.forEach((item) => {
     if (!item.home) visible = true;
   });
 
-  const invert = i => nav.map(item => item.home != true).length - 1 - i;
-  const itemIn = i => ({ delay: i * 100, duration: 200, easing: backOut });
-  const itemOut = i => ({
+  const invert = (i) => nav.map((item) => item.home != true).length - 1 - i;
+  const itemIn = (i) => ({ delay: i * 100, duration: 200, easing: backOut });
+  const itemOut = (i) => ({
     delay: invert(i) * 50,
     duration: 200,
     easing: circInOut
   });
-  const textIn = i => ({ delay: i * 100, duration: 500, easing: backOut });
-  const textOut = i => ({
+  const textIn = (i) => ({ delay: i * 100, duration: 500, easing: backOut });
+  const textOut = (i) => ({
     delay: invert(i) * 50,
     duration: 200,
     easing: circInOut
@@ -35,13 +35,7 @@
   <nav>
     {#each nav as { title, path, home }, i}
       {#if open && !home}
-        <a
-          class="box"
-          href={path}
-          on:click={close}
-          in:slide={itemIn(i)}
-          out:slide={itemOut(i)}
-        >
+        <a class="box" href={path} on:click={close} in:slide={itemIn(i)} out:slide={itemOut(i)}>
           <span in:scale={textIn(i)} out:scale={textOut(i)}>
             {title}
           </span>
