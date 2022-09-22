@@ -7,7 +7,7 @@
     "preview": "vite preview --host"
   },
   "devDependencies": {
-    "@sveltejs/adapter-static": "^1.0.0-next.41",
+    "@sveltejs/adapter-static": "1.0.0-next.41",
     "@sveltejs/kit": "next",
     "@tryghost/content-api": "^1.11.4",
     "prettier": "^2.6.2",
