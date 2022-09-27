@@ -10,8 +10,9 @@
     navOpen = !navOpen;
   }
 
-  $: path = $page.url.pathname;
-  $: href = path.substring(0, path.lastIndexOf('/'));
+  $: pathname = $page.url.pathname; // /path/name or /path/name/
+  $: path = pathname.slice(-1) == '/' ? pathname.slice(0, -1) : pathname; // /path/name
+  $: href = path.substring(0, path.lastIndexOf('/')); // /path
 
   let scroll = 0;
   let scrollPrev = 0;

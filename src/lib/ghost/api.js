@@ -14,13 +14,12 @@ export const getPost = async (slug, endpoint = api.posts) => {
     return {
       img: post.feature_image,
       title: post.title,
-      content: post.html,
-      excerpt: post.excerpt
+      content: post.html
     };
   } catch (err) {
     return {
       title: 'Nasze API zrobiło fikołka.',
-      content: 'Przepraszamy za usterki!'
+      content: '<span style="font-size:3em;">🚲🤸‍♂️</span>'
     };
   }
 };
@@ -29,21 +28,10 @@ export const getPage = async (slug) => {
   return await getPost(slug, api.pages);
 };
 
-function createFilter(tags) {
-  let filter = 'tags:[';
-  tags.forEach((tag) => {
-    filter += tag + ',';
-  });
-  filter = filter.slice(0, -1); // remove last comma
-  filter += ']';
-  return filter;
-}
-
 export const getPosts = async (tags) => {
   try {
     const posts = await api.posts.browse({
-      filter: createFilter(tags),
-      include: ['tags']
+      filter: `tags:[${tags.join(',')}]`
     });
     return posts.map((post) => ({
       slug: post.slug,
