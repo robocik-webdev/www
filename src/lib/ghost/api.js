@@ -20,7 +20,7 @@ export const getPost = async (slug, endpoint = api.posts) => {
   } catch (err) {
     return {
       title: 'Nasze API zrobiło fikołka.',
-      content: 'Przepraszamy za usterki!'
+      content: '<span style="font-size:3em;">🚲🤸‍♂️</span>'
     };
   }
 };
