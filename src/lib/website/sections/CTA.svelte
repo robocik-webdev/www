@@ -19,6 +19,7 @@
     <p>{@html $lang.cta_text_1}</p>
     <p>{@html $lang.cta_text_2}</p>
     <div class="buttons">
+      <Button href="/rekrutacja" external>{@html $lang.cta_button_recruitment}</Button>
       <Button dark clear on:click={() => ($partnersOpened = true)}>
         {@html $lang.cta_button_2}
       </Button>
@@ -73,6 +74,7 @@
   }
   .buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
     margin-top: 2rem;

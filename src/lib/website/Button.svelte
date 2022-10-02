@@ -4,9 +4,14 @@
 
   export let href = null;
   export let target = null;
+  export let external = null;
 </script>
 
-{#if href}
+{#if href && external}
+  <a class="button" class:dark class:clear on:click {href} {target} data-sveltekit-reload>
+    <span><slot /></span>
+  </a>
+{:else if href}
   <a class="button" class:dark class:clear on:click {href} {target}>
     <span><slot /></span>
   </a>
@@ -18,6 +23,7 @@
 
 <style>
   .button {
+    display: inline-flex;
     border: solid 4px var(--c-complement);
     border-radius: 2rem;
     padding: 0.4rem 1rem;

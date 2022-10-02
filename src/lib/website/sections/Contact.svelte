@@ -1,11 +1,14 @@
 <script>
   import { lang } from '$lib/lang';
+  import Recruiting from '$lib/website/Recruiting.svelte';
   import Newsletter from '$lib/website/Newsletter.svelte';
   import Social from '$lib/website/Social.svelte';
 </script>
 
 <section id="contact">
   <div class="wrapper">
+    <Recruiting />
+    <br />
     <Newsletter />
 
     <h1>{@html $lang.contact_title}</h1>
