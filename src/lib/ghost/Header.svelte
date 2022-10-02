@@ -39,7 +39,7 @@
     <a data-sveltekit-prefetch data-sveltekit-noscroll class="button arrow" class:visible={href} disabled={href} {href}>
       <img src="/ghost/icons/{returnIcon}" alt="arrow back" />
     </a>
-    <a class="logo" href="/">
+    <a class="logo" href="/" data-sveltekit-reload>
       <img src="/ghost/logo.svg" alt="logo" />
       PWr Diving Crew
     </a>

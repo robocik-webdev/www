@@ -12,6 +12,7 @@
     "cta_text_2": "Łączymy studencki żywioł<br>i uczelniany profesjonalizm.",
     "cta_button_1": "DIVE IN",
     "cta_button_2": "PARTNERZY",
+    "cta_button_recruitment": "🤿 REKRUTACJA",
 
     "vision_vision_title": "WIZJA",
     "vision_vision_text": "Każdego dnia zdobywamy nowe umiejętności i poszerzamy swoje horyzonty poprzez realizację wspólnego projektu, udział w zawodach, szkoleniach i innych wydarzeniach.",
@@ -116,6 +117,11 @@
     "team_marketing_title": "MARKETING",
     "team_marketing_text": "W dziale marketingu zarządzamy projektami promocyjnymi i zajmujemy się pozyskiwaniem partnerów. Planując wydarzenia czy wyjazdy integracyjne, zawsze jesteśmy gotowi na stały&nbsp;rozwój. ",
 
+    "recruiting_title": "REKRUTACJA",
+    "recruiting_text_1": "Daj nura do Robocika!",
+    "recruiting_text_2": "Już <b>03.10</b> zaczynamy jesienną rekrutację.",
+    "recruiting_button": "🤿 REKRUTUJ",
+
     "newsletter_title": "NEWSLETTER",
     "newsletter_text_1": "My w skondensowanej paczce.",
     "newsletter_text_2": "Jeden mail miesięczenie.",
@@ -156,6 +162,7 @@
     "cta_text_2": "We couple students' energy<br>with academic professionalism!",
     "cta_button_1": "DIVE IN",
     "cta_button_2": "PARTNERS",
+    "cta_button_recruitment": "🤿 RECRUITMENT",
 
     "vision_vision_title": "VISION",
     "vision_vision_text": "Every day we gain new skills and broaden our minds by working on a common project, taking part in competitions, tranings and other events.",
@@ -259,6 +266,11 @@
     "team_construction_text": "Our primary tools are 3D-modelling programs like SolidWorks and Inventor. We are taking the whiff of the newest manufacturing technologies in&nbsp;practice.",
     "team_marketing_title": "MARKETING",
     "team_marketing_text": "The beating heart of our organisation. We plan out events and integrative meetings. By promoting the project and enlisting partners we keep the development&nbsp;up.",
+
+    "recruiting_title": "RECRUITING",
+    "recruiting_text_1": "Dive in to Robocik!",
+    "recruiting_text_2": "Fall recruitment begins 03.10...",
+    "recruiting_button": "🤿 RECRUIT",
 
     "newsletter_title": "NEWSLETTER",
     "newsletter_text_1": "It's us - in a nutshell.",
