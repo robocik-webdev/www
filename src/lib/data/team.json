@@ -60,12 +60,12 @@
     "name": "Agnieszka",
     "surname": "Ilnicka",
     "division": {
-      "eng": "Mechanics",
-      "pl": "Konstrukcja"
+      "eng": "Management",
+      "pl": "Zarząd"
     },
     "specialty": {
-      "eng": "3D Printing",
-      "pl": "Druk 3D"
+      "eng": "CEO",
+      "pl": "Prezes Zarządu"
     },
     "linkedin": "https://www.linkedin.com/in/agnieszka-ilnicka-0443161a7/",
     "email": "robocik.ailnicka@gmail.com",
@@ -440,12 +440,12 @@
     "name": "Michał",
     "surname": "Pietrzak",
     "division": {
-      "eng": ["Management", "Electronics"],
-      "pl": "Zarząd"
+      "eng": "Electronics",
+      "pl": "Elektronika"
     },
     "specialty": {
-      "eng": "CTO",
-      "pl": "Wiceprezes ds. Technicznych"
+      "eng": "Electronics",
+      "pl": "Specjalista ds. Technicznych"
     },
     "linkedin": "https://www.linkedin.com/in/m-pietrzak18/",
     "email": "robocik.mpietrzak@gmail.com",
@@ -459,12 +459,12 @@
     "name": "Kornelia",
     "surname": "Głód",
     "division": {
-      "eng": "Management",
-      "pl": "Zarząd"
+      "eng": "Marketing",
+      "pl": "Marketing"
     },
     "specialty": {
-      "eng": "CEO",
-      "pl": "Prezes"
+      "eng": "Marketing",
+      "pl": "Marketing"
     },
     "linkedin": "https://www.linkedin.com/in/kornelia-g%C5%82%C3%B3d-29b97b1b6/",
     "email": "kornelia.glod@pwr.edu.pl",
@@ -478,12 +478,12 @@
     "name": "Magdalena",
     "surname": "Gut",
     "division": {
-      "eng": ["Management", "Marketing"],
-      "pl": "Zarząd"
+      "eng": "Marketing",
+      "pl": "Marketing"
     },
     "specialty": {
-      "eng": "CMO",
-      "pl": "Wiceprezes ds. Organizacyjnych i Promocji"
+      "eng": "Organization and Promotion",
+      "pl": "Specjalista ds. Organizacyjnych i Promocji"
     },
     "linkedin": "https://www.linkedin.com/in/magdalena-gut-3391a7152/",
     "email": "mag.gut98@gmail.com",
@@ -497,12 +497,12 @@
     "name": "Jakub",
     "surname": "Szwedowicz",
     "division": {
-      "eng": ["Management", "Marketing"],
-      "pl": "Zarząd"
+      "eng": "Marketing",
+      "pl": "Marketing"
     },
     "specialty": {
-      "eng": "CFO",
-      "pl": "Wiceprezes ds. Finansowych"
+      "eng": "Finanses",
+      "pl": "Specjalista ds. Finansowych"
     },
     "linkedin": "https://www.linkedin.com/in/jakub-szwedowicz-43b113206/",
     "email": "kuba.szwedowicz@gmail.com",
@@ -630,12 +630,12 @@
     "name": "Wiktor",
     "surname": "Sadowy",
     "division": {
-      "eng": "Software",
-      "pl": "Software"
+      "eng": "Management",
+      "pl": "Zarząd"
     },
     "specialty": {
-      "eng": "Neural Networks",
-      "pl": "Sieci Neuronowe"
+      "eng": "CTO",
+      "pl": "Wiceprezes ds. Technicznych"
     },
     "linkedin": "https://www.linkedin.com/in/wiktor-sadowy-4664271b8/",
     "email": "wiktor.sadowy@onet.pl",
@@ -668,12 +668,12 @@
     "name": "Zuzanna",
     "surname": "Bendiuł",
     "division": {
-      "eng": "Marketing",
-      "pl": "Marketing"
+      "eng": "Management",
+      "pl": "Zarząd"
     },
     "specialty": {
-      "eng": "Social Media coordinator",
-      "pl": "Koordynatorka ds. Social Media"
+      "eng": "CMO",
+      "pl": "Wiceprezes ds. Organizacyjnych i Promocji"
     },
     "linkedin": "https://www.linkedin.com/in/zuzannabendiul/",
     "email": "zbendiul@gmail.com",
@@ -687,12 +687,12 @@
     "name": "Jakub",
     "surname": "Klawon",
     "division": {
-      "eng": "Marketing",
-      "pl": "Marketing"
+      "eng": "Management",
+      "pl": "Zarząd"
     },
     "specialty": {
-      "eng": "Fundraiser/Filmmaker",
-      "pl": "Fundraiser/Filmowiec"
+      "eng": "CFO",
+      "pl": "Wiceprezes ds. Finansowych"
     },
     "linkedin": "https://www.linkedin.com/in/jakub-klawon/",
     "email": "jakubklawon.kontakt@gmail.com",
