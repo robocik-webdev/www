@@ -3,6 +3,8 @@ import adapter from '@sveltejs/adapter-static';
 export default {
   kit: {
     adapter: adapter(),
-    trailingSlash: 'always'
+    prerender: {
+      entries: ['/hackathon/[slug]', '/rekrutacja/marketing/[slug]', '/rekrutacja/techniczni/[slug]', '/admin']
+    }
   }
 };
