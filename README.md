@@ -1,5 +1,7 @@
 # KN Robocik Website
 
+**Note:** This is now a legacy version. As the crew members change, the website evolves...
+
 Our website for marketing purposes and online presence.\
 The main idea behind the design was an illusion of going deeper underwater with every scroll. Clean and pastel colored.
 
