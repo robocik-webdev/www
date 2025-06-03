@@ -1,9 +1,11 @@
 # KN Robocik Website
 
-Our website for marketing purposes and online presence.
-Made with [SvelteKit](https://kit.svelte.dev/).
+Our website for marketing purposes and online presence.\
+The main idea behind the design was an illusion of going deeper underwater with every scroll. Clean and pastel colored.
 
-Uses [Ghost](https://ghost.org/) for some content management.
+Made with [SvelteKit](https://kit.svelte.dev/). Uses [Ghost](https://ghost.org/) for some content management.
+
+<video src="https://github.com/user-attachments/assets/10f1443a-a8a6-4eaa-9b06-86a91b527925"></video>
 
 ## develop
 
